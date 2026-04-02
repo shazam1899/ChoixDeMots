@@ -25,16 +25,6 @@ public class SnapAndLock : MonoBehaviour
         //throw new NotImplementedException();
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Block"))
-        {
-            BlockLock block = other.GetComponent<BlockLock>();
-            if (block != null)
-            {
-                block.isInsideSnapZone = false;
-                block.snapZone = null;
-            }
-        }
-    }
+
+    
 }

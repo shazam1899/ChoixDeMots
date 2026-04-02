@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class LeaderboardRow : MonoBehaviour
 {
-    public TextMeshProUGUI rankText;
-    public TextMeshProUGUI nameText;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI nameText;
+    public TextMeshProUGUI rankText;
 
     public void SetData(string name, int score)
     {

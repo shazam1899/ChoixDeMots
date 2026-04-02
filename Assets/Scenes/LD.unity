@@ -2561,15 +2561,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1843063074983754118, guid: c4a645c929982ea41a52b5037ee7d94d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 448.7154
+      value: 649.2463
       objectReference: {fileID: 0}
     - target: {fileID: 1843063074983754118, guid: c4a645c929982ea41a52b5037ee7d94d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 76.2924
+      value: 10.176642
       objectReference: {fileID: 0}
     - target: {fileID: 1843063074983754118, guid: c4a645c929982ea41a52b5037ee7d94d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 606.78766
+      value: 725.536
       objectReference: {fileID: 0}
     - target: {fileID: 1843063074983754118, guid: c4a645c929982ea41a52b5037ee7d94d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2766,7 +2766,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   SnapVolume: {fileID: 116279695}
-  CollideDis: {fileID: 392133223}
 --- !u!65 &392133223
 BoxCollider:
   m_ObjectHideFlags: 0

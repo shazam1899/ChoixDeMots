@@ -5,7 +5,6 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 public class SnapDisabler : MonoBehaviour
 {
     public GameObject SnapVolume;
-    public Collider CollideDis;
 
     private void Awake()
     {
@@ -14,7 +13,7 @@ public class SnapDisabler : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if(collider.CompareTag("Player") && collider == CollideDis)
+        if(collider.CompareTag("Player"))
         {
             Debug.Log("Hiiiii");
             SnapVolume.SetActive(false);
@@ -23,7 +22,7 @@ public class SnapDisabler : MonoBehaviour
 
     private void OnTriggerExit(Collider collider)
     {
-        if(collider.CompareTag("Player") && collider == CollideDis)
+        if(collider.CompareTag("Player"))
         {
             Debug.Log("Byeeee");
             SnapVolume.SetActive(true);

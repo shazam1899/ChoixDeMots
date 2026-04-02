@@ -4,8 +4,8 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class SnapDisabler : MonoBehaviour
 {
-
     public XRInteractableSnapVolume Snapcript;
+    public Collider CollideDis;
 
     private void Awake()
     {
@@ -14,7 +14,7 @@ public class SnapDisabler : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if(collider.CompareTag("Player"))
+        if(collider.CompareTag("Player") && collider == CollideDis)
         {
             Debug.Log("Hiiiii");
             Snapcript.enabled = false;
@@ -23,11 +23,10 @@ public class SnapDisabler : MonoBehaviour
 
     private void OnTriggerExit(Collider collider)
     {
-        if(collider.CompareTag("Player"))
+        if(collider.CompareTag("Player") && collider == CollideDis)
         {
             Debug.Log("Byeeee");
             Snapcript.enabled = true;
         }
     }
-
 }

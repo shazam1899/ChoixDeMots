@@ -7,6 +7,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 public class SnapAndLock : MonoBehaviour
 {
     public Transform snapPoint;
+    public InteractionLayerMask blockLayerMask;
 
     private void Start()
     {
@@ -20,11 +21,9 @@ public class SnapAndLock : MonoBehaviour
 
     private void OnReleaseEvent(SelectExitEventArgs arg0)
     {
-        Debug.Log(arg0.interactableObject.transform.gameObject);
-        arg0.interactableObject.transform.gameObject.GetComponent<XRGrabInteractable>().enabled = false;
-        //throw new NotImplementedException();
+        if (arg0.interactableObject.transform.gameObject.GetComponent<XRGrabInteractable>().interactionLayers == blockLayerMask)
+        {
+            arg0.interactableObject.transform.gameObject.GetComponent<XRGrabInteractable>().enabled = false;
+        }
     }
-
-
-    
 }

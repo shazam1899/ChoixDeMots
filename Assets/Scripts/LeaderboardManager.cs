@@ -10,9 +10,9 @@ public class LeaderboardManager : MonoBehaviour
     private List<LeaderboardFeature> entries = new List<LeaderboardFeature>
     {
         new LeaderboardFeature { playerName = "YOU", score = 9999},
-        new LeaderboardFeature { playerName = "NPC_Alpha", score = 8500},
-        new LeaderboardFeature { playerName = "NPC_Beta", score = 7200},
-        new LeaderboardFeature { playerName = "NPC_Gamma", score = 6100},
+        new LeaderboardFeature { playerName = "Alpha", score = 8500},
+        new LeaderboardFeature { playerName = "Beta", score = 7200},
+        new LeaderboardFeature { playerName = "Gamma", score = 6100},
     };
 
     void Start()

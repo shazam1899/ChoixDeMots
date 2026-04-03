@@ -9,6 +9,7 @@ public class SnapAndLock : MonoBehaviour
     public Transform snapPoint;
     public InteractionLayerMask blockLayerMask;
 
+
     private void Start()
     {
         // On vérifie si l'objet est un bloc
@@ -25,5 +26,7 @@ public class SnapAndLock : MonoBehaviour
         {
             arg0.interactableObject.transform.gameObject.GetComponent<XRGrabInteractable>().enabled = false;
         }
+        FindFirstObjectByType<LeaderboardManager>().UpdatePlayerScore("YOU", 9900);
+        FindFirstObjectByType<LeaderboardManager>().UpdatePlayerScore("Gamma", 9000);
     }
 }

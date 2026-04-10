@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -5,7 +6,10 @@ public class DialogueData
 {
     public string senderName;
     public string message;
+    public string[] missingWords;
+
     public bool isPlayerTurn;
-    public string[] missingWords; //words to fill in
-    public string[] wordOptions; //grabbable options to choose from
+    public List<SentenceWord> sentenceWords; //replace message string
+    public string[] wordOptions;
+    public SentenceOutcome[] possibleOutcomes;
 }

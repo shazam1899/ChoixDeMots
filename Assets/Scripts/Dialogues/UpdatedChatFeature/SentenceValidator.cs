@@ -3,7 +3,11 @@ using UnityEngine;
 public class SentenceValidator : MonoBehaviour
 {
     public WordSlots[] slots;
-    public SentenceOutcome[] possibleOutcomes;
+
+    public void SetupSlots(WordSlots[] newSlots)
+    {
+        slots = newSlots;
+    }
 
     public void CheckSentence()
     {
@@ -14,45 +18,29 @@ public class SentenceValidator : MonoBehaviour
                 return; //not all slots are filled yet
         }
 
-        //Build current sentence from slot words
-        string[] currrentWords = new string[slots.Length];
-        for (int i = 0; i < slots.Length; i++)
-            currrentWords[i] = slots[i].currentWord.ToLower();
+        //Get the index each slot's current word maps to
+        int firstIndex = slots[0].GetCurrentIndex();
 
-        //Check against all possible outcomes
-        foreach (var outcome in possibleOutcomes)
+        //if any slots return -1 (word not in optons) or
+        //if slots dont all share the same index, sentence is wrong
+        if (firstIndex == -1)
+        return;
+
+        foreach (var slot in slots)
         {
-            if (SentenceMatches(currrentWords, outcome.words))
-            {
-                OnSentenceCorrect(outcome);
-                return;
-            }
+            if (slot.GetCurrentIndex() != firstIndex)
+            return;
         }
-        //no match found, player keeps going
+
+        //All slots match the same index, sentence is correct
+        OnSentenceCorrect(firstIndex);
     }
 
-    private bool SentenceMatches(string[] current, string[] correct)
-    {
-        if (current.Length != correct.Length) return false;
-        for (int i = 0; i < current.Length; i++)
-        {
-            if (current[i] != correct[i].ToLower())
-                return false;
-        }
-        return true;
-    }
-
-    private void OnSentenceCorrect(SentenceOutcome outcome)
+    private void OnSentenceCorrect(int nextIndex)
     {
         foreach (var slot in slots)
             slot.LockWord();
 
-        FindFirstObjectByType<DialogueManager>().OnPlayerTurnComplete(outcome.nextDialogueIndex);
-    }
-
-    public void SetupSlots(WordSlots[] newSlots, SentenceOutcome[] newOutcomes)
-    {
-        slots = newSlots;
-        possibleOutcomes = newOutcomes;
+        FindFirstObjectByType<DialogueManager>().OnPlayerTurnComplete(nextIndex);
     }
 }

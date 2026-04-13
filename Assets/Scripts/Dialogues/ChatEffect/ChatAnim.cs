@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using System.Numerics;
-using System.Reflection.Metadata.Ecma335;
+using System;
+//using System.Reflection.Metadata.Ecma335;
 
 [RequireComponent(typeof(CanvasGroup))]
 public class UIManager : MonoBehaviour
@@ -31,7 +32,7 @@ public class UIManager : MonoBehaviour
         Bubble.DOKill();
 
         Bubble.alpha = 0f;
-        Vector2 endPos = Rect.anchoredPosition;
+        UnityEngine.Vector2 endPos = Rect.anchoredPosition;
         float direction = MathF.Sign(endPos.x);
 
         if(direction == 0)
@@ -39,7 +40,7 @@ public class UIManager : MonoBehaviour
             direction = 1;
         }
 
-        Vector2 startPos = endPos + new Vector2(offsetX * direction, offsetY);
+        UnityEngine.Vector2 startPos = endPos + new UnityEngine.Vector2(offsetX * direction, offsetY);
         Rect.anchoredPosition = startPos;
         Sequence seq = DOTween.Sequence();
         seq.Append(Bubble.DOFade(1f, duration));

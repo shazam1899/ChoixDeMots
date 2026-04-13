@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b29d13f20ea4bac4395badfe32d5a3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WordCube
-  wordText: {fileID: 0}
+  wordText: {fileID: 3040253596729405271}
 --- !u!54 &3651047653771816852
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -150,7 +150,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0

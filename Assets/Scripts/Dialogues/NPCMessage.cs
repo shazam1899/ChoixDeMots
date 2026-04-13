@@ -1,19 +1,28 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class NPCMessage : MonoBehaviour
 {
     public TMPro.TextMeshProUGUI senderText;
     public TMPro.TextMeshProUGUI messageText;
-
-    public void SetMessage(string sender, string message)
+ public void BuildSentence(List<WordEntry> words)
     {
-        senderText.text = sender;
-        messageText.text = message;
+        //Build the visual sentence with fixed words and blanks
+        string display = "";
+        int blankIndex = 0;
+        foreach (var word in words)
+        {
+            if (word.isEmpty)
+            {
+                display += "___"; //placeholder shown 
+                blankIndex++;
+            }
+            else
+            {
+                display += word.word + " ";
+            }
+        }
+        messageText.text = display.Trim();
     }
 
-    public void SetIncompleteMessage(string message, string[] missingWords)
-    {
-       senderText.text = "YOU";
-       messageText.text = message;
-    }
 }

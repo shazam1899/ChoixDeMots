@@ -9,6 +9,8 @@ public class WordSlots : MonoBehaviour
 {
     public TextMeshProUGUI slotText; //blank space in the player bubble UI
     public string currentWord = "";
+    private string[] options;
+    private int[] optionIndices;
     private XRSocketInteractor socket;
     private SentenceValidator validator;
 
@@ -21,17 +23,33 @@ public class WordSlots : MonoBehaviour
         socket.selectExited.AddListener(OnWordRemoved);
     }
 
+    public void SetOptions(string[] newOptions, int[] newIndices)
+    {
+        options = newOptions;
+        optionIndices = newIndices;
+    }
+
+    public int GetCurrentIndex()
+    {
+        //Find which index the current word maps to
+        if (options == null || currentWord == "") return -1;
+        for (int i = 0; i < options.Length; i++)
+        {
+            if (options[i].ToLower() == currentWord.ToLower())
+                return optionIndices[i];
+        }
+        return -1;
+    }
+    
     private void OnWordPlaced(SelectEnterEventArgs args)
     {
         var cube = args.interactableObject.transform.GetComponent<WordCube>();
         if (cube != null)
         {
             currentWord = cube.GetWord();
-            slotText.text = currentWord; //update UI blank 
+            if (slotText != null) slotText.text = currentWord; //update UI blank 
             validator.CheckSentence();
         }
-
-    
     }
 
     private void OnWordRemoved(SelectExitEventArgs args)
@@ -43,8 +61,8 @@ public class WordSlots : MonoBehaviour
 
     public void LockWord()
     {
-        var cube = socket.GetOldestInteractableSelected().transform.GetComponent<XRGrabInteractable>();
-        if (cube != null)
-            cube.enabled = false;
+        var interactable = socket.GetOldestInteractableSelected()?.transform.GetComponent<XRGrabInteractable>();
+        if (interactable != null)
+            interactable.enabled = false;
     }
 }

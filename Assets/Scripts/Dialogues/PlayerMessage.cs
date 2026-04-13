@@ -15,36 +15,23 @@ public class PlayerMessage : MonoBehaviour
             return blankTexts[index];
         return null;
     }
-
-    public void BuildSentence(List<SentenceWord> words)
+    public void BuildSentence(List<WordEntry> words)
     {
-        //Build the visuaæ sentence with fixed words and blanks
+        //Build the visual sentence with fixed words and blanks
         string display = "";
         int blankIndex = 0;
         foreach (var word in words)
         {
-            if (word.isBlank)
+            if (word.isEmpty)
             {
                 display += "___"; //placeholder shown 
                 blankIndex++;
             }
             else
             {
-                display += word.fixedWord + " ";
+                display += word.word + " ";
             }
         }
         messageText.text = display.Trim();
-    }
-
-    public void SetMessage(string sender, string message)
-    {
-        senderText.text = sender;
-        messageText.text = message;
-    }
-
-    public void SetIncompleteMessage(string message, string[] missingWords)
-    {
-       senderText.text = "YOU";
-       messageText.text = message;
     }
 }

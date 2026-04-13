@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using System.Collections;
 
 public class ChatApparition : MonoBehaviour
 {
@@ -8,10 +10,15 @@ public class ChatApparition : MonoBehaviour
     {
         if(collider.CompareTag("Player") && !Dialogue)
         {
-            WaitForSeconds(3f);
+            WaitForSecondsRealtime(3f);
             Debug.Log("?");
             //DialogueApparition.Enable
             Dialogue = true;
         }
+    }
+
+    private void WaitForSecondsRealtime(float v)
+    {
+        throw new NotImplementedException();
     }
 }

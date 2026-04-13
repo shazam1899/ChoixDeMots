@@ -6,21 +6,16 @@ public class DialogueManager : MonoBehaviour
     public GameObject npcMessagePrefab;
     public GameObject playerMessagePrefab;
     public GameObject wordCubePrefab;
-    public Transform npcChatContainer;
-    public Transform playerChatContainer;
-    public Transform wordOptionsContainer;
-    public Transform[] blankSlots; // snap zone for missing words
-
     public GameObject wordSlotPrefab; //prefab xrsocketinteractor
+    public Transform ChatContainer;
+    public Transform cubeSpawnPoint;
     public Transform slotSpawnPoint; //where slots appear in 3D space
     public float slotSpacing = 0.3f; //space between slots
-
-    private List<WordSlots> activeSlots = new List<WordSlots>();
-
-    public Transform cubeSpawnPoint; 
-
+    
     public List<DialogueData> dialogueEntries; // List of dialogues to display in order
     private int currentIndex = 0;
+    private List<WordSlots> activeSlots = new List<WordSlots>();
+
     void Start()
     {
         ShowNextEntry();
@@ -36,8 +31,9 @@ public class DialogueManager : MonoBehaviour
         if (!entry.isPlayerTurn)
         {
             //Spawn NPC Message
-            var bubble = Instantiate(npcMessagePrefab, npcChatContainer);
-            bubble.GetComponent<NPCMessage>().SetMessage(entry.senderName, entry.message);
+            string message = BuildSentence(entry.words);
+            var bubble = Instantiate(npcMessagePrefab, ChatContainer);
+            bubble.GetComponentInChildren<NPCMessage>().BuildSentence(entry.words);
             currentIndex++;
             //Automatically show next entry after a delay
             Invoke(nameof(ShowNextEntry), 0.5f);
@@ -46,36 +42,46 @@ public class DialogueManager : MonoBehaviour
         else
         {
             //Show incomplete player message with blank slots
-            var bubble = Instantiate(playerMessagePrefab, playerChatContainer);
-            bubble.GetComponent<PlayerMessage>().SetIncompleteMessage(entry.message, entry.missingWords);
+            //var bubble = Instantiate(playerMessagePrefab, ChatContainer);
+            //bubble.GetComponentInChildren<PlayerMessage>().BuildSentence(entry.words);
 
             //Spawn words for player
-            foreach (var word in entry.wordOptions)
-            {
-                var cube = Instantiate(wordCubePrefab, cubeSpawnPoint.position, cubeSpawnPoint.rotation);
-                cube.GetComponent<WordCube>().SetWord(word);
-            }
+            //foreach (var word in entry.words)
+            //{
+                //foreach (var cubeWord in word.options)
+                //{
+                    //var cube = Instantiate(wordCubePrefab, cubeSpawnPoint.position, cubeSpawnPoint.rotation);
+                    //cube.GetComponent<WordCube>().SetWord(cubeWord); 
+                //}
+                
+            //}
+
+            SpawnPlayerSentence(entry);
         }
-
-        return;
     }
 
-    public void OnPlayerTurnComplete(int nextIndex)
+    private string BuildSentence(List<WordEntry> words)
     {
-        currentIndex = nextIndex;
-        ShowNextEntry();
+        string sentence = "";
+        foreach (var word in words)
+        {
+            sentence += word.isEmpty ? "___" : word.word + " ";
+        }
+        return sentence.Trim();
     }
-
     private void SpawnPlayerSentence(DialogueData entry)
     {
         activeSlots.Clear();
-        var bubble = Instantiate(playerMessagePrefab, playerChatContainer);
-        var messageBubble = bubble.GetComponent<PlayerMessage>();
+
+        //Spawn player bubble
+        var bubble = Instantiate(playerMessagePrefab, ChatContainer);
+        var playerMessage = bubble.GetComponentInChildren<PlayerMessage>();
+        playerMessage.BuildSentence(entry.words);
 
         int blankIndex = 0;
-        foreach (var word in entry.sentenceWords)
+        foreach (var word in entry.words)
         {
-            if (word.isBlank)
+            if (word.isEmpty)
             {
                 //spawn 3D snapzone for blank
                 Vector3 slotPosition = slotSpawnPoint.position + Vector3.right * (blankIndex * slotSpacing);
@@ -83,14 +89,47 @@ public class DialogueManager : MonoBehaviour
                 var slot = slotObject.GetComponent<WordSlots>();
 
                 //tell the slot which UI text element to update
-                slot.slotText = messageBubble.GetBlankText(blankIndex);
+                slot.slotText = playerMessage.GetBlankText(blankIndex);
+                
+                slot.SetOptions(word.options, word.optionIndices);
+
                 activeSlots.Add(slot);
                 blankIndex++;
             }
         }
 
-        //pass active slots and outcomes to the validator
-        var validator = FindFirstObjectByType<SentenceValidator>();
-        validator.SetupSlots(activeSlots.ToArray(), entry.possibleOutcomes);
+        //Spawn word cubes for all unique options
+        List<string> allOptions = new List<string>();
+        foreach (var word in entry.words)
+        {
+            if (word.isEmpty && word.options != null)
+            {
+                foreach (var option in word.options)
+                {
+                    if (!allOptions.Contains(option))
+                        allOptions.Add(option);
+                }
+            }
+        }
+
+
+
+        for (int i = 0; i < allOptions.Count; i++)
+            {
+            Vector3 cubePosition = cubeSpawnPoint.position + Vector3.right * (i * slotSpacing);
+            var cube = Instantiate(wordCubePrefab, cubePosition, cubeSpawnPoint.rotation);
+            cube.GetComponent<WordCube>().SetWord(allOptions[i]);
+            }
+
+            //Pass through validator
+            FindFirstObjectByType<SentenceValidator>().SetupSlots(activeSlots.ToArray());
     }
+    public void OnPlayerTurnComplete(int nextIndex)
+    {
+        currentIndex = nextIndex;
+        ShowNextEntry();
+    }
+        //pass active slots and outcomes to the validator
+        //var validator = FindFirstObjectByType<SentenceValidator>();
+        //validator.SetupSlots(activeSlots.ToArray(), entry.possibleOutcomes);
 }

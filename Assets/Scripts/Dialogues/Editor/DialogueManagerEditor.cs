@@ -31,7 +31,7 @@ public class DialogueManagerEditor : Editor
 
             //Entry header with index and delete button
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField($"Entry {i}", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField($"Entry {i} - {(entry.isPlayerTurn ? "YOU" : entry.senderName)}", EditorStyles.boldLabel);
             if (GUILayout.Button("X", GUILayout.Width(20)))
             {
                 manager.dialogueEntries.RemoveAt(i);

@@ -12,6 +12,8 @@ public class SentenceValidator : MonoBehaviour
     public void CheckSentence()
     {
         //Making sure all slots are filled
+        if (slots == null || slots.Length == 0) return;
+        
         foreach (var slot in slots)
         {
             if (slot.currentWord == "")

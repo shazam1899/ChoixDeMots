@@ -5,24 +5,10 @@ public class NPCMessage : MonoBehaviour
 {
     public TMPro.TextMeshProUGUI senderText;
     public TMPro.TextMeshProUGUI messageText;
- public void BuildSentence(List<WordEntry> words)
+ public void SetMessage(string sender, string message)
     {
-        //Build the visual sentence with fixed words and blanks
-        string display = "";
-        int blankIndex = 0;
-        foreach (var word in words)
-        {
-            if (word.isEmpty)
-            {
-                display += "___"; //placeholder shown 
-                blankIndex++;
-            }
-            else
-            {
-                display += word.word + " ";
-            }
-        }
-        messageText.text = display.Trim();
+        if (senderText != null) senderText.text = sender;
+        if (messageText != null) messageText.text = message;
     }
 
 }

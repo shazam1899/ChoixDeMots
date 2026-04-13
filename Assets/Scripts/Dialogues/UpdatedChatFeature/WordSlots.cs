@@ -18,7 +18,6 @@ public class WordSlots : MonoBehaviour
     {
         socket = GetComponent<XRSocketInteractor>();
         validator = FindFirstObjectByType<SentenceValidator>();
-
         socket.selectEntered.AddListener(OnWordPlaced);
         socket.selectExited.AddListener(OnWordRemoved);
     }
@@ -55,7 +54,7 @@ public class WordSlots : MonoBehaviour
     private void OnWordRemoved(SelectExitEventArgs args)
     {
         currentWord = "";
-        slotText.text = "___"; //reset UI blank
+        if (slotText != null) slotText.text = "___"; //reset UI blank
         validator.CheckSentence();
     }
 

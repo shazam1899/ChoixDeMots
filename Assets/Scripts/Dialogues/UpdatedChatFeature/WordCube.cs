@@ -10,7 +10,7 @@ public class WordCube : MonoBehaviour
     public void SetWord(string newWord)
     {
         cubeWord = newWord;
-        wordText.text = newWord;
+        if (wordText != null) wordText.text = newWord;
     }
 
     public string GetWord()

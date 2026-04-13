@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class DialogueManager : MonoBehaviour
     public GameObject wordCubePrefab;
     public GameObject wordSlotPrefab; //prefab xrsocketinteractor
     public Transform ChatContainer;
-    public Transform cubeSpawnPoint;
+    public Transform[] cubeSpawnPoints;
     public Transform slotSpawnPoint; //where slots appear in 3D space
     public float slotSpacing = 0.3f; //space between slots
     
@@ -16,9 +17,17 @@ public class DialogueManager : MonoBehaviour
     private int currentIndex = 0;
     private List<WordSlots> activeSlots = new List<WordSlots>();
 
+    public ScrollRect chatScrollRect;
+
     void Start()
     {
         ShowNextEntry();
+    }
+
+    private void ScrollToBottom()
+    {
+        Canvas.ForceUpdateCanvases();
+        chatScrollRect.verticalNormalizedPosition = 0f;
     }
 
     public void ShowNextEntry()
@@ -33,29 +42,15 @@ public class DialogueManager : MonoBehaviour
             //Spawn NPC Message
             string message = BuildSentence(entry.words);
             var bubble = Instantiate(npcMessagePrefab, ChatContainer);
-            bubble.GetComponentInChildren<NPCMessage>().BuildSentence(entry.words);
+            bubble.GetComponentInChildren<NPCMessage>().SetMessage(entry.senderName, message);
+            ScrollToBottom();
             currentIndex++;
             //Automatically show next entry after a delay
-            Invoke(nameof(ShowNextEntry), 0.5f);
+            Invoke(nameof(ShowNextEntry), 1.5f);
         }
 
         else
         {
-            //Show incomplete player message with blank slots
-            //var bubble = Instantiate(playerMessagePrefab, ChatContainer);
-            //bubble.GetComponentInChildren<PlayerMessage>().BuildSentence(entry.words);
-
-            //Spawn words for player
-            //foreach (var word in entry.words)
-            //{
-                //foreach (var cubeWord in word.options)
-                //{
-                    //var cube = Instantiate(wordCubePrefab, cubeSpawnPoint.position, cubeSpawnPoint.rotation);
-                    //cube.GetComponent<WordCube>().SetWord(cubeWord); 
-                //}
-                
-            //}
-
             SpawnPlayerSentence(entry);
         }
     }
@@ -76,7 +71,15 @@ public class DialogueManager : MonoBehaviour
         //Spawn player bubble
         var bubble = Instantiate(playerMessagePrefab, ChatContainer);
         var playerMessage = bubble.GetComponentInChildren<PlayerMessage>();
+        ScrollToBottom();
         playerMessage.BuildSentence(entry.words);
+
+        if (!entry.words.Exists(w => w.isEmpty))
+        {
+            currentIndex++;
+            Invoke(nameof(ShowNextEntry), 1.5f);
+            return;
+        }
 
         int blankIndex = 0;
         foreach (var word in entry.words)
@@ -116,8 +119,8 @@ public class DialogueManager : MonoBehaviour
 
         for (int i = 0; i < allOptions.Count; i++)
             {
-            Vector3 cubePosition = cubeSpawnPoint.position + Vector3.right * (i * slotSpacing);
-            var cube = Instantiate(wordCubePrefab, cubePosition, cubeSpawnPoint.rotation);
+            Transform spawnPoint = cubeSpawnPoints[Random.Range(0, cubeSpawnPoints.Length)];
+            var cube = Instantiate(wordCubePrefab, spawnPoint.position, spawnPoint.rotation);
             cube.GetComponent<WordCube>().SetWord(allOptions[i]);
             }
 
@@ -127,6 +130,14 @@ public class DialogueManager : MonoBehaviour
     public void OnPlayerTurnComplete(int nextIndex)
     {
         currentIndex = nextIndex;
+
+        foreach (var slot in activeSlots)
+        {
+            if (slot != null)
+                Destroy(slot.gameObject);
+        }
+        activeSlots.Clear();
+
         ShowNextEntry();
     }
         //pass active slots and outcomes to the validator

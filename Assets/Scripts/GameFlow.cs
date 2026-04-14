@@ -3,8 +3,11 @@ using UnityEngine;
 public class GameFlow : MonoBehaviour
 {
     public int progression = 0;
+    public GameObject minijeu1;
     public bool minijeu1finish = false;
+    public GameObject minijeu2;
     public bool minijeu2finish = false;
+    public GameObject minijeu3;
     public bool minijeu3finish = false;
 
 
@@ -28,31 +31,34 @@ public class GameFlow : MonoBehaviour
             {
                 Debug.Log("Premier jeu dans ton cul");
                 //Lance minigame 1
-                //if(!minijeu1finish)
-                //{
+                if(!minijeu1finish)
+                {
+                    minijeu1.SetActive(true);
                     //scriptToEnable.enabled = true;
                     //minijeu1finish = true;
-                //}
+                }
             }
             if(progression == 1)
             {
                 Debug.Log("Deuxième jeu dans ton cul");
                 //Lance minigame 2
-                //if(!minijeu2finish)
-                //{
+                if(!minijeu2finish)
+                {
+                    minijeu2.SetActive(true);
                     //scriptToEnable.enabled = true;
                     //minijeu2finish = true;
-                //}
+                }
             }
             if(progression == 2)
             {
                 Debug.Log("Troisième jeu dans ton cul");
                 //Lance minigame 3
-                //if(!minijeu3finish)
-                //{
+                if(!minijeu3finish)
+                {
+                    minijeu3.SetActive(true);
                     //scriptToEnable.enabled = true;
                     //minijeu3finish = true;
-                //}
+                }
             }
         }
     }

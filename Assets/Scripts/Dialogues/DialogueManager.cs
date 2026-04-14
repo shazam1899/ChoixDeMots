@@ -116,9 +116,15 @@ public class DialogueManager : MonoBehaviour
 
         for (int i = 0; i < allOptions.Count; i++)
             {
-            Transform spawnPoint = cubeSpawnPoints[Random.Range(0, cubeSpawnPoints.Length)];
-            var cube = Instantiate(wordCubePrefab, spawnPoint.position, spawnPoint.rotation);
-            cube.GetComponent<WordCube>().SetWord(allOptions[i]);
+                if (cubeSpawnPoints == null || cubeSpawnPoints.Length == 0)
+                {
+                    Debug.Log("no cube spawn assigned :( assign me a cube bro)");
+                    return;
+                }
+            
+                Transform spawnPoint = cubeSpawnPoints[Random.Range(0, cubeSpawnPoints.Length)];
+                var cube = Instantiate(wordCubePrefab, spawnPoint.position, spawnPoint.rotation);
+                cube.GetComponent<WordCube>().SetWord(allOptions[i]);
             }
 
             //Pass through validator

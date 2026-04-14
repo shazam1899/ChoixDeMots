@@ -3590,8 +3590,6 @@ MonoBehaviour:
   - {fileID: 2099283639}
   - {fileID: 250047922}
   - {fileID: 11475939}
-  slotSpawnPoint: {fileID: 820860297}
-  slotSpacing: 10
   dialogueEntries:
   - senderName: NPC
     isPlayerTurn: 0

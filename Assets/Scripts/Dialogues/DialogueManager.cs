@@ -10,8 +10,6 @@ public class DialogueManager : MonoBehaviour
     public GameObject wordSlotPrefab; //prefab xrsocketinteractor
     public Transform ChatContainer;
     public Transform[] cubeSpawnPoints;
-    public Transform slotSpawnPoint; //where slots appear in 3D space
-    public float slotSpacing = 0.3f; //space between slots
     
     public List<DialogueData> dialogueEntries; // List of dialogues to display in order
     private int currentIndex = 0;
@@ -87,8 +85,7 @@ public class DialogueManager : MonoBehaviour
             if (word.isEmpty)
             {
                 //spawn 3D snapzone for blank
-                Vector3 slotPosition = slotSpawnPoint.position + Vector3.right * (blankIndex * slotSpacing);
-                var slotObject = Instantiate(wordSlotPrefab, slotPosition, slotSpawnPoint.rotation);
+                var slotObject = Instantiate(wordSlotPrefab, Vector3.zero, Quaternion.identity);
                 var slot = slotObject.GetComponent<WordSlots>();
 
                 //tell the slot which UI text element to update

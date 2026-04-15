@@ -3,18 +3,30 @@ using System.Collections;
 
 public class Bloquer : MonoBehaviour
 {
+    public GameObject Self;
     public GameObject Avatar;
     public GameObject ChatCanva;
+    public GameObject CheckPanel;
 
     [SerializeField] private GameObject[] PropsAvatar;
     [SerializeField] private GameObject[] PropsHere;
 
-    //public void LanceEffect()
-    //{
-        //StartCoroutine(BloqueEffect());
-    //}
+    public void LanceCheckPanel()
+    {
+        CheckPanel.SetActive(true);
+    }
 
-    public void BloqueEffect()
+    public void NotSure()
+    {
+        CheckPanel.SetActive(false);
+    }
+
+    public void LanceEffect()
+    {
+        StartCoroutine(BloqueEffect());
+    }
+
+    public IEnumerator BloqueEffect()
     {
         //PlayAnimation dispartion
         Avatar.SetActive(false);
@@ -28,12 +40,14 @@ public class Bloquer : MonoBehaviour
             Debug.Log("derrière");
         }
 
-        //yield return new WaitForSeconds(2f);
+        Self.SetActive(false);
+        CheckPanel.SetActive(false);
+        yield return new WaitForSeconds(2f);
         
         for (int i = 0; i < PropsHere.Length; i++)
         {
             PropsHere[i].SetActive(true);
             Debug.Log("toi");
-        }
+        }      
     }
 }

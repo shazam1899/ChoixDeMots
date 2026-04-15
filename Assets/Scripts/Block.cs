@@ -7,6 +7,7 @@ public class Bloquer : MonoBehaviour
     public GameObject Avatar;
     public GameObject ChatCanva;
     public GameObject CheckPanel;
+    public GameObject VFXBlock;
 
     [SerializeField] private GameObject[] PropsAvatar;
     [SerializeField] private GameObject[] PropsHere;
@@ -28,7 +29,7 @@ public class Bloquer : MonoBehaviour
 
     public IEnumerator BloqueEffect()
     {
-        //PlayAnimation dispartion
+        VFXBlock.SetActive(true);
         Avatar.SetActive(false);
         Debug.Log("Je");
         ChatCanva.SetActive(false);

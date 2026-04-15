@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -9,15 +8,24 @@ public class WordSlots : MonoBehaviour
 {
     public TextMeshProUGUI slotText; //blank space in the player bubble UI
     public string currentWord = "";
+    public int linkedIndex = -1; //which dialogue index slot belongs to
     private string[] options;
     private int[] optionIndices;
     private XRSocketInteractor socket;
     private SentenceValidator validator;
 
-    private void Start()
+    //called manually after creation instead of start
+    public void Initialize(SentenceValidator sentenceValidator)
     {
+        validator = sentenceValidator;
         socket = GetComponent<XRSocketInteractor>();
-        validator = FindFirstObjectByType<SentenceValidator>();
+
+        if (socket == null)
+        {
+            Debug.LogError("no xrsocketinteractor found on wordslot bro!");
+            return;
+        }
+        
         socket.selectEntered.AddListener(OnWordPlaced);
         socket.selectExited.AddListener(OnWordRemoved);
     }
@@ -47,7 +55,9 @@ public class WordSlots : MonoBehaviour
         {
             currentWord = cube.GetWord();
             if (slotText != null) slotText.text = currentWord; //update UI blank 
-            validator.CheckSentence();
+            
+            // Tell validator a word was placed — may trigger dynamic blank spawning
+            validator.OnWordPlaced(this);
         }
     }
 

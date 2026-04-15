@@ -97,58 +97,63 @@ public class DialogueManagerEditor : Editor
                         //Fixed word
                         wordEntry.word = EditorGUILayout.TextField("Word", wordEntry.word);
                     }
-                    else if (entry.isPlayerTurn)
-                    {
-                        EditorGUILayout.Space(2);
-                        EditorGUILayout.LabelField("Options", EditorStyles.miniBoldLabel);
-
-                        //Safe array initialization
-                        if (wordEntry.options == null)
-                            wordEntry.options = new string[0];
-                        if (wordEntry.optionIndices == null)
-                            wordEntry.optionIndices = new int[0];
-
-                        //Add/remove option buttons
-                        EditorGUILayout.BeginHorizontal();
-                        EditorGUILayout.LabelField($"{wordEntry.options.Length} option(s)", GUILayout.Width(80));
-                        if (GUILayout.Button("+Add Option", GUILayout.Width(90)))
+                    else
                         {
-                            System.Array.Resize(ref wordEntry.options, wordEntry.options.Length + 1);
-                            System.Array.Resize(ref wordEntry.optionIndices, wordEntry.optionIndices.Length + 1);
-                            wordEntry.options[wordEntry.options.Length - 1] = "";
-                            wordEntry.optionIndices[wordEntry.optionIndices.Length - 1] = 0;
-                            EditorUtility.SetDirty(manager);
-                        }
-                        EditorGUILayout.EndHorizontal();
-
-                        //Draw each option safely
-                        for (int o = 0; o < wordEntry.options.Length; o++)
+                            //Linked index - key field for dynamic expansion
+                            wordEntry.linkedIndex = EditorGUILayout.IntField("Linked Index", wordEntry.linkedIndex);
+                        
+                        if (entry.isPlayerTurn)
                         {
-                            if (o>= wordEntry.optionIndices.Length) break;
-                                
+                            EditorGUILayout.Space(2);
+                            EditorGUILayout.LabelField("Options", EditorStyles.miniBoldLabel);
+
+                            //Safe array initialization
+                            if (wordEntry.options == null)
+                                wordEntry.options = new string[0];
+                            if (wordEntry.optionIndices == null)
+                                wordEntry.optionIndices = new int[0];
+
+                            //Add/remove option buttons
                             EditorGUILayout.BeginHorizontal();
-                            EditorGUILayout.LabelField($" Option {o}", GUILayout.Width(60));
-                            wordEntry.options[o] = EditorGUILayout.TextField(wordEntry.options[o] ?? "");
-                            EditorGUILayout.LabelField("→ Index", GUILayout.Width(50));
-                            wordEntry.optionIndices[o] = EditorGUILayout.IntField(wordEntry.optionIndices[o], GUILayout.Width(40));
-
-                            if (GUILayout.Button("X", GUILayout.Width(20)))
+                            EditorGUILayout.LabelField($"{wordEntry.options.Length} option(s)", GUILayout.Width(80));
+                            if (GUILayout.Button("+Add Option", GUILayout.Width(90)))
                             {
-                                //Safe removal
-                                var optList = new List<string>(wordEntry.options);
-                                var idxList = new List<int>(wordEntry.optionIndices);
-                                optList.RemoveAt(o);
-                                idxList.RemoveAt(o);
-                                wordEntry.options = optList.ToArray();
-                                wordEntry.optionIndices = idxList.ToArray();
+                                System.Array.Resize(ref wordEntry.options, wordEntry.options.Length + 1);
+                                System.Array.Resize(ref wordEntry.optionIndices, wordEntry.optionIndices.Length + 1);
+                                wordEntry.options[wordEntry.options.Length - 1] = "";
+                                wordEntry.optionIndices[wordEntry.optionIndices.Length - 1] = 0;
                                 EditorUtility.SetDirty(manager);
-                                break;
                             }
                             EditorGUILayout.EndHorizontal();
+
+                            //Draw each option safely
+                            for (int o = 0; o < wordEntry.options.Length; o++)
+                            {
+                                if (o>= wordEntry.optionIndices.Length) break;
+                                
+                                EditorGUILayout.BeginHorizontal();
+                                EditorGUILayout.LabelField($" Option {o}", GUILayout.Width(60));
+                                wordEntry.options[o] = EditorGUILayout.TextField(wordEntry.options[o] ?? "");
+                                EditorGUILayout.LabelField("→ Index", GUILayout.Width(50));
+                                wordEntry.optionIndices[o] = EditorGUILayout.IntField(wordEntry.optionIndices[o], GUILayout.Width(40));
+
+                                if (GUILayout.Button("X", GUILayout.Width(20)))
+                                {
+                                    //Safe removal
+                                    var optList = new List<string>(wordEntry.options);
+                                    var idxList = new List<int>(wordEntry.optionIndices);
+                                    optList.RemoveAt(o);
+                                    idxList.RemoveAt(o);
+                                    wordEntry.options = optList.ToArray();
+                                    wordEntry.optionIndices = idxList.ToArray();
+                                    EditorUtility.SetDirty(manager);
+                                    break;
+                                }
+                                EditorGUILayout.EndHorizontal();
+                            }
                         }
                     }
                 }
-                
                 EditorGUILayout.EndVertical();
             }
 
@@ -158,11 +163,11 @@ public class DialogueManagerEditor : Editor
                 entry.words.Add(new WordEntry());
                 wordFoldouts[i].Add(true);
                 EditorUtility.SetDirty(manager);
-            }
-              
+            }   
         }
-            EditorGUILayout.EndVertical();
-            EditorGUILayout.Space(5);
+            
+        EditorGUILayout.EndVertical();
+        EditorGUILayout.Space(5);
             
     }
 

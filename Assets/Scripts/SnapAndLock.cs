@@ -18,28 +18,53 @@ public class SnapAndLock : MonoBehaviour
     public InteractionLayerMask blockLayerMask;
     public List<PlayerScoreUpdate> scoreUpdates;
 
+    private XRSocketInteractor socket;
 
     private void Start()
     {
-        // On vérifie si l'objet est un bloc
+        // On récupère le socket interactor sur cet objet
+        socket = GetComponent<XRSocketInteractor>();
+
+        if (socket != null)
         {
-            // On récupère le script BlockLock sur l'objet
-            XRSocketInteractor interactable = GetComponent<XRSocketInteractor>();
-                interactable.selectExited.AddListener(OnReleaseEvent);
+            socket.selectExited.AddListener(OnReleaseEvent);
+        }
+        else
+        {
+            Debug.LogWarning("SnapAndLock : Aucun XRSocketInteractor trouvé sur cet objet.", this);
         }
     }
 
-    private void OnReleaseEvent(SelectExitEventArgs arg0)
+    private void OnReleaseEvent(SelectExitEventArgs args)
     {
-        if (arg0.interactableObject.transform.gameObject.GetComponent<XRGrabInteractable>().interactionLayers == blockLayerMask)
+        // Vérifie que l'objet relâché est bien un XRGrabInteractable
+        XRGrabInteractable grab = args.interactableObject.transform.GetComponent<XRGrabInteractable>();
+        if (grab == null)
+            return;
+
+        // Vérifie que l'objet appartient bien au layer des blocs
+        if (grab.interactionLayers != blockLayerMask)
+            return;
+
+        // Désactive le grab pour verrouiller l'objet
+        grab.enabled = false;
+
+        // Place l'objet exactement au snapPoint
+        args.interactableObject.transform.position = snapPoint.position;
+        args.interactableObject.transform.rotation = snapPoint.rotation;
+
+        // Met à jour le score
+        LeaderboardManager leaderboard = FindFirstObjectByType<LeaderboardManager>();
+        if (leaderboard != null)
         {
-            arg0.interactableObject.transform.gameObject.GetComponent<XRGrabInteractable>().enabled = false;
-            
-                foreach (var update in scoreUpdates)
-                {
-                    FindFirstObjectByType<LeaderboardManager>().UpdatePlayerScore(update.playerName, update.scoreValue);
-                }
-            
+            foreach (var update in scoreUpdates)
+            {
+                leaderboard.UpdatePlayerScore(update.playerName, update.scoreValue);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("SnapAndLock : Aucun LeaderboardManager trouvé dans la scène.");
         }
     }
 }

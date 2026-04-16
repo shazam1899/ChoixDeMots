@@ -8,6 +8,9 @@ public class Bloquer : MonoBehaviour
     public GameObject ChatCanva;
     public GameObject CheckPanel;
     public GameObject VFXBlock;
+    public bool Blocked = false;
+    //public static int Blocked = 0;
+    public string Name;
 
     [SerializeField] private GameObject[] PropsAvatar;
     [SerializeField] private GameObject[] PropsHere;
@@ -50,5 +53,7 @@ public class Bloquer : MonoBehaviour
             PropsHere[i].SetActive(true);
             Debug.Log("toi");
         }      
+
+        Blocked = true;
     }
 }

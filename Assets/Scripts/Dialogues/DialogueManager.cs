@@ -74,6 +74,7 @@ public class DialogueManager : MonoBehaviour
     }
     private void SpawnPlayerSentence(DialogueData entry)
     {
+        Debug.Log("Bonjour euh spawnPlayerSentence stp goat");
         activeSlots.Clear();
 
         //Spawn player bubble
@@ -93,8 +94,11 @@ public class DialogueManager : MonoBehaviour
         int blankIndex = 0;
         foreach (var word in entry.words)
         {
+             Debug.Log("Bonjour euh var words in entry.words ?");
             if (word.isEmpty && blankIndex < blankPositions.Count)
             {
+                Debug.Log("Bonjour euh word.isEmpty et blankIndex < blankPositions.Count.");
+                
                 Vector3 socketPosition = blankPositions[blankIndex] + Camera.main.transform.forward * socketDepthOffset;
                 
                 WordSlots slot = CreateWordSlot(socketPosition, word.options, word.optionIndices, word.linkedIndex, currentPlayerMessage.GetBlankText(blankIndex));
@@ -115,6 +119,8 @@ public class DialogueManager : MonoBehaviour
     //creates a WordSlot GameObject entirely thru code yay
     private WordSlots CreateWordSlot(Vector3 position, string[] options, int[] optionIndices, int linkedIndex, TMPro.TextMeshProUGUI blankText)
     {
+        Debug.Log("Y'a un game object qui se crée normalement");
+        
         //create game object
         GameObject slotObject = new GameObject("WordSlot");
         slotObject.transform.position = position;

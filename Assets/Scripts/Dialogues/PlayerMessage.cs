@@ -1,63 +1,54 @@
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class PlayerMessage : MonoBehaviour
 {
     public TextMeshProUGUI messageText;
-    public List<TextMeshProUGUI> blankTexts; //assign in inspector
+    public GameObject blankTextPrefab; //simple TextMeshProUGUI prefab
+    public Transform wordsContainer; // horizontal layout group to hold words
+    public List<TextMeshProUGUI> blankTexts = new List<TextMeshProUGUI>();
     
     public List<Vector3> BuildSentence(List<WordEntry> words)
     {
+        blankTexts.Clear();
         List<Vector3> blankPositions = new List<Vector3>();
         
-        //Build the visual sentence with fixed words and blanks
-        string display = "";
-        int blankIndex = 0;
+        //clear existing children
+        foreach (Transform child in wordsContainer)
+            Destroy(child.gameObject);
 
         foreach (var word in words)
         {
+            //create a text element for each word
+            var wordObject = Instantiate(blankTextPrefab, wordsContainer);
+            var tmp = wordObject.GetComponent<TextMeshProUGUI>();
+            
             if (word.isEmpty)
             {
-                display += "___"; //placeholder shown 
-                if (blankIndex < blankTexts.Count)
-                {
-                    //Force update so position is correct
-                    Canvas.ForceUpdateCanvases();
-                    blankPositions.Add(blankTexts[blankIndex].transform.position);
-                }
-                blankIndex++;
+                tmp.text = "___";
+                blankTexts.Add(tmp);
             }
             else
             {
-                display += word.word + " ";
+                tmp.text = word.word;
             }
         }
-        if (messageText != null)
-            messageText.text = display.Trim();
+        //Force update so positions are correct
+        Canvas.ForceUpdateCanvases();
+        
+        //collect positions of blank
+        foreach (var blank in blankTexts)
+            blankPositions.Add(blank.transform.position);
 
         return blankPositions;
     }
 
-    public void AddBlankAtPosition(int index, Vector3 worldPosition)
-    {
-        //called when dynamic blanks are added
-        if (index < blankTexts.Count)
-        {
-            blankTexts[index].text = "___";
-        }
-    }
-
     public TextMeshProUGUI GetBlankText(int index)
     {
-        if (blankTexts != null && index < blankTexts.Count)
+        if (index < blankTexts.Count)
             return blankTexts[index];
         return null;
-    }
-
-    public void UpdateBlankText(int index, string word)
-    {
-        if (index < blankTexts.Count)
-            blankTexts[index].text = word;
     }
 }

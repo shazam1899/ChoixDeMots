@@ -5,13 +5,17 @@ using UnityEngine;
 
 public class PlayerMessage : MonoBehaviour
 {
+    public TextMeshProUGUI senderText;
     public TextMeshProUGUI messageText;
     public GameObject blankTextPrefab; //simple TextMeshProUGUI prefab
     public Transform wordsContainer; // horizontal layout group to hold words
     public List<TextMeshProUGUI> blankTexts = new List<TextMeshProUGUI>();
     
-    public List<Vector3> BuildSentence(List<WordEntry> words)
+    public List<Vector3> BuildSentence(List<WordEntry> words, string senderName)
     {
+        //Set sender name
+        if (senderText != null) senderText.text = senderName; 
+        
         blankTexts.Clear();
         List<Vector3> blankPositions = new List<Vector3>();
         

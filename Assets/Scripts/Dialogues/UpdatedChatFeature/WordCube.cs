@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class WordCube : MonoBehaviour
 {
@@ -16,5 +17,12 @@ public class WordCube : MonoBehaviour
     public string GetWord()
     {
         return cubeWord;
+    }
+
+    public void SetVisible(bool visible)
+    {
+        foreach (var renderer in GetComponentsInChildren<Renderer>())
+            renderer.enabled = visible;
+        
     }
 }

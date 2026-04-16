@@ -260,6 +260,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1139282249}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
+      propertyPath: socketDepthOffset
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: cubeSpawnPoints.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -393,11 +397,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[2].words.Array.data[0].linkedIndex
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[2].words.Array.data[1].linkedIndex
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[2].words.Array.data[2].linkedIndex

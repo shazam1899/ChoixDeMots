@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57bf84cd336101840a0203bf3412a782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMessage
+  senderText: {fileID: 460846070653863817}
   messageText: {fileID: 1228811715016609628}
   blankTextPrefab: {fileID: 8658986891644453770, guid: b5794d79d1143844998a99253f228717, type: 3}
   wordsContainer: {fileID: 4630071663610293442}

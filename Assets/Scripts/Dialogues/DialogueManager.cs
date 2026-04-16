@@ -20,9 +20,9 @@ public class DialogueManager : MonoBehaviour
     public InteractionLayerMask wordInteractionLayer;
     
     public List<DialogueData> dialogueEntries; // List of dialogues to display in order
-    private int currentIndex = 0;
+    public int currentIndex = 0;
     private List<WordSlots> activeSlots = new List<WordSlots>();
-    private PlayerMessage currentPlayerMessage;
+    public PlayerMessage currentPlayerMessage;
     private SentenceValidator validator;
     
 
@@ -81,7 +81,7 @@ public class DialogueManager : MonoBehaviour
         var bubble = Instantiate(playerMessagePrefab, ChatContainer);
         currentPlayerMessage = bubble.GetComponentInChildren<PlayerMessage>();
         
-        List<Vector3> blankPositions = currentPlayerMessage.BuildSentence(entry.words);
+        List<Vector3> blankPositions = currentPlayerMessage.BuildSentence(entry.words, entry.senderName);
         ScrollToBottom();
 
         if (!entry.words.Exists(w => w.isEmpty))

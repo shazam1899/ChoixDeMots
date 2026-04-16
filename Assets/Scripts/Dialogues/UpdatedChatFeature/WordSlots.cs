@@ -25,7 +25,7 @@ public class WordSlots : MonoBehaviour
             Debug.LogError("no xrsocketinteractor found on wordslot bro!");
             return;
         }
-        
+
         socket.selectEntered.AddListener(OnWordPlaced);
         socket.selectExited.AddListener(OnWordRemoved);
     }
@@ -42,9 +42,11 @@ public class WordSlots : MonoBehaviour
         if (options == null || currentWord == "") return -1;
         for (int i = 0; i < options.Length; i++)
         {
+            Debug.Log($"Comparing '{options[i].ToLower()}' with '{currentWord.ToLower()}'");
             if (options[i].ToLower() == currentWord.ToLower())
                 return optionIndices[i];
         }
+        Debug.Log("No match found bro");
         return -1;
     }
     
@@ -56,6 +58,9 @@ public class WordSlots : MonoBehaviour
             currentWord = cube.GetWord();
             if (slotText != null) slotText.text = currentWord; //update UI blank 
             
+            //hide the cube visibility
+            cube.SetVisible(false);
+            
             // Tell validator a word was placed — may trigger dynamic blank spawning
             validator.OnWordPlaced(this);
         }
@@ -63,6 +68,13 @@ public class WordSlots : MonoBehaviour
 
     private void OnWordRemoved(SelectExitEventArgs args)
     {
+        var cube = args.interactableObject.transform.GetComponent<WordCube>();
+        if (cube != null)
+        {
+            //Show the cube again
+            cube.SetVisible(true);
+        }
+        
         currentWord = "";
         if (slotText != null) slotText.text = "___"; //reset UI blank
         validator.CheckSentence();

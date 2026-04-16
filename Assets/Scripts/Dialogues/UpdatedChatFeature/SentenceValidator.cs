@@ -36,26 +36,41 @@ public class SentenceValidator : MonoBehaviour
 
         //Count how many slots currently exist for index
         int currentSlotsForIndex = CountSlotsForIndex(placedIndex);
-
-        //if we need more slots, spawn them
-        if (currentSlotsForIndex < totalWordsForIndex)
+        
+        if (currentSlotsForIndex > totalWordsForIndex)
         {
-            int slotsToAdd = totalWordsForIndex - currentSlotsForIndex;
-            dialogueManager.SpawnDynamicSlots(slotsToAdd, placedIndex, currentPlayerMessage);
+            //Remove excess slots
+            int slotsToRemove = currentSlotsForIndex - totalWordsForIndex;
+            RemoveExcessSlots(placedIndex, slotsToRemove);
         }
 
         CheckSentence();
     }
 
+    private void RemoveExcessSlots(int linkedIndex, int count)
+    {
+        int removed = 0;
+        for (int i = slots.Count - 1; i >= 0 && removed < count; i--)
+        {
+            //dont remove the slot that was just filled
+            if (slots[i].linkedIndex == linkedIndex && slots[i].currentWord == "")
+            {
+                GameObject.Destroy(slots[i].gameObject);
+                slots.RemoveAt(i);
+                removed++;
+            }
+        }
+    }
+
     private int CountWordsForIndex(int index)
     {
         //count how any entries in the full dialogue list reference this index
+        var currentEntry = dialogueManager.dialogueEntries[dialogueManager.currentIndex];
         int count = 0;
-        foreach (var entry in dialogueManager.dialogueEntries)
-        {
-            if (entry.isPlayerTurn && entry.words != null)
-            {
-                foreach (var word in entry.words)
+
+        if (currentEntry.words == null) return 1;
+        
+                foreach (var word in currentEntry.words)
                 {
                     if (word.isEmpty && word.optionIndices != null)
                     {
@@ -69,8 +84,6 @@ public class SentenceValidator : MonoBehaviour
                         }
                     }
                 }
-            }
-        }
         return Mathf.Max(1, count);
     }
 

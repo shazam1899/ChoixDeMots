@@ -1,4 +1,9 @@
+using Unity.Multiplayer.Center.Common;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
+using UnityEngine.XR.Interaction.Toolkit.Interactors;
+
 
 public class GridBoard : MonoBehaviour
 {
@@ -7,6 +12,34 @@ public class GridBoard : MonoBehaviour
     public float cellSize = 1f;
 
     private bool[,] occupied;
+
+    private void SelectExitedEventArgs(SelectExitEventArgs args)
+    {
+        var placement = args.interactableObject.transform.GetComponent<BlockPlacement>();
+        if (placement != null)
+        {  
+            placement.TryPlace();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var grab = other.GetComponent<XRGrabInteractable>();
+        Debug.Log("Trigger enter: " + other.name);
+        if (grab != null)
+        {
+            grab.selectExited.AddListener(SelectExitedEventArgs);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        var grab = other.GetComponent<XRGrabInteractable>();
+        if (grab != null)
+        {
+            grab.selectExited.RemoveListener(SelectExitedEventArgs);
+        }
+    }
 
     private void Awake()
     {

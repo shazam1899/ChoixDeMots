@@ -101,7 +101,7 @@ public class DialogueManager : MonoBehaviour
                 
                 Vector3 socketPosition = blankPositions[blankIndex] + Camera.main.transform.forward * socketDepthOffset;
                 
-                WordSlots slot = CreateWordSlot(socketPosition, word.options, word.optionIndices, word.linkedIndex, currentPlayerMessage.GetBlankText(blankIndex));
+                WordSlots slot = CreateWordSlot(socketPosition, word.options, word.optionIndices, currentPlayerMessage.GetBlankText(blankIndex));
 
                 activeSlots.Add(slot);
                 blankIndex++;
@@ -113,11 +113,11 @@ public class DialogueManager : MonoBehaviour
         SpawnCubes(allOptions);
         
         //setup validator
-        validator.SetupSlots(activeSlots, entry, currentPlayerMessage);
+        validator.SetupSlots(activeSlots);
     }
 
     //creates a WordSlot GameObject entirely thru code yay
-    private WordSlots CreateWordSlot(Vector3 position, string[] options, int[] optionIndices, int linkedIndex, TMPro.TextMeshProUGUI blankText)
+    private WordSlots CreateWordSlot(Vector3 position, string[] options, int[] optionIndices, TMPro.TextMeshProUGUI blankText)
     {
         Debug.Log("Y'a un game object qui se crée normalement");
         
@@ -136,7 +136,6 @@ public class DialogueManager : MonoBehaviour
 
         //add and initialize WordSlot
         WordSlots slot = slotObject.AddComponent<WordSlots>();
-        slot.linkedIndex = linkedIndex;
         slot.SetOptions(options, optionIndices);
 
         //slotText need tmpro ref - pass it after adding component
@@ -147,38 +146,6 @@ public class DialogueManager : MonoBehaviour
 
         return slot;
 
-    }
-
-    //called by sentencevalidator when dynamic blanks need to be added
-    public void SpawnDynamicSlots (int count, int linkedIndex, PlayerMessage playerMessage)
-    {
-        var currentEntry = dialogueEntries[currentIndex];
-
-        //Find matching options for this linked index
-        string[] matchingOptions = new string[0];
-        int[] matchingIndices = new int[0];
-        foreach (var word in currentEntry.words)
-            {
-                if (word.isEmpty && word.linkedIndex == linkedIndex)
-                {
-                    matchingOptions = word.options;
-                    matchingIndices = word.optionIndices;
-                    break;
-                }
-            }
-
-        for (int i = 0; i < count; i++)
-        {
-            //Position new slot near existing ones
-            Vector3 position = activeSlots.Count > 0 ? activeSlots[activeSlots.Count - 1].transform.position + Vector3.right * 0.15f : Vector3.zero;
-
-            int blankIndex = activeSlots.Count;
-            
-            WordSlots slot = CreateWordSlot(position, matchingOptions, matchingIndices, linkedIndex, playerMessage.GetBlankText(blankIndex));
-
-            activeSlots.Add(slot);
-            validator.AddSlot(slot);
-        } 
     }
 
     private List<string> CollectAllOptions(DialogueData entry)
@@ -227,7 +194,9 @@ public class DialogueManager : MonoBehaviour
         currentIndex = validatedIndex;
 
         //after playing the validated index, find next non-referenced index
-        Invoke(nameof(AdvanceToNextNonReferencedIndex), 0f);  
+        Invoke(nameof(AdvanceToNextNonReferencedIndex), 0f);
+
+        //DestroyImmediate(wordCubePrefab, true);
     }
 
     private void AdvanceToNextNonReferencedIndex()

@@ -36,7 +36,7 @@ public class PlayerMessage : MonoBehaviour
             }
             else
             {
-                tmp.text = word.word;
+                tmp.text = word.word + " ";
             }
         }
         //Force update so positions are correct

@@ -8,7 +8,6 @@ public class WordSlots : MonoBehaviour
 {
     public TextMeshProUGUI slotText; //blank space in the player bubble UI
     public string currentWord = "";
-    public int linkedIndex = -1; //which dialogue index slot belongs to
     private string[] options;
     private int[] optionIndices;
     private XRSocketInteractor socket;
@@ -62,7 +61,7 @@ public class WordSlots : MonoBehaviour
             cube.SetVisible(false);
             
             // Tell validator a word was placed — may trigger dynamic blank spawning
-            validator.OnWordPlaced(this);
+            validator.CheckSentence();
         }
     }
 
@@ -82,8 +81,18 @@ public class WordSlots : MonoBehaviour
 
     public void LockWord()
     {
-        var interactable = socket.GetOldestInteractableSelected()?.transform.GetComponent<XRGrabInteractable>();
-        if (interactable != null)
-            interactable.enabled = false;
+        var cube = socket.GetOldestInteractableSelected()?.transform.GetComponent<WordCube>();
+        if (cube != null)
+        {
+            cube.SetVisible(false);
+            var interactable = cube.GetComponent<XRGrabInteractable>();
+            if (interactable != null)
+                interactable.enabled = false;
+        }
+
+        //show word permanently
+        if (slotText != null)
+            slotText.text = currentWord;
+            
     }
 }

@@ -5,97 +5,16 @@ using UnityEngine;
 public class SentenceValidator : MonoBehaviour
 {
     private List<WordSlots> slots = new List<WordSlots>();
-    private DialogueData currentEntry;
     private DialogueManager dialogueManager;
-    private PlayerMessage currentPlayerMessage;
 
     private void Start()
     {
         dialogueManager = FindFirstObjectByType<DialogueManager>();
     }
     
-    public void SetupSlots(List<WordSlots> newSlots, DialogueData entry, PlayerMessage playerMessage)
+    public void SetupSlots(List<WordSlots> newSlots)
     {
         slots = newSlots;
-        currentEntry = entry;
-        currentPlayerMessage = playerMessage;
-    }
-
-    //called when a word is placed - checks for dynamic blank expansion
-    public void OnWordPlaced(WordSlots filledSlot)
-    {
-        int placedIndex = filledSlot.GetCurrentIndex();
-        if (placedIndex == -1)
-        {
-            CheckSentence();
-            return;
-        }
-
-        //Count how many words in the dialogue share this index
-        int totalWordsForIndex = CountWordsForIndex(placedIndex);
-
-        //Count how many slots currently exist for index
-        int currentSlotsForIndex = CountSlotsForIndex(placedIndex);
-        
-        if (currentSlotsForIndex > totalWordsForIndex)
-        {
-            //Remove excess slots
-            int slotsToRemove = currentSlotsForIndex - totalWordsForIndex;
-            RemoveExcessSlots(placedIndex, slotsToRemove);
-        }
-
-        CheckSentence();
-    }
-
-    private void RemoveExcessSlots(int linkedIndex, int count)
-    {
-        int removed = 0;
-        for (int i = slots.Count - 1; i >= 0 && removed < count; i--)
-        {
-            //dont remove the slot that was just filled
-            if (slots[i].linkedIndex == linkedIndex && slots[i].currentWord == "")
-            {
-                GameObject.Destroy(slots[i].gameObject);
-                slots.RemoveAt(i);
-                removed++;
-            }
-        }
-    }
-
-    private int CountWordsForIndex(int index)
-    {
-        //count how any entries in the full dialogue list reference this index
-        var currentEntry = dialogueManager.dialogueEntries[dialogueManager.currentIndex];
-        int count = 0;
-
-        if (currentEntry.words == null) return 1;
-        
-                foreach (var word in currentEntry.words)
-                {
-                    if (word.isEmpty && word.optionIndices != null)
-                    {
-                        foreach (var idx in word.optionIndices)
-                        {
-                            if (idx == index)
-                            {
-                                count++;
-                                break;
-                            }
-                        }
-                    }
-                }
-        return Mathf.Max(1, count);
-    }
-
-    private int CountSlotsForIndex(int index)
-    {
-        int count = 0;
-        foreach (var slot in slots)
-        {
-            if (slot.linkedIndex == index)
-                count++;
-        }
-        return count;
     }
 
     public void AddSlot(WordSlots slot)
@@ -136,7 +55,11 @@ public class SentenceValidator : MonoBehaviour
     {
         foreach (var slot in slots)
             slot.LockWord();
+    }
 
+    private System.Collections.IEnumerator DelayedComplete(int validatedIndex)
+    {
+        yield return new WaitForSeconds(2f); //adjust delay 
         dialogueManager.OnPlayerTurnComplete(validatedIndex);
     }
 }

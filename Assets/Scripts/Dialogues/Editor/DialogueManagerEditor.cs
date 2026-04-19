@@ -97,13 +97,8 @@ public class DialogueManagerEditor : Editor
                         //Fixed word
                         wordEntry.word = EditorGUILayout.TextField("Word", wordEntry.word);
                     }
-                    else
-                        {
-                            //Linked index - key field for dynamic expansion
-                            wordEntry.linkedIndex = EditorGUILayout.IntField("Linked Index", wordEntry.linkedIndex);
-                        
-                        if (entry.isPlayerTurn)
-                        {
+                    else if (entry.isPlayerTurn)
+                        { 
                             EditorGUILayout.Space(2);
                             EditorGUILayout.LabelField("Options", EditorStyles.miniBoldLabel);
 
@@ -153,24 +148,22 @@ public class DialogueManagerEditor : Editor
                             }
                         }
                     }
+                    EditorGUILayout.EndVertical();
                 }
-                EditorGUILayout.EndVertical();
+                
+                //Add word button
+                if (GUILayout.Button("+ Add Word"))
+                {
+                    entry.words.Add(new WordEntry());
+                    wordFoldouts[i].Add(true);
+                    EditorUtility.SetDirty(manager);
+                } 
             }
+            EditorGUILayout.EndVertical();
+            EditorGUILayout.Space(5);  
 
-            //Add word button
-            if (GUILayout.Button("+ Add Word"))
-            {
-                entry.words.Add(new WordEntry());
-                wordFoldouts[i].Add(true);
-                EditorUtility.SetDirty(manager);
-            }   
         }
-            
-        EditorGUILayout.EndVertical();
-        EditorGUILayout.Space(5);
-            
-    }
-
+        
         //Add entry button
         if (GUILayout.Button("+ Add Dialogue Entry"))
         {
@@ -183,5 +176,8 @@ public class DialogueManagerEditor : Editor
         //Mark dirty so changes are saved
         if (GUI.changed)
             EditorUtility.SetDirty(manager);
+      
     }
+
+        
 }

@@ -55,11 +55,17 @@ public class SentenceValidator : MonoBehaviour
     {
         foreach (var slot in slots)
             slot.LockWord();
+
+        dialogueManager.DestroyAllCubes();
+
+        pendingIndex = validatedIndex;
+        Invoke(nameof(CompleteWithDelay), 2f);
     }
 
-    private System.Collections.IEnumerator DelayedComplete(int validatedIndex)
+    private int pendingIndex;
+
+    private void CompleteWithDelay()
     {
-        yield return new WaitForSeconds(2f); //adjust delay 
-        dialogueManager.OnPlayerTurnComplete(validatedIndex);
+        dialogueManager.OnPlayerTurnComplete(pendingIndex);
     }
 }

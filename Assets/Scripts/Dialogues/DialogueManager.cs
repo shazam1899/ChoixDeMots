@@ -24,6 +24,8 @@ public class DialogueManager : MonoBehaviour
     private List<WordSlots> activeSlots = new List<WordSlots>();
     public PlayerMessage currentPlayerMessage;
     private SentenceValidator validator;
+
+    private List<GameObject> activeCubes = new List<GameObject>();
     
 
     void Start()
@@ -167,18 +169,25 @@ public class DialogueManager : MonoBehaviour
 
     private void SpawnCubes(List<string> options)
     {
-        if (cubeSpawnPoints == null || cubeSpawnPoints.Length == 0)
-        {
-            Debug.Log("no cube spawn points assigned bro!");
-            return;
-        }
+        activeCubes.Clear();
 
         for (int i = 0; i < options.Count; i++)
         {
             Transform spawnPoint = cubeSpawnPoints[Random.Range(0, cubeSpawnPoints.Length)];
             var cube = Instantiate(wordCubePrefab, spawnPoint.position, spawnPoint.rotation);
             cube.GetComponent<WordCube>().SetWord(options[i]);
+            activeCubes.Add(cube);
         }
+    }
+
+    public void DestroyAllCubes()
+    {
+        foreach (var cube in activeCubes)
+        {
+            if (cube != null)
+                Destroy(cube);
+        }
+        activeCubes.Clear();
     }
     public void OnPlayerTurnComplete(int validatedIndex)
     {
@@ -186,6 +195,9 @@ public class DialogueManager : MonoBehaviour
         foreach (var slot in activeSlots)
         {
             if (slot != null)
+                //keep text showing before destroying game object
+                if (slot.slotText != null)
+                    slot.slotText.text = slot.currentWord;
                 Destroy(slot.gameObject);
         }
         activeSlots.Clear();
@@ -195,8 +207,6 @@ public class DialogueManager : MonoBehaviour
 
         //after playing the validated index, find next non-referenced index
         Invoke(nameof(AdvanceToNextNonReferencedIndex), 0f);
-
-        //DestroyImmediate(wordCubePrefab, true);
     }
 
     private void AdvanceToNextNonReferencedIndex()

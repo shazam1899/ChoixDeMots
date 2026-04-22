@@ -9,6 +9,8 @@ public class GameFlow : MonoBehaviour
     public bool minijeu2finish = false;
     public GameObject minijeu3;
     public bool minijeu3finish = false;
+    public GameObject final;
+    public bool finalfinish;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -38,6 +40,7 @@ public class GameFlow : MonoBehaviour
                     //minijeu1finish = true;
                 }
             }
+
             if(progression == 1)
             {
                 Debug.Log("Deuxième jeu dans ton cul");
@@ -49,6 +52,7 @@ public class GameFlow : MonoBehaviour
                     //minijeu2finish = true;
                 }
             }
+
             if(progression == 2)
             {
                 Debug.Log("Troisième jeu dans ton cul");
@@ -58,6 +62,15 @@ public class GameFlow : MonoBehaviour
                     minijeu3.SetActive(true);
                     //scriptToEnable.enabled = true;
                     //minijeu3finish = true;
+                }
+            }
+
+            if(progression == 3)
+            {
+                Debug.Log("Final play");
+                if(!finalfinish)
+                {
+                    final.SetActive(true);
                 }
             }
         }

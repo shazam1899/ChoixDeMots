@@ -3,18 +3,15 @@ using System.Collections;
 
 public class SateGatherer : MonoBehaviour
 {
-    //[SerializeField] private Bloquer block;
     [SerializeField] private DialogueManager chat;
     int NumberBlock = 0;
     int NumberName = 0;
 
-    //void Start()
-    //{
-        //SuccessBlock();
-    //}
-    
     public void SuccessBlock()
     {
+        NumberBlock = 0;
+        NumberName = 0;
+
         foreach (var item in FindObjectsByType<Bloquer>(FindObjectsSortMode.None))
         {
             if(item.Blocked)
@@ -26,32 +23,41 @@ public class SateGatherer : MonoBehaviour
             {
                 NumberName += 1;
             }
+        }
 
-            if(NumberBlock == 0)
-            {
-                Debug.Log("Mule");
-            }
+        if(NumberBlock == 0)
+        {
+            Debug.Log("Mule");
+        }
 
-            if (NumberBlock == 3)
-            {
-                Debug.Log("Autruche");
-            }
+        if (NumberBlock == 3)
+        {
+            Debug.Log("Autruche");
+        }
 
+        foreach (var item in FindObjectsByType<Bloquer>(FindObjectsSortMode.None))
+        {
             if (NumberBlock == 1 && item.Name == "mechant")
             {
                 Debug.Log("Pigeon");
+                break;
             }
 
             if (NumberBlock == 1 && item.Name == "gentil")
             {
                 Debug.Log("Serpent");
+                break;
             }
 
             if (NumberBlock == 1 && item.Name == "bizarre")
             {
                 Debug.Log("Capybara");
+                break;
             }
         }
+
+
+
 
 
 

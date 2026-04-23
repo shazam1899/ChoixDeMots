@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMessage : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class PlayerMessage : MonoBehaviour
             if (word.isEmpty)
             {
                 tmp.text = "___";
+                wordObject.SetActive(false);
                 blankTexts.Add(tmp);
             }
             else
@@ -39,14 +41,37 @@ public class PlayerMessage : MonoBehaviour
                 tmp.text = word.word + " ";
             }
         }
+
+        //show only first blank initially
+        if (blankTexts.Count > 0)
+            blankTexts[0].gameObject.SetActive(true);
+        
         //Force update so positions are correct
         Canvas.ForceUpdateCanvases();
         
         //collect positions of blank
-        foreach (var blank in blankTexts)
-            blankPositions.Add(blank.transform.position);
+        if (blankTexts.Count > 0)
+            blankPositions.Add(blankTexts[0]. transform.position);
 
         return blankPositions;
+    }
+
+    public Vector3 RevealAndGetPosition(int index)
+    {
+        if (index >= blankTexts.Count) return Vector3.zero;
+
+        //reveal blank
+        blankTexts[index].gameObject.SetActive(true);
+        return blankTexts[index].transform.position;
+    }
+
+    public void RevealBlank(int index)
+    {
+        if (index < blankTexts.Count)
+        {
+            blankTexts[index].gameObject.SetActive(true);
+            Canvas.ForceUpdateCanvases();
+        }
     }
 
     public TextMeshProUGUI GetBlankText(int index)

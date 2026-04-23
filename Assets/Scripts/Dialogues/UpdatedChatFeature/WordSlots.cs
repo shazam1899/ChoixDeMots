@@ -12,6 +12,7 @@ public class WordSlots : MonoBehaviour
     private int[] optionIndices;
     private XRSocketInteractor socket;
     private SentenceValidator validator;
+    public bool isFirstSlot = false;
 
     //called manually after creation instead of start
     public void Initialize(SentenceValidator sentenceValidator)
@@ -59,7 +60,10 @@ public class WordSlots : MonoBehaviour
             
             //hide the cube visibility
             cube.SetVisible(false);
-            
+
+            if (isFirstSlot)
+                validator.OnFirstWordPlaced(this);
+            else
             // Tell validator a word was placed — may trigger dynamic blank spawning
             validator.CheckSentence();
         }
@@ -76,7 +80,11 @@ public class WordSlots : MonoBehaviour
         
         currentWord = "";
         if (slotText != null) slotText.text = "___"; //reset UI blank
-        validator.CheckSentence();
+        
+        if (isFirstSlot)
+            validator.OnFirstWordRemoved();
+        else
+            validator.CheckSentence();
     }
 
     public void LockWord()

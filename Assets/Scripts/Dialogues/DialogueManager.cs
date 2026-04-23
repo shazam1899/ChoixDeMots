@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
@@ -26,6 +27,7 @@ public class DialogueManager : MonoBehaviour
     private SentenceValidator validator;
 
     private List<GameObject> activeCubes = new List<GameObject>();
+    public int pendingValidatedIndex = -1;
     
 
     void Start()
@@ -46,6 +48,13 @@ public class DialogueManager : MonoBehaviour
         if (currentIndex >= dialogueEntries.Count)
             return;
 
+        if (IsReferencedIndex (currentIndex) && currentIndex != pendingValidatedIndex)
+        {
+            currentIndex++;
+            ShowNextEntry();
+            return;
+        }
+        
         var entry = dialogueEntries[currentIndex]; 
 
         if (!entry.isPlayerTurn)
@@ -65,6 +74,25 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    private bool IsReferencedIndex(int index)
+    {
+        foreach (var entry in dialogueEntries)
+        {
+            if (entry.words == null) continue;
+            foreach (var word in entry.words)
+            {
+                if (word.isEmpty && word.optionIndices != null)
+                {
+                    foreach (var idx in word.optionIndices)
+                    {
+                        if (idx == index) return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
     private string BuildSentence(List<WordEntry> words)
     {
         string sentence = "";
@@ -73,6 +101,83 @@ public class DialogueManager : MonoBehaviour
             sentence += word.isEmpty ? "___" : word.word + " ";
         }
         return sentence.Trim();
+    }
+
+    public int CountWordsForIndex(int index)
+    {
+        var currentEntry = dialogueEntries[currentIndex];
+        int count = 0;
+
+        if (currentEntry.words == null) return 1;
+
+        foreach (var word in currentEntry.words)
+        {
+            if (word.isEmpty && word.optionIndices != null)
+            {
+                foreach (var idx in word.optionIndices)
+                {
+                    if (idx == index)
+                    {
+                        count++;
+                        break;
+                    }
+                }
+            }
+        }
+        return Mathf.Max(1, count);
+    }
+
+    public void SpawnDynamicSlots(int count, int linkedIndex)
+    {
+        StartCoroutine(SpawnDynamicSlotsCoroutine(count, linkedIndex));
+    }
+
+    private IEnumerator SpawnDynamicSlotsCoroutine(int count, int linkedIndex)
+    {
+        var currentEntry = dialogueEntries[currentIndex];
+
+        //find all blank words matching this index in order
+        List<WordEntry> matchingWords = new List<WordEntry>();
+        foreach (var word in currentEntry.words)
+        {
+            if (word.isEmpty && word.optionIndices != null)
+            {
+                foreach (var idx in word.optionIndices)
+                {
+                    if (idx == linkedIndex)
+                    {
+                        matchingWords.Add(word);
+                        break;
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < count; i++)
+        {
+            int wordIndex = i + 1;
+            int blankIndex = 1 + i;
+            
+            WordEntry matchingWord = wordIndex < matchingWords.Count ? matchingWords[wordIndex] : matchingWords[matchingWords.Count - 1];
+
+            yield return null;
+
+            currentPlayerMessage.RevealAndGetPosition(blankIndex);
+
+            TextMeshProUGUI blankText = currentPlayerMessage.GetBlankText(blankIndex);
+
+            if (blankText == null)
+            {
+                continue;
+            }
+
+
+            WordSlots slot = CreateWordSlot(Vector3.zero, matchingWord.options, matchingWord.optionIndices, currentPlayerMessage.GetBlankText(blankIndex));
+
+            slot.isFirstSlot = false;
+            activeSlots.Add(slot);
+            validator.AddSlot(slot);
+        }
     }
     private void SpawnPlayerSentence(DialogueData entry)
     {
@@ -93,21 +198,14 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        int blankIndex = 0;
-        foreach (var word in entry.words)
+        //only spawn first blank slot
+        WordEntry firstBlank = entry.words.Find(w => w.isEmpty);
+        if (firstBlank != null && blankPositions.Count > 0)
         {
-             Debug.Log("Bonjour euh var words in entry.words ?");
-            if (word.isEmpty && blankIndex < blankPositions.Count)
-            {
-                Debug.Log("Bonjour euh word.isEmpty et blankIndex < blankPositions.Count.");
-                
-                Vector3 socketPosition = blankPositions[blankIndex] + Camera.main.transform.forward * socketDepthOffset;
-                
-                WordSlots slot = CreateWordSlot(socketPosition, word.options, word.optionIndices, currentPlayerMessage.GetBlankText(blankIndex));
+            WordSlots slot = CreateWordSlot(Vector3.zero, firstBlank.options, firstBlank.optionIndices, currentPlayerMessage.GetBlankText(0));
 
-                activeSlots.Add(slot);
-                blankIndex++;
-            }
+            slot.isFirstSlot = true;
+            activeSlots.Add(slot);
         }
 
         //Spawn word cubes for all unique options
@@ -126,6 +224,17 @@ public class DialogueManager : MonoBehaviour
         //create game object
         GameObject slotObject = new GameObject("WordSlot");
         slotObject.transform.position = position;
+
+        //parent to blank text so it moves with it
+        if (blankText != null)
+        {
+            slotObject.transform.SetParent(blankText.transform, false);
+            slotObject.transform.localPosition = new Vector3(0, 0, -socketDepthOffset);
+        }
+        else
+        {
+            slotObject.transform.position = position;
+        }
 
         //Add XRSocketInteractor
         XRSocketInteractor socket = slotObject.AddComponent<XRSocketInteractor>();
@@ -202,6 +311,8 @@ public class DialogueManager : MonoBehaviour
         }
         activeSlots.Clear();
 
+        pendingValidatedIndex = validatedIndex;
+
         //jump to validated index
         currentIndex = validatedIndex;
 
@@ -212,39 +323,5 @@ public class DialogueManager : MonoBehaviour
     private void AdvanceToNextNonReferencedIndex()
     {
         ShowNextEntry();
-
-        //after showing validated entry, find next non referenced one
-        Invoke(nameof(FindAndPlayNextFreeIndex), 1.5f);
-    }
-
-    private void FindAndPlayNextFreeIndex()
-    {
-        //Collect all indices that are referenced as option indices
-        HashSet<int> referencedIndices = new HashSet<int>();
-        foreach (var entry in dialogueEntries)
-        {
-            if (entry.words == null) continue;
-            foreach (var word in entry.words)
-            {
-                if (word.isEmpty && word.optionIndices != null)
-                {
-                    foreach (var idx in word.optionIndices)
-                        referencedIndices.Add(idx);
-                }
-            }
-        }
-
-        //find the next index after currentIndex that isn't referenced
-        int searchIndex = currentIndex +1;
-        while (searchIndex < dialogueEntries.Count)
-        {
-            if (!referencedIndices.Contains(searchIndex))
-            {
-                currentIndex = searchIndex;
-                ShowNextEntry();
-                return;
-            }
-            searchIndex++;
-        }
     }
 }

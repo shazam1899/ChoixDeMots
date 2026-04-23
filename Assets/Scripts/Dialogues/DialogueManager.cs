@@ -181,7 +181,6 @@ public class DialogueManager : MonoBehaviour
     }
     private void SpawnPlayerSentence(DialogueData entry)
     {
-        Debug.Log("Bonjour euh spawnPlayerSentence stp goat");
         activeSlots.Clear();
 
         //Spawn player bubble
@@ -189,6 +188,10 @@ public class DialogueManager : MonoBehaviour
         currentPlayerMessage = bubble.GetComponentInChildren<PlayerMessage>();
         
         List<Vector3> blankPositions = currentPlayerMessage.BuildSentence(entry.words, entry.senderName);
+
+        //prebuild all hidden sentence variants
+        currentPlayerMessage.BuildSentenceVariants(entry.words);
+
         ScrollToBottom();
 
         if (!entry.words.Exists(w => w.isEmpty))
@@ -300,16 +303,20 @@ public class DialogueManager : MonoBehaviour
     }
     public void OnPlayerTurnComplete(int validatedIndex)
     {
+        PlayerMessage bubbleToUpdate = currentPlayerMessage;
+
         //clean up active slots
         foreach (var slot in activeSlots)
         {
             if (slot != null)
-                //keep text showing before destroying game object
-                if (slot.slotText != null)
-                    slot.slotText.text = slot.currentWord;
+            {    //keep text showing before destroying game object
+                slot.transform.SetParent(null);
                 Destroy(slot.gameObject);
+            }
         }
         activeSlots.Clear();
+
+        bubbleToUpdate.ShowValidatedSentence(validatedIndex);
 
         pendingValidatedIndex = validatedIndex;
 

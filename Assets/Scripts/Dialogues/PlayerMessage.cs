@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEditor.Animations;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,9 @@ public class PlayerMessage : MonoBehaviour
     public GameObject blankTextPrefab; //simple TextMeshProUGUI prefab
     public Transform wordsContainer; // horizontal layout group to hold words
     public List<TextMeshProUGUI> blankTexts = new List<TextMeshProUGUI>();
+
+    //one hidden gameObject per possible outcome index
+    private Dictionary<int, GameObject> sentenceVariants = new Dictionary<int, GameObject>();
     
     public List<Vector3> BuildSentence(List<WordEntry> words, string senderName)
     {
@@ -18,11 +22,18 @@ public class PlayerMessage : MonoBehaviour
         if (senderText != null) senderText.text = senderName; 
         
         blankTexts.Clear();
+        sentenceVariants.Clear();
         List<Vector3> blankPositions = new List<Vector3>();
         
         //clear existing children
         foreach (Transform child in wordsContainer)
             Destroy(child.gameObject);
+
+        string display = "";
+        foreach (var word in words)
+            display += word.isEmpty ? "[...] " : word.word + " ";
+        if (messageText != null)
+            messageText.text = display.Trim();
 
         foreach (var word in words)
         {
@@ -54,6 +65,82 @@ public class PlayerMessage : MonoBehaviour
             blankPositions.Add(blankTexts[0]. transform.position);
 
         return blankPositions;
+    }
+
+    public void BuildSentenceVariants(List<WordEntry> words)
+    {
+        HashSet<int> allIndices = new HashSet<int>();
+        foreach (var word in words)
+        {
+            if (word.isEmpty && word.optionIndices != null)
+            {
+                foreach (var idx in word.optionIndices)
+                    allIndices.Add(idx);
+            }
+        }
+
+        //for each possible index, build and hide a complete sentence
+        foreach (var index in allIndices)
+        {
+            string variantText = "";
+            foreach (var word in words)
+            {
+                if (word.isEmpty)
+                {
+                    string matchingWord = "";
+                    if (word.options != null && word.optionIndices != null)
+                    {
+                        for (int i = 0; i < word.optionIndices.Length; i++)
+                        {
+                            if (word.optionIndices[i] == index && i < word.options.Length)
+                            {
+                                matchingWord = word.options[i];
+                                break;
+                            }
+                        }
+                    }
+                    variantText += matchingWord + " ";
+                }
+                else
+                {
+                    variantText += word.word + " ";
+                }
+            }
+
+            //creat hidden text object for this variant
+            var variantObject = Instantiate(blankTextPrefab, wordsContainer);
+            var tmp = variantObject.GetComponent<TextMeshProUGUI>();
+            tmp.text = variantText.Trim();
+            variantObject.SetActive(false); //hidden until validated
+            sentenceVariants[index] = variantObject;
+        }
+    }
+
+    //called on validation - hides placeholder, shows correct variant
+    public void ShowValidatedSentence(int validatedIndex)
+    {
+        //hide placeholder
+        if (messageText != null)
+            messageText.gameObject.SetActive(false);
+
+        //show correct variant
+        if (sentenceVariants.ContainsKey(validatedIndex))
+            sentenceVariants[validatedIndex].SetActive(true);
+
+        //hide all other variants
+        foreach (var kvp in sentenceVariants)
+        {
+            if (kvp.Key != validatedIndex)
+                kvp.Value.SetActive(false);
+        }
+
+        //clean up anchors
+        foreach (var blank in blankTexts)
+        {
+            if (blank != null)
+            Destroy(blank.gameObject);
+        }
+        blankTexts.Clear();
     }
 
     public Vector3 RevealAndGetPosition(int index)

@@ -304,12 +304,22 @@ MonoBehaviour:
   npcMessagePrefab: {fileID: 5514039918161875591, guid: 2c5a3cfa924fb45438a10998f6152f81, type: 3}
   playerMessagePrefab: {fileID: 1817556155739797621, guid: 6d306c7f0257bfd45a296dd7215f42e0, type: 3}
   wordCubePrefab: {fileID: 1034205785412095631, guid: 86bff241210a5404ca3000410dee301b, type: 3}
-  wordSlotPrefab: {fileID: 0}
   ChatContainer: {fileID: 1437503494942307521}
-  cubeSpawnPoints: []
+  cubeSpawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   chatScrollRect: {fileID: 3915273951259521064}
-  socketDepthOffset: 0.1
+  socketDepthOffset: 0
+  wordInteractionLayer:
+    m_Bits: 512
   dialogueEntries: []
+  currentIndex: 0
+  currentPlayerMessage: {fileID: 0}
+  pendingValidatedIndex: -1
 --- !u!114 &787193652513828910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,7 +486,7 @@ RectTransform:
   m_GameObject: {fileID: 5617776042993836742}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.0036541799, y: 0.0036541799, z: 0.0036541799}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9099244146940974372}
@@ -624,7 +634,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -104}
-  m_SizeDelta: {x: 314.7, y: 424.7}
+  m_SizeDelta: {x: 400, y: 424.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7455458879560162123
 CanvasRenderer:
@@ -730,7 +740,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -600, y: 0}
+  m_SizeDelta: {x: -500, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &121535130601627077
 CanvasRenderer:

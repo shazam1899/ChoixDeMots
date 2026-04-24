@@ -7,6 +7,11 @@ public class SateGatherer : MonoBehaviour
     int NumberBlock = 0;
     int NumberName = 0;
 
+    void Start()
+    {
+        SuccessBlock();
+    }
+
     public void SuccessBlock()
     {
         NumberBlock = 0;

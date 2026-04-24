@@ -1,8 +1,10 @@
 using UnityEngine;
+using System.Collections;
 
 public class GameFlow : MonoBehaviour
 {
     public int progression = 0;
+    public float WaitTime = 2f;
     public GameObject minijeu1;
     public bool minijeu1finish = false;
     public GameObject minijeu2;
@@ -11,19 +13,6 @@ public class GameFlow : MonoBehaviour
     public bool minijeu3finish = false;
     public GameObject final;
     public bool finalfinish;
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter(Collider collider)
     {
@@ -37,7 +26,7 @@ public class GameFlow : MonoBehaviour
                 {
                     minijeu1.SetActive(true);
                     //scriptToEnable.enabled = true;
-                    //minijeu1finish = true;
+                    minijeu1finish = true;
                 }
             }
 
@@ -49,7 +38,7 @@ public class GameFlow : MonoBehaviour
                 {
                     minijeu2.SetActive(true);
                     //scriptToEnable.enabled = true;
-                    //minijeu2finish = true;
+                    minijeu2finish = true;
                 }
             }
 
@@ -61,7 +50,7 @@ public class GameFlow : MonoBehaviour
                 {
                     minijeu3.SetActive(true);
                     //scriptToEnable.enabled = true;
-                    //minijeu3finish = true;
+                    minijeu3finish = true;
                 }
             }
 
@@ -70,9 +59,16 @@ public class GameFlow : MonoBehaviour
                 Debug.Log("Final play");
                 if(!finalfinish)
                 {
-                    final.SetActive(true);
+                    StartCoroutine(LaunchFinal());
+                    finalfinish = true;
                 }
             }
+        }
+
+        IEnumerator LaunchFinal()
+        {
+            yield return new WaitForSeconds(WaitTime);
+            final.SetActive(true);
         }
     }
 }

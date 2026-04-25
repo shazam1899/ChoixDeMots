@@ -5,20 +5,23 @@ using System.Collections;
 public class ChatApparition : MonoBehaviour
 {
     private bool Dialogue = false;
+
+    public GameObject Chat;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void OnTriggerEnter(Collider collider)
     {
         if(collider.CompareTag("Player") && !Dialogue)
         {
-            WaitForSecondsRealtime(3f);
-            Debug.Log("?");
-            //DialogueApparition.Enable
             Dialogue = true;
+            StartCoroutine(SpawnChat());
         }
     }
 
-    private void WaitForSecondsRealtime(float v)
+    private IEnumerator SpawnChat()
     {
-        throw new NotImplementedException();
+        yield return new WaitForSecondsRealtime(2f);
+        Debug.Log("?");
+        Chat.SetActive(true);
     }
 }

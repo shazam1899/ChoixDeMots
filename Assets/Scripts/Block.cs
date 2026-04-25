@@ -9,11 +9,17 @@ public class Bloquer : MonoBehaviour
     public GameObject CheckPanel;
     public GameObject VFXBlock;
     public bool Blocked = false;
-    //public static int Blocked = 0;
     public string Name;
+    public float ActiveTime;
 
     [SerializeField] private GameObject[] PropsAvatar;
     [SerializeField] private GameObject[] PropsHere;
+    private float StartTime;
+
+    private void OnEnable()
+    {
+        StartTime = Time.time;
+    }
 
     public void LanceCheckPanel()
     {
@@ -43,7 +49,8 @@ public class Bloquer : MonoBehaviour
             PropsAvatar[i].SetActive(false);
             Debug.Log("derrière");
         }
-
+        
+        ActiveTime = Time.time - StartTime;
         Self.SetActive(false);
         CheckPanel.SetActive(false);
         yield return new WaitForSeconds(2f);

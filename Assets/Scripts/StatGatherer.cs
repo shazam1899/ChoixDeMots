@@ -3,9 +3,15 @@ using System.Collections;
 
 public class SateGatherer : MonoBehaviour
 {
-    [SerializeField] private DialogueManager chat;
+    //[SerializeField] private DialogueManager chatMean;
+    //[SerializeField] private DialogueManager chatKind;
+    //[SerializeField] private DialogueManager chatWeird;
+    public GameObject chatMean;
+    public GameObject chatWeird;
     int NumberBlock = 0;
     int NumberName = 0;
+    float MeanTime = 0;
+    float WeirdTime = 0;
 
     void Start()
     {
@@ -28,11 +34,32 @@ public class SateGatherer : MonoBehaviour
             {
                 NumberName += 1;
             }
+
+            if (item.Name == "mechant")
+            {
+                MeanTime = item.ActiveTime;
+            }
+
+            if (item.Name == "bizarre")
+            {
+                WeirdTime = item.ActiveTime;
+            }
+
         }
 
         if(NumberBlock == 0)
         {
             Debug.Log("Mule");
+        }
+
+        if(NumberBlock == 2 && MeanTime < 8 && WeirdTime < 15)
+        {
+            Debug.Log("Faucon");
+        }
+
+        if(NumberBlock == 2 && MeanTime > 8 && WeirdTime > 15)
+        {
+            Debug.Log("Paresseux");
         }
 
         if (NumberBlock == 3)

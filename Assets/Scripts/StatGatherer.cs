@@ -3,11 +3,25 @@ using System.Collections;
 
 public class SateGatherer : MonoBehaviour
 {
-    //[SerializeField] private DialogueManager chatMean;
-    //[SerializeField] private DialogueManager chatKind;
-    //[SerializeField] private DialogueManager chatWeird;
-    public GameObject chatMean;
-    public GameObject chatWeird;
+    [SerializeField] private GameObject ImMule;
+    [SerializeField] private GameObject TxtMule;
+    [SerializeField] private GameObject ImFaucon;
+    [SerializeField] private GameObject TxtFaucon;
+    [SerializeField] private GameObject ImParesseux;
+    [SerializeField] private GameObject TxtParesseux;
+    [SerializeField] private GameObject ImAutruche;
+    [SerializeField] private GameObject TxtAutruche;
+    [SerializeField] private GameObject ImPigeon;
+    [SerializeField] private GameObject TxtPigeon;
+    [SerializeField] private GameObject ImSerpent;
+    [SerializeField] private GameObject TxtSerpent;
+    [SerializeField] private GameObject ImCapybara;
+    [SerializeField] private GameObject TxtCapybara;
+    [SerializeField] private GameObject ImHamster;
+    [SerializeField] private GameObject TxtHamster;
+    [SerializeField] private GameObject ImOurs;
+    [SerializeField] private GameObject TxtOurs;
+
     int NumberBlock = 0;
     int NumberName = 0;
     float MeanTime = 0;
@@ -49,21 +63,29 @@ public class SateGatherer : MonoBehaviour
 
         if(NumberBlock == 0)
         {
+            ImMule.SetActive(true);
+            TxtMule.SetActive(true);
             Debug.Log("Mule");
         }
 
         if(NumberBlock == 2 && MeanTime < 8 && WeirdTime < 15)
         {
+            ImFaucon.SetActive(true);
+            TxtFaucon.SetActive(true);
             Debug.Log("Faucon");
         }
 
         if(NumberBlock == 2 && MeanTime > 8 && WeirdTime > 15)
         {
+            ImParesseux.SetActive(true);
+            TxtParesseux.SetActive(true);
             Debug.Log("Paresseux");
         }
 
         if (NumberBlock == 3)
         {
+            ImAutruche.SetActive(true);
+            TxtAutruche.SetActive(true);
             Debug.Log("Autruche");
         }
 
@@ -71,18 +93,24 @@ public class SateGatherer : MonoBehaviour
         {
             if (NumberBlock == 1 && item.Name == "mechant")
             {
+                ImPigeon.SetActive(true);
+                TxtPigeon.SetActive(true);
                 Debug.Log("Pigeon");
                 break;
             }
 
             if (NumberBlock == 1 && item.Name == "gentil")
             {
+                ImSerpent.SetActive(true);
+                TxtSerpent.SetActive(true);
                 Debug.Log("Serpent");
                 break;
             }
 
             if (NumberBlock == 1 && item.Name == "bizarre")
             {
+                ImCapybara.SetActive(true);
+                TxtCapybara.SetActive(true);
                 Debug.Log("Capybara");
                 break;
             }

@@ -13,6 +13,8 @@ public class GameFlow : MonoBehaviour
     public bool minijeu3finish = false;
     public GameObject final;
     public bool finalfinish;
+    public GameObject Thanks;
+    public GameObject TxtFinal;
 
     private void OnTriggerEnter(Collider collider)
     {
@@ -67,7 +69,9 @@ public class GameFlow : MonoBehaviour
 
         IEnumerator LaunchFinal()
         {
+            Thanks.SetActive(true);
             yield return new WaitForSeconds(WaitTime);
+            TxtFinal.SetActive(true);
             final.SetActive(true);
         }
     }

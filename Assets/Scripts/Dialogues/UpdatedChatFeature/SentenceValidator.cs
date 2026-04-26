@@ -31,21 +31,25 @@ public class SentenceValidator : MonoBehaviour
 
     public void OnFirstWordPlaced(WordSlots firstSlot)
     {
-        int placedIndex = firstSlot.GetCurrentIndex();
-        if (placedIndex == -1) return;
-
-        int totalNeeded = dialogueManager.CountWordsForIndex(placedIndex);
-
-        if (isExpanded && lastExpandedIndex != placedIndex)
-            
-            CollapseToFirstSlot();
-            isExpanded = false;
-
-        if (!isExpanded && totalNeeded > 1)
+        if (firstSlot.isIndexed)
         {
-            dialogueManager.SpawnDynamicSlots(totalNeeded - 1, placedIndex);
-            isExpanded = true;
-            lastExpandedIndex = placedIndex;
+            
+            int placedIndex = firstSlot.GetCurrentIndex();
+            if (placedIndex == -1) return;
+
+            int totalNeeded = dialogueManager.CountWordsForIndex(placedIndex);
+
+            if (isExpanded && lastExpandedIndex != placedIndex)
+                
+                CollapseToFirstSlot();
+                isExpanded = false;
+
+            if (!isExpanded && totalNeeded > 1)
+            {
+                dialogueManager.SpawnDynamicSlots(totalNeeded - 1, placedIndex);
+                isExpanded = true;
+                lastExpandedIndex = placedIndex;
+            }
         }
 
         CheckSentence();
@@ -93,11 +97,17 @@ public class SentenceValidator : MonoBehaviour
         //Making sure all slots are filled
         if (slots == null || slots.Count == 0) return;
 
+        //all slots must be filled regardless of isIndexed
+        foreach (var slot in slots)
+        {
+            if (slot.currentWord == "") return;
+        }
+        
         //get first filled slot's index
         int firstIndex = -1;
         foreach (var slot in slots)
         {
-            if (slot.currentWord != "")
+            if (slot.isIndexed)
             {
                 firstIndex = slot.GetCurrentIndex();
                 break;
@@ -106,34 +116,51 @@ public class SentenceValidator : MonoBehaviour
         
         if (firstIndex == -1) return;
 
-        //make sure we have all slots needed before validating
-        int totalNeeded = dialogueManager.CountWordsForIndex(firstIndex);
-        if (slots.Count < totalNeeded) return;
-        
-        List<WordSlots> slotsCopy = new List<WordSlots>(slots);
-        
-        //dont validate if we're expanding slots
-        if (isExpanded == false && slotsCopy.Count == 1)
+        //count indexed slots needed
+        int indexedSlotsNeeded = dialogueManager.CountWordsForIndex(firstIndex);
+
+        //count non indexed slots
+        int nonIndexedSlots = 0;
+        foreach (var slot in slots)
         {
-            //only one slot exists, check if more needed
-            int singleSlotIndex = slotsCopy[0].GetCurrentIndex();
-            if (singleSlotIndex != -1 && dialogueManager.CountWordsForIndex(singleSlotIndex) > 1)
-                return; 
-        }
-        
-        foreach (var slot in slotsCopy)
-        {
-            if (slot.currentWord == "")
-                return; //not all slots are filled yet
+            if (!slot.isIndexed)
+                nonIndexedSlots++;
         }
 
+        //make sure we have all slots needed before validating
+        int totalNeeded = indexedSlotsNeeded + nonIndexedSlots;
+        if (slots.Count < totalNeeded) return;
+            
+        List<WordSlots> slotsCopy = new List<WordSlots>(slots);
         foreach (var slot in slotsCopy)
         {
-            if (slot.GetCurrentIndex() != firstIndex) return;
+            if (slot.isIndexed && slot.GetCurrentIndex() != firstIndex) return;
+        }
+
+        //all non indexed slots just need any valid option
+        foreach (var slot in slotsCopy)
+        {
+            if (!slot.isIndexed && slot.currentWord == "") return;
         }
 
         //All slots match the same index, sentence is correct
         OnSentenceCorrect(firstIndex);
+        
+
+        //dont validate if we're expanding slots
+        //if (isExpanded == false && slotsCopy.Count == 1)
+        //{
+            //only one slot exists, check if more needed
+            //int singleSlotIndex = slotsCopy[0].GetCurrentIndex();
+            //if (singleSlotIndex != -1 && dialogueManager.CountWordsForIndex(singleSlotIndex) > 1)
+                //return; 
+        //}
+        
+        //foreach (var slot in slotsCopy)
+        //{
+            //if (slot.currentWord == "")
+                //return; //not all slots are filled yet
+        //}s 
     }
 
     private void OnSentenceCorrect(int validatedIndex)

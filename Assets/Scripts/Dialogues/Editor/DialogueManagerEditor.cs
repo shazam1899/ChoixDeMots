@@ -62,7 +62,8 @@ public class DialogueManagerEditor : Editor
             {
                 //Sender and player turn
                 entry.senderName = EditorGUILayout.TextField("Sender", entry.senderName);
-                entry.isPlayerTurn = EditorGUILayout.Toggle("Is Player Turn", entry.isPlayerTurn);  
+                entry.isPlayerTurn = EditorGUILayout.Toggle("Is Player Turn", entry.isPlayerTurn);
+                entry.isDialogueEnd = EditorGUILayout.Toggle("Is dialogue end?", entry.isDialogueEnd); 
             
                 EditorGUILayout.Space(4);
                 EditorGUILayout.LabelField("Words", EditorStyles.miniBoldLabel);
@@ -99,6 +100,9 @@ public class DialogueManagerEditor : Editor
                     }
                     else if (entry.isPlayerTurn)
                         { 
+                            //tick to see if index is needed
+                            wordEntry.isIndexed = EditorGUILayout.Toggle("Is indexed", wordEntry.isIndexed);
+                            
                             EditorGUILayout.Space(2);
                             EditorGUILayout.LabelField("Options", EditorStyles.miniBoldLabel);
 

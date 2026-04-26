@@ -13,6 +13,7 @@ public class WordSlots : MonoBehaviour
     private XRSocketInteractor socket;
     private SentenceValidator validator;
     public bool isFirstSlot = false;
+    public bool isIndexed = false;
 
     //called manually after creation instead of start
     public void Initialize(SentenceValidator sentenceValidator)

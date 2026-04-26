@@ -61,10 +61,18 @@ public class DialogueManager : MonoBehaviour
         {
             //Spawn NPC Message
             string message = BuildSentence(entry.words);
+            string messageVisible = BuildSentence(entry.words);
             var bubble = Instantiate(npcMessagePrefab, ChatContainer);
-            bubble.GetComponentInChildren<NPCMessage>().SetMessage(entry.senderName, message);
+            bubble.GetComponentInChildren<NPCMessage>().SetMessage(entry.senderName, message, messageVisible);
             ScrollToBottom();
             currentIndex++;
+
+            //stop dialogue if entry is marked as the end
+            if (entry.isDialogueEnd)
+            {
+                Debug.Log("dialogue ended!");
+                return;
+            }
             //Automatically show next entry after a delay
             Invoke(nameof(ShowNextEntry), 1.5f);
         }
@@ -137,7 +145,7 @@ public class DialogueManager : MonoBehaviour
         var currentEntry = dialogueEntries[currentIndex];
 
         //find all blank words matching this index in order
-        List<WordEntry> matchingWords = new List<WordEntry>();
+        List<WordEntry> matchingIndexedWords = new List<WordEntry>();
         foreach (var word in currentEntry.words)
         {
             if (word.isEmpty && word.optionIndices != null)
@@ -146,35 +154,77 @@ public class DialogueManager : MonoBehaviour
                 {
                     if (idx == linkedIndex)
                     {
-                        matchingWords.Add(word);
+                        matchingIndexedWords.Add(word);
                         break;
                     }
                 }
             }
         }
+        //collect all blank indices with their word entries in order
+        List<(int blankIndex, WordEntry word)> blanksToSpawn = new List<(int, WordEntry)>();
 
-        for (int i = 0; i < count; i++)
+        int blankIdx = 0;
+        foreach (var word in currentEntry.words)
         {
-            int wordIndex = i + 1;
-            int blankIndex = 1 + i;
-            
-            WordEntry matchingWord = wordIndex < matchingWords.Count ? matchingWords[wordIndex] : matchingWords[matchingWords.Count - 1];
+            if (word.isEmpty)
+            {
+                if (blankIdx > 0) //skip first slot already spawned
+                {
+                    if (word.isIndexed)
+                    {
+                        //only add if it matches linkedIndex
+                        bool matchesIndex = false;
+                        if (word.optionIndices != null)
+                        {
+                            foreach (var idx in word.optionIndices)
+                            {
+                                if (idx == linkedIndex)
+                                {
+                                    matchesIndex = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if (matchesIndex)
+                            blanksToSpawn.Add((blankIdx, word));
+                    }
+                    else
+                    {
+                        //always add non indexed slots
+                        blanksToSpawn.Add((blankIdx, word));
+                    }
+                }
+                blankIdx++;
+            }
+        }
+
+        //spawn all needed slots in order
+        foreach (var (targetBlankIndex, wordEntry) in blanksToSpawn)
+        {
+            yield return null;
+
+            currentPlayerMessage.RevealBlank(targetBlankIndex);
 
             yield return null;
 
-            currentPlayerMessage.RevealAndGetPosition(blankIndex);
+            Canvas rootCanvas = currentPlayerMessage.GetComponentInParent<Canvas>();
+            if (rootCanvas != null)
+                LayoutRebuilder.ForceRebuildLayoutImmediate(rootCanvas.GetComponent<RectTransform>());
 
-            TextMeshProUGUI blankText = currentPlayerMessage.GetBlankText(blankIndex);
+            Canvas.ForceUpdateCanvases();
+            yield return null;
+            
+            TextMeshProUGUI blankText = currentPlayerMessage.GetBlankText(targetBlankIndex);
 
             if (blankText == null)
             {
                 continue;
             }
-
-
-            WordSlots slot = CreateWordSlot(Vector3.zero, matchingWord.options, matchingWord.optionIndices, currentPlayerMessage.GetBlankText(blankIndex));
+        
+            WordSlots slot = CreateWordSlot(Vector3.zero, wordEntry.options, wordEntry.optionIndices, blankText);
 
             slot.isFirstSlot = false;
+            slot.isIndexed = wordEntry.isIndexed; //pass isIndexed
             activeSlots.Add(slot);
             validator.AddSlot(slot);
         }
@@ -208,6 +258,7 @@ public class DialogueManager : MonoBehaviour
             WordSlots slot = CreateWordSlot(Vector3.zero, firstBlank.options, firstBlank.optionIndices, currentPlayerMessage.GetBlankText(0));
 
             slot.isFirstSlot = true;
+            slot.isIndexed = firstBlank.isIndexed; //pass isIndexed
             activeSlots.Add(slot);
         }
 

@@ -23501,7 +23501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53f3f3a6ab192bf44af5d27793815217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicTriggerZone
-  musicOnEnter: {fileID: 8300000, guid: 0a32e097e46b61a43984705dea86d733, type: 3}
+  musicOnEnter: {fileID: 8300000, guid: 97967ba953e9fbd43a28d32aa8b6ca10, type: 3}
   musicOnExit: {fileID: 0}
   fadeDuration: 1.5
 --- !u!65 &1769866817

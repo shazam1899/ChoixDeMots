@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Diagnostics;
 
 public class CheckBlock : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class CheckBlock : MonoBehaviour
     private float startTime;
     private bool wasBlockActive = false;
 
+    public float t;
+
     void Update()
     {
         if (Block.activeSelf && !wasBlockActive)
@@ -25,11 +28,12 @@ public class CheckBlock : MonoBehaviour
 
         if (Block.activeSelf)
         {
-            float t = Time.time - startTime;
+            t = Time.time - startTime;
 
             if (t > 0) 
             {
                 BadPropsHere1.SetActive(true);
+                Debug.Log("Commence");
             }
 
             if (t > 5) 
@@ -41,6 +45,7 @@ public class CheckBlock : MonoBehaviour
             {
                 AudioNorm.SetActive(false);
                 AudiDistordu1.SetActive(true);
+                Debug.Log("Distorsion1");
                 BadPropsHere3.SetActive(true);
             }
 
@@ -53,6 +58,7 @@ public class CheckBlock : MonoBehaviour
             {
                 AudiDistordu1.SetActive(false);
                 AudiDistordu2.SetActive(true);
+                Debug.Log("Distorsion2");
                 BadPropsHere5.SetActive(true);
             }
         }

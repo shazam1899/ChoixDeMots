@@ -40,8 +40,6 @@ public class Bloquer : MonoBehaviour
 
     public IEnumerator BloqueEffect()
     {
-        AudioAvatar.SetActive(false);
-        AudioHUB.SetActive(true);
         VFXBlock.SetActive(true);
         Avatar.SetActive(false);
         Debug.Log("Je");
@@ -57,6 +55,8 @@ public class Bloquer : MonoBehaviour
         ActiveTime = Time.time - StartTime;
         Self.SetActive(false);
         CheckPanel.SetActive(false);
+        AudioAvatar.SetActive(false);
+        AudioHUB.SetActive(true);
         yield return new WaitForSeconds(2f);
         
         for (int i = 0; i < PropsHere.Length; i++)

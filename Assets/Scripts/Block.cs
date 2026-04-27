@@ -8,6 +8,8 @@ public class Bloquer : MonoBehaviour
     public GameObject ChatCanva;
     public GameObject CheckPanel;
     public GameObject VFXBlock;
+    public GameObject AudioAvatar;
+    public GameObject AudioHUB;
     public bool Blocked = false;
     public string Name;
     public float ActiveTime;
@@ -38,6 +40,8 @@ public class Bloquer : MonoBehaviour
 
     public IEnumerator BloqueEffect()
     {
+        AudioAvatar.SetActive(false);
+        AudioHUB.SetActive(true);
         VFXBlock.SetActive(true);
         Avatar.SetActive(false);
         Debug.Log("Je");

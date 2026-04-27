@@ -4,6 +4,7 @@ public class CheckBlock : MonoBehaviour
 {
     [Header("Block")]
     [SerializeField] private GameObject Block;
+    [SerializeField] private float t;
 
     [Header("Props")]
     [SerializeField] private GameObject BadPropsHere1;
@@ -18,17 +19,12 @@ public class CheckBlock : MonoBehaviour
     [SerializeField] private GameObject AudiDistordu2;
 
     private float startTime;
-    private float t;
     private bool wasBlockActive;
 
     void Update()
     {
-        if (Block == null) 
-        {
-            return;
-        }
 
-        bool isActive = Block.activeSelf;
+        bool isActive = Block.activeInHierarchy;
 
         if (isActive)
         {
@@ -36,7 +32,6 @@ public class CheckBlock : MonoBehaviour
             {
                 startTime = Time.time;
                 wasBlockActive = true;
-
                 Debug.Log("Block activé !");
             }
 
@@ -56,58 +51,45 @@ public class CheckBlock : MonoBehaviour
 
     void HandleSequence()
     {
-        if (t > 0f)
+        if (t > 0f && !BadPropsHere1.activeSelf)
         {
-            ActivateOnce(BadPropsHere1, "Commence");
+            BadPropsHere1.SetActive(true);
+            Debug.Log("Commence");
         }
 
-        if (t > 5f)
+        if (t > 5f && !BadPropsHere2.activeSelf)
         {
             BadPropsHere2.SetActive(true);
         }
 
-        if (t > 15f)
+        if (t > 15f && !AudiDistordu1.activeSelf)
         {
-            if (!AudiDistordu1.activeSelf)
-            {
-                AudioNorm.SetActive(false);
-                AudiDistordu1.SetActive(true);
-                BadPropsHere3.SetActive(true);
-                Debug.Log("Distorsion1");
-            }
+            AudioNorm.SetActive(false);
+            AudiDistordu1.SetActive(true);
+            BadPropsHere3.SetActive(true);
+            Debug.Log("Distorsion1");
+            
         }
 
-        if (t > 20f)
+        if (t > 20f && !BadPropsHere4.activeSelf)
         {
             BadPropsHere4.SetActive(true);
         }
 
-        if (t > 25f)
+        if (t > 25f && !AudiDistordu2.activeSelf)
         {
-            if (!AudiDistordu2.activeSelf)
-            {
-                AudiDistordu1.SetActive(false);
-                AudiDistordu2.SetActive(true);
-                BadPropsHere5.SetActive(true);
-                Debug.Log("Distorsion2");
-            }
-        }
-    }
-
-    void ActivateOnce(GameObject obj, string log)
-    {
-        if (!obj.activeSelf)
-        {
-            obj.SetActive(true);
-            Debug.Log(log);
+            AudiDistordu1.SetActive(false);
+            AudiDistordu2.SetActive(true);
+            BadPropsHere5.SetActive(true);
+            Debug.Log("Distorsion2");
         }
     }
 
     void ResetProps()
     {
+        AudioNorm.SetActive(false);
         AudiDistordu1.SetActive(false);
         AudiDistordu2.SetActive(false);
-        AudioNorm.SetActive(true);
 
         BadPropsHere1.SetActive(false);
         BadPropsHere2.SetActive(false);

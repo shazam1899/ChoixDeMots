@@ -19,26 +19,26 @@ public class CheckBlock : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(Block.activeSelf);
+        Debug.Log(Block.activeSelf + " / " + Block.activeInHierarchy);
         
-        if (Block.activeSelf && !wasBlockActive)
+        if (Block.activeInHierarchy && !wasBlockActive)
         {
             Debug.Log("Block activé !");
             startTime = Time.time;
             wasBlockActive = true;
         }
 
-        if (Block.activeSelf)
+        if (Block.activeInHierarchy)
         {
             t = Time.time - startTime;
 
-            if (t > 0) 
+            if (t > 0 && t < 0.02f) 
             {
                 BadPropsHere1.SetActive(true);
                 Debug.Log("Commence");
             }
 
-            if (t > 5) 
+            if (t > 5)
             {
                 BadPropsHere2.SetActive(true);
             }

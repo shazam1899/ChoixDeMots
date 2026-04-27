@@ -71,22 +71,19 @@ public class SateGatherer : MonoBehaviour
             TxtMule.SetActive(true);
             Debug.Log("Mule");
         }
-
-        if(NumberBlock == 2 && MeanTime < 8 && WeirdTime < 15)
+        else if(NumberBlock == 2 && MeanTime < 8 && WeirdTime < 15)
         {
             ImFaucon.SetActive(true);
             TxtFaucon.SetActive(true);
             Debug.Log("Faucon");
         }
-
-        if(NumberBlock == 2 && MeanTime > 8 && WeirdTime > 15)
+        else if(NumberBlock == 2 && MeanTime > 8 && WeirdTime > 15)
         {
             ImParesseux.SetActive(true);
             TxtParesseux.SetActive(true);
             Debug.Log("Paresseux");
         }
-
-        if (NumberBlock == 3)
+        else if (NumberBlock == 3)
         {
             ImAutruche.SetActive(true);
             TxtAutruche.SetActive(true);

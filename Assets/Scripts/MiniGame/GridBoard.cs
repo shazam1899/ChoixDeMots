@@ -1,9 +1,6 @@
-using Unity.Multiplayer.Center.Common;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
-using UnityEngine.XR.Interaction.Toolkit.Interactors;
-
 
 public class GridBoard : MonoBehaviour
 {
@@ -13,11 +10,19 @@ public class GridBoard : MonoBehaviour
 
     private bool[,] occupied;
 
+    private void Awake()
+    {
+        occupied = new bool[width, height];
+    }
+
+    // -----------------------------
+    //  TRIGGER POUR LE PLACEMENT
+    // -----------------------------
     private void SelectExitedEventArgs(SelectExitEventArgs args)
     {
         var placement = args.interactableObject.transform.GetComponent<BlockPlacement>();
         if (placement != null)
-        {  
+        {
             placement.TryPlace();
         }
     }
@@ -25,7 +30,6 @@ public class GridBoard : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var grab = other.GetComponent<XRGrabInteractable>();
-        Debug.Log("Trigger enter: " + other.name);
         if (grab != null)
         {
             grab.selectExited.AddListener(SelectExitedEventArgs);
@@ -41,24 +45,37 @@ public class GridBoard : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-        occupied = new bool[width, height];
-    }
+    // -----------------------------
+    //  COORDONNÉES GRILLE <-> MONDE
+    // -----------------------------
 
+    // Convertit une position monde en cellule grille
     public Vector2Int WorldToGrid(Vector3 worldPos)
     {
         Vector3 local = worldPos - transform.position;
-        int x = Mathf.RoundToInt(local.x / cellSize);
-        int y = Mathf.RoundToInt(local.z / cellSize);
+
+        // Décale pour que (0,0) soit au centre de la grille
+        local.x += (width * cellSize) / 2f;
+        local.z += (height * cellSize) / 2f;
+
+        int x = Mathf.FloorToInt(local.x / cellSize);
+        int y = Mathf.FloorToInt(local.z / cellSize);
+
         return new Vector2Int(x, y);
     }
 
+    // Convertit une cellule grille en position monde
     public Vector3 GridToWorld(int x, int y)
     {
-        return transform.position + new Vector3(x * cellSize, 0, y * cellSize);
+        float worldX = (x * cellSize) - (width * cellSize) / 2f + cellSize / 2f;
+        float worldZ = (y * cellSize) - (height * cellSize) / 2f + cellSize / 2f;
+
+        return transform.position + new Vector3(worldX, 0, worldZ);
     }
 
+    // -----------------------------
+    //  OCCUPATION DES CASES
+    // -----------------------------
     public bool IsInside(int x, int y)
     {
         return x >= 0 && y >= 0 && x < width && y < height;

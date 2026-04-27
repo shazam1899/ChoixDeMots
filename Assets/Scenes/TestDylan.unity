@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 103976154}
   - component: {fileID: 103976153}
   - component: {fileID: 103976152}
+  - component: {fileID: 103976158}
   - component: {fileID: 103976151}
   - component: {fileID: 103976150}
   - component: {fileID: 103976149}
@@ -231,7 +232,7 @@ Transform:
   m_GameObject: {fileID: 103976147}
   serializedVersion: 2
   m_LocalRotation: {x: -0.00000014156102, y: 0.7071068, z: 0.7071068, w: 0.000000111758695}
-  m_LocalPosition: {x: -0.07328987, y: 0.061950028, z: 0.17665}
+  m_LocalPosition: {x: -0.349, y: 0.061950028, z: 0.177}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -262,13 +263,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   localCells:
-  - {x: 1, y: 1}
-  - {x: 2, y: 1}
-  - {x: 3, y: 1}
+  - {x: 0, y: 1}
   - {x: 0, y: 0}
+  - {x: 0, y: -1}
+  - {x: 1, y: 1}
   - {x: 1, y: 0}
-  - {x: 2, y: 0}
-  - {x: 3, y: 0}
+  - {x: 1, y: -1}
+  - {x: 1, y: -2}
 --- !u!65 &103976151
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -535,6 +536,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c34d28f933dfab5448691e29b2e2f967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlockPreview
+--- !u!114 &103976158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103976147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34fe18bb4a6fe743b4184d1b9eb6dc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BlockShapeGizmo
+  lineColor: {r: 1, g: 0.08789876, b: 0, a: 1}
 --- !u!1 &116622647
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,6 +957,7 @@ GameObject:
   - component: {fileID: 549481739}
   - component: {fileID: 549481738}
   - component: {fileID: 549481737}
+  - component: {fileID: 549481743}
   - component: {fileID: 549481736}
   - component: {fileID: 549481735}
   - component: {fileID: 549481734}
@@ -964,7 +979,7 @@ Transform:
   m_GameObject: {fileID: 549481731}
   serializedVersion: 2
   m_LocalRotation: {x: -0.4999999, y: -0.5000002, z: -0.5000002, w: 0.49999985}
-  m_LocalPosition: {x: 0.422, y: 0.062, z: -0.025}
+  m_LocalPosition: {x: -0.779, y: 0.062, z: 0.382}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -995,17 +1010,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   localCells:
-  - {x: 0, y: 0}
+  - {x: 1, y: -1}
+  - {x: 0, y: -1}
+  - {x: -1, y: -1}
+  - {x: -2, y: -1}
   - {x: 1, y: 0}
-  - {x: 2, y: 0}
-  - {x: 3, y: 0}
-  - {x: 0, y: 1}
+  - {x: 0, y: 0}
+  - {x: -1, y: 0}
   - {x: 1, y: 1}
-  - {x: 2, y: 1}
-  - {x: 0, y: 2}
-  - {x: 1, y: 2}
-  - {x: 2, y: 2}
-  - {x: 3, y: 2}
+  - {x: 0, y: 1}
+  - {x: -1, y: 1}
+  - {x: -2, y: 1}
 --- !u!65 &549481735
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1293,6 +1308,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c34d28f933dfab5448691e29b2e2f967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlockPreview
+--- !u!114 &549481743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549481731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34fe18bb4a6fe743b4184d1b9eb6dc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BlockShapeGizmo
+  lineColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1 &554021206
 GameObject:
   m_ObjectHideFlags: 0
@@ -2100,6 +2128,7 @@ GameObject:
   - component: {fileID: 994803136}
   - component: {fileID: 994803135}
   - component: {fileID: 994803134}
+  - component: {fileID: 994803140}
   - component: {fileID: 994803133}
   - component: {fileID: 994803132}
   - component: {fileID: 994803139}
@@ -2118,13 +2147,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 994803130}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0.1276102, y: 0.061950028, z: -0.32274997}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.05, y: 0.459, z: -0.417}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 554021207}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!114 &994803132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2150,10 +2179,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   localCells:
+  - {x: -1, y: 0}
   - {x: 0, y: 0}
-  - {x: 1, y: 0}
+  - {x: -1, y: 1}
   - {x: 0, y: 1}
-  - {x: 1, y: 1}
 --- !u!65 &994803134
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2399,6 +2428,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c34d28f933dfab5448691e29b2e2f967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlockPreview
+--- !u!114 &994803140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994803130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34fe18bb4a6fe743b4184d1b9eb6dc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BlockShapeGizmo
+  lineColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1 &1038622084
 GameObject:
   m_ObjectHideFlags: 0
@@ -2699,7 +2741,7 @@ Transform:
   m_GameObject: {fileID: 1284410299}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.54, y: 0.106, z: 0.163}
+  m_LocalPosition: {x: -0.174, y: 0.106, z: 0.508}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2739,8 +2781,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.8273916, y: 0.08621974, z: 0.83561563}
-  m_Center: {x: 0.3404045, y: 0.03994056, z: 0.34787893}
+  m_Size: {x: 0.87842655, y: 0.6426832, z: 0.84273076}
+  m_Center: {x: -0.003750801, y: 0.3181723, z: 0.001962781}
 --- !u!114 &1284410303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3333,6 +3375,7 @@ GameObject:
   - component: {fileID: 1428621934}
   - component: {fileID: 1428621933}
   - component: {fileID: 1428621932}
+  - component: {fileID: 1428621938}
   - component: {fileID: 1428621931}
   - component: {fileID: 1428621930}
   - component: {fileID: 1428621929}
@@ -3353,7 +3396,7 @@ Transform:
   m_GameObject: {fileID: 1428621927}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0.43, y: 0.06, z: -0.333}
+  m_LocalPosition: {x: 0.012, y: 0.06, z: 0.158}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3384,10 +3427,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   localCells:
-  - {x: 1, y: 2}
-  - {x: 0, y: 1}
-  - {x: 1, y: 1}
   - {x: 1, y: 0}
+  - {x: 0, y: 1}
+  - {x: 0, y: 0}
+  - {x: -1, y: 0}
 --- !u!65 &1428621931
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3611,7 +3654,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3654,6 +3697,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c34d28f933dfab5448691e29b2e2f967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlockPreview
+--- !u!114 &1428621938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428621927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34fe18bb4a6fe743b4184d1b9eb6dc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BlockShapeGizmo
+  lineColor: {r: 1, g: 0.55018413, b: 0, a: 1}
 --- !u!1 &1448225926
 GameObject:
   m_ObjectHideFlags: 0
@@ -3667,6 +3723,7 @@ GameObject:
   - component: {fileID: 1448225933}
   - component: {fileID: 1448225932}
   - component: {fileID: 1448225931}
+  - component: {fileID: 1448225936}
   - component: {fileID: 1448225930}
   - component: {fileID: 1448225929}
   - component: {fileID: 1448225928}
@@ -3687,7 +3744,7 @@ Transform:
   m_GameObject: {fileID: 1448225926}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0.06928921, y: 0.061950028, z: -0.32335}
+  m_LocalPosition: {x: -0.219, y: 0.061950028, z: -0.378}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3718,14 +3775,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   localCells:
+  - {x: -1, y: 0}
+  - {x: -1, y: 1}
+  - {x: -1, y: 2}
+  - {x: -1, y: 3}
   - {x: 0, y: 0}
-  - {x: 1, y: 0}
-  - {x: 2, y: 0}
-  - {x: 3, y: 0}
   - {x: 0, y: 1}
-  - {x: 1, y: 1}
-  - {x: 2, y: 1}
-  - {x: 3, y: 1}
+  - {x: 0, y: 2}
+  - {x: 0, y: 3}
 --- !u!65 &1448225930
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3971,6 +4028,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c34d28f933dfab5448691e29b2e2f967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlockPreview
+--- !u!114 &1448225936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448225926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34fe18bb4a6fe743b4184d1b9eb6dc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BlockShapeGizmo
+  lineColor: {r: 1, g: 0.05374103, b: 0, a: 1}
 --- !u!1 &1478985439
 GameObject:
   m_ObjectHideFlags: 0
@@ -4763,6 +4833,7 @@ GameObject:
   - component: {fileID: 1718912776}
   - component: {fileID: 1718912775}
   - component: {fileID: 1718912774}
+  - component: {fileID: 1718912781}
   - component: {fileID: 1718912773}
   - component: {fileID: 1718912772}
   - component: {fileID: 1718912780}
@@ -4782,7 +4853,7 @@ Transform:
   m_GameObject: {fileID: 1718912770}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0.22871017, y: 0.061950028, z: 0.07765001}
+  m_LocalPosition: {x: -0.642, y: 0.062, z: -0.679}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4813,16 +4884,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   localCells:
+  - {x: 0, y: 3}
   - {x: 0, y: 2}
-  - {x: 1, y: 2}
-  - {x: 2, y: 2}
-  - {x: 3, y: 2}
-  - {x: 4, y: 2}
-  - {x: 5, y: 2}
-  - {x: 6, y: 2}
-  - {x: 7, y: 2}
-  - {x: 5, y: 1}
-  - {x: 5, y: 0}
+  - {x: 0, y: 1}
+  - {x: 0, y: 0}
+  - {x: 0, y: -1}
+  - {x: 0, y: -2}
+  - {x: 0, y: -3}
+  - {x: 0, y: -4}
+  - {x: -1, y: -2}
+  - {x: -2, y: -2}
 --- !u!65 &1718912774
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5089,6 +5160,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c34d28f933dfab5448691e29b2e2f967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlockPreview
+--- !u!114 &1718912781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718912770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34fe18bb4a6fe743b4184d1b9eb6dc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BlockShapeGizmo
+  lineColor: {r: 1, g: 0, b: 0.7450981, a: 1}
 --- !u!1 &1783572213
 GameObject:
   m_ObjectHideFlags: 0
@@ -5491,6 +5575,7 @@ GameObject:
   - component: {fileID: 1977215809}
   - component: {fileID: 1977215808}
   - component: {fileID: 1977215807}
+  - component: {fileID: 1977215813}
   - component: {fileID: 1977215806}
   - component: {fileID: 1977215805}
   - component: {fileID: 1977215804}
@@ -5511,7 +5596,7 @@ Transform:
   m_GameObject: {fileID: 1977215802}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0.12471008, y: 0.061950028, z: 0.17665}
+  m_LocalPosition: {x: -0.898, y: 0.062, z: -0.272}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5542,17 +5627,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   localCells:
-  - {x: 0, y: 0}
-  - {x: 0, y: 1}
-  - {x: 1, y: 1}
-  - {x: 2, y: 1}
-  - {x: 3, y: 1}
-  - {x: 4, y: 1}
   - {x: 0, y: 2}
-  - {x: 1, y: 2}
-  - {x: 2, y: 2}
-  - {x: 3, y: 2}
-  - {x: 4, y: 2}
+  - {x: 0, y: 1}
+  - {x: 0, y: 0}
+  - {x: 0, y: -1}
+  - {x: 0, y: -2}
+  - {x: -1, y: 2}
+  - {x: -1, y: 1}
+  - {x: -1, y: 0}
+  - {x: -1, y: -1}
+  - {x: -1, y: -2}
+  - {x: -2, y: 2}
 --- !u!65 &1977215806
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5819,6 +5904,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c34d28f933dfab5448691e29b2e2f967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlockPreview
+--- !u!114 &1977215813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977215802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34fe18bb4a6fe743b4184d1b9eb6dc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BlockShapeGizmo
+  lineColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1 &2046629158
 GameObject:
   m_ObjectHideFlags: 0
@@ -6016,6 +6114,7 @@ GameObject:
   - component: {fileID: 2094135609}
   - component: {fileID: 2094135608}
   - component: {fileID: 2094135607}
+  - component: {fileID: 2094135613}
   - component: {fileID: 2094135606}
   - component: {fileID: 2094135605}
   - component: {fileID: 2094135612}
@@ -6066,15 +6165,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   localCells:
+  - {x: -1, y: 0}
   - {x: 0, y: 0}
   - {x: 1, y: 0}
-  - {x: 2, y: 0}
+  - {x: -1, y: 1}
   - {x: 0, y: 1}
   - {x: 1, y: 1}
-  - {x: 2, y: 1}
+  - {x: -1, y: 2}
   - {x: 0, y: 2}
   - {x: 1, y: 2}
-  - {x: 2, y: 2}
 --- !u!65 &2094135607
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6320,6 +6419,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c34d28f933dfab5448691e29b2e2f967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlockPreview
+--- !u!114 &2094135613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094135603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34fe18bb4a6fe743b4184d1b9eb6dc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BlockShapeGizmo
+  lineColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1 &2122558592
 GameObject:
   m_ObjectHideFlags: 0

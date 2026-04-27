@@ -20,10 +20,10 @@ public class BlockPlacement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         grab = GetComponent<XRGrabInteractable>();
 
-        // On mémorise la rotation du prefab
+        // Rotation du prefab (ex: -90° X)
         fixedRotation = transform.rotation;
 
-        // 🔥 On verrouille la rotation dans le monde
+        // 🔥 Verrouille la rotation dans le monde
         rb.freezeRotation = true;
 
         grab.selectEntered.AddListener((args) => FreeCells());
@@ -33,14 +33,14 @@ public class BlockPlacement : MonoBehaviour
         grab.selectExited.AddListener((args) => preview.DestroyPreview());
     }
 
-    private Vector3 GetPlacementOrigin()
+    // Origine du snap = centre du collider
+    public Vector3 GetPlacementOrigin()
     {
         return GetComponent<Collider>().bounds.center;
     }
 
     public void TryPlace()
     {
-        // Rotation FIXE (ne change jamais)
         Quaternion finalRot = fixedRotation;
 
         // Snap position depuis le centre

@@ -3,37 +3,43 @@ using UnityEngine;
 
 public class BlockShape : MonoBehaviour
 {
-    public List<Vector2Int> localCells = new List<Vector2Int>();
+    public Vector2Int[] localCells; // positions locales du bloc (ex: L, I, carré)
 
-    // Trouve le pivot bas-gauche automatiquement
-    public Vector2Int GetPivot()
-    {
-        int minX = int.MaxValue;
-        int minY = int.MaxValue;
-
-        foreach (var c in localCells)
-        {
-            if (c.x < minX) minX = c.x;
-            if (c.y < minY) minY = c.y;
-        }
-
-        return new Vector2Int(minX, minY);
-    }
-
-    public List<Vector2Int> GetWorldCells(GridBoard board, Vector3 worldPos, Quaternion rotation)
+    public List<Vector2Int> GetWorldCells(GridBoard board, Vector3 worldPos, Quaternion worldRot)
     {
         List<Vector2Int> result = new List<Vector2Int>();
 
+        // Convertir la position du bloc en coordonnées grille
+        Vector2Int origin = board.WorldToGrid(worldPos);
+
         foreach (var cell in localCells)
         {
-            Vector3 local = new Vector3(cell.x * board.cellSize, 0, cell.y * board.cellSize);
-            Vector3 rotated = rotation * local;
-            Vector3 world = worldPos + rotated;
+            // Rotation Y en 90° (même si toi tu ne tournes plus)
+            Vector2Int rotated = RotateCell(cell, worldRot);
 
-            Vector2Int grid = board.WorldToGrid(world);
-            result.Add(grid);
+            // Cellule finale
+            Vector2Int final = origin + rotated;
+
+            result.Add(final);
         }
 
         return result;
+    }
+
+    private Vector2Int RotateCell(Vector2Int cell, Quaternion rot)
+    {
+        // On récupère l'angle Y
+        float y = rot.eulerAngles.y;
+        int r = Mathf.RoundToInt(y / 90f) % 4;
+
+        switch (r)
+        {
+            case 0: return new Vector2Int(cell.x, cell.y);
+            case 1: return new Vector2Int(cell.y, -cell.x);
+            case 2: return new Vector2Int(-cell.x, -cell.y);
+            case 3: return new Vector2Int(-cell.y, cell.x);
+        }
+
+        return cell;
     }
 }

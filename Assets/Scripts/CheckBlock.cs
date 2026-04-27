@@ -1,73 +1,105 @@
 using UnityEngine;
-using System.Collections;
 
 public class CheckBlock : MonoBehaviour
 {
+    [Header("Block")]
     [SerializeField] private GameObject Block;
+
+    [Header("Props")]
     [SerializeField] private GameObject BadPropsHere1;
     [SerializeField] private GameObject BadPropsHere2;
     [SerializeField] private GameObject BadPropsHere3;
     [SerializeField] private GameObject BadPropsHere4;
     [SerializeField] private GameObject BadPropsHere5;
+
+    [Header("Audio")]
     [SerializeField] private GameObject AudioNorm;
     [SerializeField] private GameObject AudiDistordu1;
     [SerializeField] private GameObject AudiDistordu2;
-    private float startTime;
-    private bool wasBlockActive = false;
 
-    public float t;
+    private float startTime;
+    private float t;
+    private bool wasBlockActive;
 
     void Update()
     {
-        Debug.Log(Block.activeSelf + " / " + Block.activeInHierarchy);
-        
-        if (Block.activeInHierarchy && !wasBlockActive)
+        if (Block == null) 
         {
-            Debug.Log("Block activé !");
-            startTime = Time.time;
-            wasBlockActive = true;
+            return;
         }
 
-        if (Block.activeInHierarchy)
+        bool isActive = Block.activeSelf;
+
+        if (isActive)
         {
+            if (!wasBlockActive)
+            {
+                startTime = Time.time;
+                wasBlockActive = true;
+
+                Debug.Log("Block activé !");
+            }
+
             t = Time.time - startTime;
 
-            if (t > 0 && t < 0.02f) 
+            HandleSequence();
+        }
+        else
+        {
+            if (wasBlockActive)
             {
-                BadPropsHere1.SetActive(true);
-                Debug.Log("Commence");
+                ResetProps();
+                wasBlockActive = false;
             }
+        }
+    }
 
-            if (t > 5)
-            {
-                BadPropsHere2.SetActive(true);
-            }
+    void HandleSequence()
+    {
+        if (t > 0f)
+        {
+            ActivateOnce(BadPropsHere1, "Commence");
+        }
 
-            if (t > 15)
+        if (t > 5f)
+        {
+            BadPropsHere2.SetActive(true);
+        }
+
+        if (t > 15f)
+        {
+            if (!AudiDistordu1.activeSelf)
             {
                 AudioNorm.SetActive(false);
                 AudiDistordu1.SetActive(true);
-                Debug.Log("Distorsion1");
                 BadPropsHere3.SetActive(true);
+                Debug.Log("Distorsion1");
             }
+        }
 
-            if (t > 20)
-            {
-                BadPropsHere4.SetActive(true);
-            }
+        if (t > 20f)
+        {
+            BadPropsHere4.SetActive(true);
+        }
 
-            if (t > 25)
+        if (t > 25f)
+        {
+            if (!AudiDistordu2.activeSelf)
             {
                 AudiDistordu1.SetActive(false);
                 AudiDistordu2.SetActive(true);
-                Debug.Log("Distorsion2");
                 BadPropsHere5.SetActive(true);
+                Debug.Log("Distorsion2");
             }
         }
-        else if (wasBlockActive)
+    }
+
+    void ActivateOnce(GameObject obj, string log)
+    {
+        if (!obj.activeSelf)
         {
-            ResetProps();
-            wasBlockActive = false;
+            obj.SetActive(true);
+            Debug.Log(log);
         }
     }
 
@@ -75,7 +107,8 @@ public class CheckBlock : MonoBehaviour
     {
         AudiDistordu1.SetActive(false);
         AudiDistordu2.SetActive(false);
-        AudioNorm.SetActive(false);
+        AudioNorm.SetActive(true);
+
         BadPropsHere1.SetActive(false);
         BadPropsHere2.SetActive(false);
         BadPropsHere3.SetActive(false);

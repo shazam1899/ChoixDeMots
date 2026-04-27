@@ -18,4 +18,6 @@ public class DialogueData
     public bool isPlayerTurn;
     public bool isDialogueEnd; //stops dialogue when entry plays
     public List<WordEntry> words; //each word in the sentence
+    public AnimationClip messageAnimation; //animation to play when this message displays
+    public bool playerBlocked; //is the player blocked ? 
 }

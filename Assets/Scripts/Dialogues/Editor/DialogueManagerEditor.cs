@@ -63,7 +63,8 @@ public class DialogueManagerEditor : Editor
                 //Sender and player turn
                 entry.senderName = EditorGUILayout.TextField("Sender", entry.senderName);
                 entry.isPlayerTurn = EditorGUILayout.Toggle("Is Player Turn", entry.isPlayerTurn);
-                entry.isDialogueEnd = EditorGUILayout.Toggle("Is dialogue end?", entry.isDialogueEnd); 
+                entry.isDialogueEnd = EditorGUILayout.Toggle("Is dialogue end?", entry.isDialogueEnd);
+                entry.messageAnimation = (AnimationClip)EditorGUILayout.ObjectField("Message Animation", entry.messageAnimation, typeof(AnimationClip), false);
             
                 EditorGUILayout.Space(4);
                 EditorGUILayout.LabelField("Words", EditorStyles.miniBoldLabel);

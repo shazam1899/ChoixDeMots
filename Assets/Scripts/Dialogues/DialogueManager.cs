@@ -28,6 +28,8 @@ public class DialogueManager : MonoBehaviour
 
     private List<GameObject> activeCubes = new List<GameObject>();
     public int pendingValidatedIndex = -1;
+    private AnimationClip currentAnimation;
+    public Animation animationVisage;
     
 
     void Start()
@@ -66,6 +68,14 @@ public class DialogueManager : MonoBehaviour
             bubble.GetComponentInChildren<NPCMessage>().SetMessage(entry.senderName, message, messageVisible);
             ScrollToBottom();
             currentIndex++;
+
+            //Play animation if assigned
+            if (entry.messageAnimation != null && entry.messageAnimation != currentAnimation)
+            {
+                PlayMessageAnimation(entry.messageAnimation);
+                currentAnimation = entry.messageAnimation; //store as current
+            }
+            //if no animation is assigned, previous one keeps playing 
 
             //stop dialogue if entry is marked as the end
             if (entry.isDialogueEnd)
@@ -381,5 +391,21 @@ public class DialogueManager : MonoBehaviour
     private void AdvanceToNextNonReferencedIndex()
     {
         ShowNextEntry();
+    }
+
+    /// <summary>
+    /// Plays an animation clip on the animator if available
+    /// </summary>
+    /// <param name="animationClip">The animation clip to play</param>
+    public void PlayMessageAnimation(AnimationClip animationClip)
+    {
+        if (animationVisage == null)
+        {
+            Debug.LogWarning("AnimationVisage component not assigned on DialogueManager!");
+            return;
+        }
+        // Add the animation to the Animation component and play it
+        animationVisage.AddClip(animationClip, animationClip.name);
+        animationVisage.Play(animationClip.name);
     }
 }

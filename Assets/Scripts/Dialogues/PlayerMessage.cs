@@ -9,8 +9,6 @@ public class PlayerMessage : MonoBehaviour
 {
     public TextMeshProUGUI senderText;
     public TextMeshProUGUI messageText;
-
-    //public TextMeshProUGUI messagePJVisible;//texte visible
     public GameObject blankTextPrefab; //simple TextMeshProUGUI prefab
     public Transform wordsContainer; // horizontal layout group to hold words
     public List<TextMeshProUGUI> blankTexts = new List<TextMeshProUGUI>();
@@ -34,24 +32,24 @@ public class PlayerMessage : MonoBehaviour
         string display = "";
         foreach (var word in words)
             display += word.isEmpty ? "[...] " : word.word + " ";
-        if (messageText != null)
-        {
-            messageText.text = display.Trim();
-            Canvas.ForceUpdateCanvases();
-            LayoutRebuilder.ForceRebuildLayoutImmediate(messageText.GetComponent<RectTransform>());
-        }    
 
-        //if (messagePJVisible != null) messagePJVisible.text = display.Trim();
+        if (messageText != null)
+            messageText.text = display.Trim();   
 
         foreach (var word in words)
         {
+            var wordObject = Instantiate(blankTextPrefab, wordsContainer);
+            var tmp = wordObject.GetComponent<TextMeshProUGUI>();
+            
             if (word.isEmpty)
-            {
-                var anchorObject = Instantiate(blankTextPrefab, wordsContainer);
-                var tmp = anchorObject.GetComponent<TextMeshProUGUI>();
-                tmp.text = "";
-                anchorObject.SetActive(false);
+            {  
+                tmp.text = "[...]";
+                wordObject.SetActive(false);
                 blankTexts.Add(tmp);
+            }
+            else
+            {
+                tmp.text = word.word + " ";
             }
         }
 
@@ -121,23 +119,12 @@ public class PlayerMessage : MonoBehaviour
     //called on validation - hides placeholder, shows correct variant
     public void ShowValidatedSentence(int validatedIndex)
     {
-        if (sentenceVariants.ContainsKey(validatedIndex))
-        {
-            string validatedText = sentenceVariants[validatedIndex].GetComponent<TextMeshProUGUI>().text;
-
-            //hide placeholder
+        //hide placeholder
             if (messageText != null) 
-                messageText.text = validatedText;
-                Canvas.ForceUpdateCanvases();
-                LayoutRebuilder.ForceRebuildLayoutImmediate(messageText.GetComponent<RectTransform>());
-        }
-
-        foreach (var variant in sentenceVariants.Values)
-        {
-            if (variant != null)
-                Destroy(variant);
-        }
-        sentenceVariants.Clear();
+                messageText.gameObject.SetActive(false);
+                
+        if (sentenceVariants.ContainsKey(validatedIndex))
+            sentenceVariants[validatedIndex].SetActive(true);
 
         //hide all other variants
         foreach (var kvp in sentenceVariants)

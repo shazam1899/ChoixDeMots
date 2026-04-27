@@ -191,15 +191,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2331517571148631257}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0000061168}
+  m_LocalScale: {x: 1.0927, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1923751523501904415}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.0011287483}
+  m_AnchoredPosition: {x: -17.749, y: -0.00028833724}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &215875340320433784
@@ -215,12 +215,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.VerticalLayoutGroup
   m_Padding:
-    m_Left: 10
+    m_Left: 94
     m_Right: 17
     m_Top: 32
-    m_Bottom: 0
+    m_Bottom: 100
   m_ChildAlignment: 0
-  m_Spacing: 35
+  m_Spacing: 50
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -269,8 +269,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2931051962100958047}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9520235, y: 0.656125, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalScale: {x: 1.0217116, y: 0.656125, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3387083562107229507}
@@ -278,8 +278,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 67}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2, y: 66.895004}
+  m_SizeDelta: {x: -63, y: -0.2100029}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8012861286865299424
 CanvasRenderer:
@@ -316,7 +316,101 @@ MonoBehaviour:
   socketDepthOffset: 0
   wordInteractionLayer:
     m_Bits: 512
-  dialogueEntries: []
+  dialogueEntries:
+  - senderName: NPC
+    isPlayerTurn: 0
+    isDialogueEnd: 0
+    words:
+    - word: Hey
+      isEmpty: 0
+      isIndexed: 0
+      options: []
+      optionIndices: 
+  - senderName: YOU
+    isPlayerTurn: 1
+    isDialogueEnd: 0
+    words:
+    - word: Hey, ca va?
+      isEmpty: 0
+      isIndexed: 0
+      options: []
+      optionIndices: 
+  - senderName: NPC
+    isPlayerTurn: 0
+    isDialogueEnd: 0
+    words:
+    - word: Bof
+      isEmpty: 0
+      isIndexed: 0
+      options: []
+      optionIndices: 
+  - senderName: YOU
+    isPlayerTurn: 1
+    isDialogueEnd: 0
+    words:
+    - word: "La partie \xE9tait"
+      isEmpty: 0
+      isIndexed: 0
+      options: []
+      optionIndices: 
+    - word: 
+      isEmpty: 1
+      isIndexed: 1
+      options:
+      - sympa
+      - trop
+      optionIndices: 0400000005000000
+    - word: 
+      isEmpty: 1
+      isIndexed: 1
+      options:
+      - facile
+      optionIndices: 05000000
+  - senderName: NPC
+    isPlayerTurn: 0
+    isDialogueEnd: 0
+    words:
+    - word: Parle pour toi
+      isEmpty: 0
+      isIndexed: 0
+      options: []
+      optionIndices: 
+  - senderName: NPC
+    isPlayerTurn: 0
+    isDialogueEnd: 0
+    words:
+    - word: T'es pas fort, t'es juste chanceux.
+      isEmpty: 0
+      isIndexed: 0
+      options: []
+      optionIndices: 
+  - senderName: NPC
+    isPlayerTurn: 0
+    isDialogueEnd: 0
+    words:
+    - word: "J'aurais gagn\xE9 si je m'y \xE9tais pris s\xE9rieusement"
+      isEmpty: 0
+      isIndexed: 0
+      options: []
+      optionIndices: 
+  - senderName: NPC
+    isPlayerTurn: 0
+    isDialogueEnd: 1
+    words:
+    - word: Ok C'est la fin
+      isEmpty: 0
+      isIndexed: 0
+      options: []
+      optionIndices: 
+  - senderName: NPC
+    isPlayerTurn: 0
+    isDialogueEnd: 0
+    words:
+    - word: Ne joue pas ce dialogue
+      isEmpty: 0
+      isIndexed: 0
+      options: []
+      optionIndices: 
   currentIndex: 0
   currentPlayerMessage: {fileID: 0}
   pendingValidatedIndex: -1
@@ -453,7 +547,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1192862943841051729}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.9999962
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -739,8 +833,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -500, y: 0}
+  m_AnchoredPosition: {x: -17.5, y: 0}
+  m_SizeDelta: {x: -465, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &121535130601627077
 CanvasRenderer:

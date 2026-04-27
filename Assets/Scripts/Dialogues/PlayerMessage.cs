@@ -9,6 +9,8 @@ public class PlayerMessage : MonoBehaviour
 {
     public TextMeshProUGUI senderText;
     public TextMeshProUGUI messageText;
+    
+    //public TextMeshProUGUI messagePJVisible;//texte visible
     public GameObject blankTextPrefab; //simple TextMeshProUGUI prefab
     public Transform wordsContainer; // horizontal layout group to hold words
     public List<TextMeshProUGUI> blankTexts = new List<TextMeshProUGUI>();
@@ -34,6 +36,7 @@ public class PlayerMessage : MonoBehaviour
             display += word.isEmpty ? "[...] " : word.word + " ";
         if (messageText != null)
             messageText.text = display.Trim();
+        //if (messagePJVisible != null) messagePJVisible.text = display.Trim();
 
         foreach (var word in words)
         {
@@ -119,13 +122,21 @@ public class PlayerMessage : MonoBehaviour
     //called on validation - hides placeholder, shows correct variant
     public void ShowValidatedSentence(int validatedIndex)
     {
-        //hide placeholder
-        if (messageText != null)
-            messageText.gameObject.SetActive(false);
-
-        //show correct variant
         if (sentenceVariants.ContainsKey(validatedIndex))
-            sentenceVariants[validatedIndex].SetActive(true);
+        {
+            string validatedText = sentenceVariants[validatedIndex].GetComponent<TextMeshProUGUI>().text;
+
+            //hide placeholder
+            if (messageText != null) messageText.gameObject.SetActive(false);
+            //if (messagePJVisible != null) messagePJVisible.text = validatedText;
+        }
+
+        foreach (var variant in sentenceVariants.Values)
+        {
+            if (variant != null)
+                Destroy(variant);
+        }
+        sentenceVariants.Clear();
 
         //hide all other variants
         foreach (var kvp in sentenceVariants)

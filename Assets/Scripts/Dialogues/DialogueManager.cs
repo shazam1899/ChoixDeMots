@@ -355,7 +355,8 @@ public class DialogueManager : MonoBehaviour
     public void OnPlayerTurnComplete(int validatedIndex)
     {
         PlayerMessage bubbleToUpdate = currentPlayerMessage;
-
+        bubbleToUpdate.ShowValidatedSentence(validatedIndex);
+        
         //clean up active slots
         foreach (var slot in activeSlots)
         {
@@ -367,7 +368,7 @@ public class DialogueManager : MonoBehaviour
         }
         activeSlots.Clear();
 
-        bubbleToUpdate.ShowValidatedSentence(validatedIndex);
+        
 
         pendingValidatedIndex = validatedIndex;
 

@@ -61,6 +61,10 @@ public class SateGatherer : MonoBehaviour
 
         }
 
+        Debug.Log("NumberBlock = " + NumberBlock);
+        Debug.Log("MeanTime = " + MeanTime);
+        Debug.Log("WeirdTime = " + WeirdTime);
+
         if(NumberBlock == 0)
         {
             ImMule.SetActive(true);

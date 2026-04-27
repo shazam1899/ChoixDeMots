@@ -19,8 +19,11 @@ public class CheckBlock : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(Block.activeSelf);
+        
         if (Block.activeSelf && !wasBlockActive)
         {
+            Debug.Log("Block activé !");
             startTime = Time.time;
             wasBlockActive = true;
         }

@@ -30,15 +30,23 @@ Material:
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap: {}
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses:
   - MOTIONVECTORS
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _Texture2DAsset_a4cc7075ff864f0788df44fe4f38a9e3_Out_0_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 1c528a2cc1eebc54ea7d82cbdd320efb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _CircleDensity: 36.52
+    - _QueueControl: 0
+    - _USE_SCREEN_SPACE: 0
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1

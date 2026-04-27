@@ -9,7 +9,6 @@ public class CheckBlock : MonoBehaviour
     [SerializeField] private GameObject BadPropsHere3;
     [SerializeField] private GameObject BadPropsHere4;
     [SerializeField] private GameObject BadPropsHere5;
-    [SerializeField] private GameObject AudioHUB;
     [SerializeField] private GameObject AudioNorm;
     [SerializeField] private GameObject AudiDistordu1;
     [SerializeField] private GameObject AudiDistordu2;
@@ -69,7 +68,6 @@ public class CheckBlock : MonoBehaviour
         AudiDistordu1.SetActive(false);
         AudiDistordu2.SetActive(false);
         AudioNorm.SetActive(false);
-        AudioHUB.SetActive(true);
         BadPropsHere1.SetActive(false);
         BadPropsHere2.SetActive(false);
         BadPropsHere3.SetActive(false);

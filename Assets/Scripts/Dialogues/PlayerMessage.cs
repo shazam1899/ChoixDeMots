@@ -9,7 +9,7 @@ public class PlayerMessage : MonoBehaviour
 {
     public TextMeshProUGUI senderText;
     public TextMeshProUGUI messageText;
-    
+
     //public TextMeshProUGUI messagePJVisible;//texte visible
     public GameObject blankTextPrefab; //simple TextMeshProUGUI prefab
     public Transform wordsContainer; // horizontal layout group to hold words
@@ -35,24 +35,23 @@ public class PlayerMessage : MonoBehaviour
         foreach (var word in words)
             display += word.isEmpty ? "[...] " : word.word + " ";
         if (messageText != null)
+        {
             messageText.text = display.Trim();
+            Canvas.ForceUpdateCanvases();
+            LayoutRebuilder.ForceRebuildLayoutImmediate(messageText.GetComponent<RectTransform>());
+        }    
+
         //if (messagePJVisible != null) messagePJVisible.text = display.Trim();
 
         foreach (var word in words)
         {
-            //create a text element for each word
-            var wordObject = Instantiate(blankTextPrefab, wordsContainer);
-            var tmp = wordObject.GetComponent<TextMeshProUGUI>();
-            
             if (word.isEmpty)
             {
-                tmp.text = "___";
-                wordObject.SetActive(false);
+                var anchorObject = Instantiate(blankTextPrefab, wordsContainer);
+                var tmp = anchorObject.GetComponent<TextMeshProUGUI>();
+                tmp.text = "";
+                anchorObject.SetActive(false);
                 blankTexts.Add(tmp);
-            }
-            else
-            {
-                tmp.text = word.word + " ";
             }
         }
 
@@ -127,8 +126,10 @@ public class PlayerMessage : MonoBehaviour
             string validatedText = sentenceVariants[validatedIndex].GetComponent<TextMeshProUGUI>().text;
 
             //hide placeholder
-            if (messageText != null) messageText.gameObject.SetActive(false);
-            //if (messagePJVisible != null) messagePJVisible.text = validatedText;
+            if (messageText != null) 
+                messageText.text = validatedText;
+                Canvas.ForceUpdateCanvases();
+                LayoutRebuilder.ForceRebuildLayoutImmediate(messageText.GetComponent<RectTransform>());
         }
 
         foreach (var variant in sentenceVariants.Values)

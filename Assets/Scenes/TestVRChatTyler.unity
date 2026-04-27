@@ -232,6 +232,10 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 215875340320433784, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
+      propertyPath: m_Padding.m_Left
+      value: 94
+      objectReference: {fileID: 0}
+    - target: {fileID: 215875340320433784, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: m_Padding.m_Bottom
       value: 100
       objectReference: {fileID: 0}

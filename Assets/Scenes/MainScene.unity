@@ -1142,7 +1142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bloquer
   Self: {fileID: 2045424248}
-  Avatar: {fileID: 0}
+  Avatar: {fileID: 71940485}
   ChatCanva: {fileID: 1234735206}
   CheckPanel: {fileID: 1783358760}
   VFXBlock: {fileID: 1848557817}
@@ -5044,7 +5044,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &316299773
 Transform:
   m_ObjectHideFlags: 0
@@ -5054,8 +5054,8 @@ Transform:
   m_GameObject: {fileID: 316299772}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 35, y: -554.20807, z: -102}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 35, y: -423, z: -102}
+  m_LocalScale: {x: 50, y: 50, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 149210563}
@@ -9392,7 +9392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bloquer
   Self: {fileID: 1622981984}
-  Avatar: {fileID: 0}
+  Avatar: {fileID: 801443974}
   ChatCanva: {fileID: 175563652}
   CheckPanel: {fileID: 27792724}
   VFXBlock: {fileID: 420033785}
@@ -17840,7 +17840,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1323701505
 Transform:
   m_ObjectHideFlags: 0
@@ -17874,10 +17874,10 @@ MonoBehaviour:
   BadPropsHere3: {fileID: 0}
   BadPropsHere4: {fileID: 0}
   BadPropsHere5: {fileID: 0}
-  AudioHUB: {fileID: 0}
   AudioNorm: {fileID: 1737943350}
   AudiDistordu1: {fileID: 1157522555}
   AudiDistordu2: {fileID: 12352131}
+  t: 0
 --- !u!1 &1343889150
 GameObject:
   m_ObjectHideFlags: 0
@@ -19061,7 +19061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bloquer
   Self: {fileID: 2092143930}
-  Avatar: {fileID: 0}
+  Avatar: {fileID: 1401525137}
   ChatCanva: {fileID: 1809892164}
   CheckPanel: {fileID: 1682571678}
   VFXBlock: {fileID: 316299772}
@@ -28876,7 +28876,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2102442614
 Transform:
   m_ObjectHideFlags: 0
@@ -28910,10 +28910,10 @@ MonoBehaviour:
   BadPropsHere3: {fileID: 0}
   BadPropsHere4: {fileID: 0}
   BadPropsHere5: {fileID: 0}
-  AudioHUB: {fileID: 0}
   AudioNorm: {fileID: 0}
   AudiDistordu1: {fileID: 0}
   AudiDistordu2: {fileID: 0}
+  t: 0
 --- !u!4 &2119028859 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4803614339566677342, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}

@@ -58,7 +58,6 @@ public class SateGatherer : MonoBehaviour
             {
                 WeirdTime = item.ActiveTime;
             }
-
         }
 
         Debug.Log("NumberBlock = " + NumberBlock);
@@ -99,21 +98,31 @@ public class SateGatherer : MonoBehaviour
                 Debug.Log("Pigeon");
                 break;
             }
-
-            if (NumberBlock == 1 && item.Name == "gentil")
+            else if (NumberBlock == 1 && item.Name == "gentil")
             {
                 ImSerpent.SetActive(true);
                 TxtSerpent.SetActive(true);
                 Debug.Log("Serpent");
                 break;
             }
-
-            if (NumberBlock == 1 && item.Name == "bizarre")
+            else if (NumberBlock == 1 && item.Name == "bizarre")
             {
                 ImCapybara.SetActive(true);
                 TxtCapybara.SetActive(true);
                 Debug.Log("Capybara");
                 break;
+            }
+            else if(NumberBlock == 2 && item.Name == "cancel")
+            {
+                ImOurs.SetActive(true);
+                TxtOurs.SetActive(true);
+                Debug.Log("Ours");
+            }
+            else if(NumberBlock == 3 && item.Name == "cancel")
+            {
+                ImHamster.SetActive(true);
+                TxtHamster.SetActive(true);
+                Debug.Log("Hamster");
             }
         }
 

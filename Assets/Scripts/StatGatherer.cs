@@ -69,24 +69,32 @@ public class SateGatherer : MonoBehaviour
             ImMule.SetActive(true);
             TxtMule.SetActive(true);
             Debug.Log("Mule");
+            return;
         }
-        else if(NumberBlock == 2 && MeanTime < 8 && WeirdTime < 15)
+        else if(NumberBlock == 2 && MeanTime <= 8 && WeirdTime <= 15)
         {
             ImFaucon.SetActive(true);
             TxtFaucon.SetActive(true);
             Debug.Log("Faucon");
+            return;
         }
-        else if(NumberBlock == 2 && MeanTime > 8 && WeirdTime > 15)
+        else if(NumberBlock == 2 && MeanTime >= 8 && WeirdTime >= 15)
         {
             ImParesseux.SetActive(true);
             TxtParesseux.SetActive(true);
             Debug.Log("Paresseux");
+            return;
+        }
+        else if(NumberBlock == 2 && MeanTime <= 8 && WeirdTime >= 15 || NumberBlock == 2 && MeanTime >= 8 && WeirdTime <= 15)
+        {
+            Debug.Log("T'es trop bizarre")
         }
         else if (NumberBlock == 3)
         {
             ImAutruche.SetActive(true);
             TxtAutruche.SetActive(true);
             Debug.Log("Autruche");
+            return;
         }
 
         foreach (var item in FindObjectsByType<Bloquer>(FindObjectsSortMode.None))
@@ -96,95 +104,37 @@ public class SateGatherer : MonoBehaviour
                 ImPigeon.SetActive(true);
                 TxtPigeon.SetActive(true);
                 Debug.Log("Pigeon");
-                break;
+                return;
             }
             else if (NumberBlock == 1 && item.Name == "gentil")
             {
                 ImSerpent.SetActive(true);
                 TxtSerpent.SetActive(true);
                 Debug.Log("Serpent");
-                break;
+                return;
             }
             else if (NumberBlock == 1 && item.Name == "bizarre")
             {
                 ImCapybara.SetActive(true);
                 TxtCapybara.SetActive(true);
                 Debug.Log("Capybara");
-                break;
+                return;
             }
             else if(NumberBlock == 2 && item.Name == "cancel")
             {
                 ImOurs.SetActive(true);
                 TxtOurs.SetActive(true);
                 Debug.Log("Ours");
+                return;
             }
             else if(NumberBlock == 3 && item.Name == "cancel")
             {
                 ImHamster.SetActive(true);
                 TxtHamster.SetActive(true);
                 Debug.Log("Hamster");
+                return;
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-        //Va trouver les objets du meme type
-        //FindObjectsByType<Bloquer>(FindObjectsSortMode.None)[0].Name;
-        //FindObjectsByType<Bloquer>(FindObjectsSortMode.None)[0].Blocked;
-
-        //if(Bloquer.Blocked == 2) //&& !chat.MoitiéDialogue)
-        //{
-            //Debug.Log("Faucon");
-        //}
-
-        //else if(Bloquer.Blocked == 2 && chat.MoitiéDialogue)
-        //{
-            //Debug.Log("Paresseux");
-        //}
-
-        //if (Bloquer.Blocked == 0)
-        //if(!Blocked)
-        //{
-            //Debug.Log("Mule");
-        //}
-
-        //if (Bloquer.Blocked == 3)
-        //{
-            //Debug.Log("Autruche");
-        //}
-
-        //else if(Bloquer.Blocked == 2 && chat.BlockYou)
-        //{
-            //Debug.Log("Hamster");
-        //}
-
-        //else if(Bloquer.Blocked == 1 && chat.BlockYou)
-        //{
-            //Debug.Log("Ours");
-        //}
-
-        //if (Bloquer.Blocked == 1 && block.Name == "mechant")
-        //{
-            //Debug.Log("Pigeon");
-        //}
-
-        //if (Bloquer.Blocked == 1 && block.Name == "gentil")
-        //{
-            //Debug.Log("Serpent");
-        //}
-
-        //if (Bloquer.Blocked == 1 && block.Name == "bizarre")
-        //{
-            //Debug.Log("Capybara");
-        //}
+        Debug.Log("Help");
     }
 }

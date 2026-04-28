@@ -25463,7 +25463,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[0].senderName
-      value: NPC
+      value: Kauffy
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[1].senderName
@@ -25471,7 +25471,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[2].senderName
-      value: NPC
+      value: Kauffy
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[3].senderName
@@ -25479,7 +25479,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[4].senderName
-      value: NPC
+      value: Kauffy
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[5].senderName
@@ -25487,15 +25487,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[6].senderName
-      value: NPC
+      value: Kauffy
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[7].senderName
-      value: NPC
+      value: Kauffy
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[8].senderName
-      value: NPC
+      value: Kauffy
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[9].senderName
@@ -25839,7 +25839,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[26].words.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[27].words.Array.size
@@ -26053,8 +26053,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[26].words.Array.data[0].word
-      value: "Eh bien, je suis content d'\xEAtre l'un de tes meilleurs amis maintenant
-        !"
+      value: 'Eh bien, je suis content '
+      objectReference: {fileID: 0}
+    - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
+      propertyPath: dialogueEntries.Array.data[26].words.Array.data[1].word
+      value: "d'\xEAtre l'un de tes meilleurs amis maintenant !"
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[27].words.Array.data[0].word

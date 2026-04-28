@@ -131,7 +131,7 @@ public class DialogueManager : MonoBehaviour
         string sentence = "";
         foreach (var word in words)
         {
-            sentence += word.isEmpty ? "___" : word.word + " ";
+            sentence += word.isEmpty ? "[...]" : word.word + " ";
         }
         return sentence.Trim();
     }

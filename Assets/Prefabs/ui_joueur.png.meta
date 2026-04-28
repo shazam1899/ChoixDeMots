@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -106,7 +106,7 @@ TextureImporter:
         height: 52
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 14, y: 21, z: 8, w: 7}
+      border: {x: 12, y: 20, z: 3, w: 4}
       customData: 
       outline: []
       physicsShape: []

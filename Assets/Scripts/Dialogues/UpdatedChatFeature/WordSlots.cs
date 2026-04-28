@@ -7,7 +7,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 public class WordSlots : MonoBehaviour
 {
     public TextMeshProUGUI slotText; //blank space in the player bubble UI
-    public string currentWord = "";
+    public string currentWord;
     private string[] options;
     private int[] optionIndices;
     private XRSocketInteractor socket;
@@ -79,8 +79,8 @@ public class WordSlots : MonoBehaviour
             cube.SetVisible(true);
         }
         
-        currentWord = "";
-        if (slotText != null) slotText.text = "___"; //reset UI blank
+        currentWord = "[...]";
+        if (slotText != null) slotText.text = "[...]"; //reset UI blank
         
         if (isFirstSlot)
             validator.OnFirstWordRemoved();

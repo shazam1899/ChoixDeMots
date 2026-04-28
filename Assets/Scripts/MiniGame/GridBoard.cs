@@ -49,12 +49,10 @@ public class GridBoard : MonoBehaviour
     //  COORDONNÉES GRILLE <-> MONDE
     // -----------------------------
 
-    // Convertit une position monde en cellule grille
     public Vector2Int WorldToGrid(Vector3 worldPos)
     {
         Vector3 local = worldPos - transform.position;
 
-        // Décale pour que (0,0) soit au centre de la grille
         local.x += (width * cellSize) / 2f;
         local.z += (height * cellSize) / 2f;
 
@@ -64,7 +62,6 @@ public class GridBoard : MonoBehaviour
         return new Vector2Int(x, y);
     }
 
-    // Convertit une cellule grille en position monde
     public Vector3 GridToWorld(int x, int y)
     {
         float worldX = (x * cellSize) - (width * cellSize) / 2f + cellSize / 2f;
@@ -94,5 +91,20 @@ public class GridBoard : MonoBehaviour
     public void Free(int x, int y)
     {
         occupied[x, y] = false;
+    }
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        InitializeBoard();
+    }
+#endif
+
+    public void InitializeBoard()
+    {
+        if (width <= 0 || height <= 0 || cellSize <= 0)
+            return;
+
+        occupied = new bool[width, height]; // <<< CORRECTION CRITIQUE
     }
 }

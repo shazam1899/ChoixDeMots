@@ -3,23 +3,24 @@ using UnityEngine;
 
 public class BlockShape : MonoBehaviour
 {
-    public Vector2Int[] localCells; // positions locales du bloc (ex: L, I, carré)
+    public Vector2Int[] localCells;
 
     public List<Vector2Int> GetWorldCells(GridBoard board, Vector3 worldPos, Quaternion worldRot)
     {
+        if (localCells == null || localCells.Length == 0)
+        {
+            Debug.LogError("❌ BlockShape : localCells est VIDE sur " + gameObject.name);
+            return null;
+        }
+
         List<Vector2Int> result = new List<Vector2Int>();
 
-        // Convertir la position du bloc en coordonnées grille
         Vector2Int origin = board.WorldToGrid(worldPos);
 
         foreach (var cell in localCells)
         {
-            // Rotation Y en 90° (même si toi tu ne tournes plus)
             Vector2Int rotated = RotateCell(cell, worldRot);
-
-            // Cellule finale
             Vector2Int final = origin + rotated;
-
             result.Add(final);
         }
 
@@ -28,7 +29,6 @@ public class BlockShape : MonoBehaviour
 
     private Vector2Int RotateCell(Vector2Int cell, Quaternion rot)
     {
-        // On récupère l'angle Y
         float y = rot.eulerAngles.y;
         int r = Mathf.RoundToInt(y / 90f) % 4;
 
@@ -42,4 +42,14 @@ public class BlockShape : MonoBehaviour
 
         return cell;
     }
+
+#if UNITY_EDITOR
+    public void EditorInitialize()
+    {
+        if (localCells == null || localCells.Length == 0)
+        {
+            Debug.LogWarning("⚠ BlockShape EditorInitialize : localCells vide sur " + gameObject.name);
+        }
+    }
+#endif
 }

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Collections;
-using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,12 +29,20 @@ public class DialogueManager : MonoBehaviour
     public int pendingValidatedIndex = -1;
     private AnimationClip currentAnimation;
     public Animation animationVisage;
+
+    //feature "se faire bloquer"
+    public Bloquer blockController;
+    //public GameObject blockedAnimation;
+    private bool blockedTriggered = false;
     
 
     void Start()
     {
         validator = FindFirstObjectByType<SentenceValidator>();
         ShowNextEntry();
+
+        if (blockController == null)
+            blockController = FindFirstObjectByType<Bloquer>();
     }
 
     private void ScrollToBottom()
@@ -47,6 +54,8 @@ public class DialogueManager : MonoBehaviour
 
     public void ShowNextEntry()
     {
+        
+        
         if (currentIndex >= dialogueEntries.Count)
             return;
 
@@ -58,6 +67,12 @@ public class DialogueManager : MonoBehaviour
         }
         
         var entry = dialogueEntries[currentIndex]; 
+        
+        if (entry.playerBlocked)
+        {
+            HandlePlayerBlocked();
+            return;
+        }
 
         if (!entry.isPlayerTurn)
         {
@@ -381,11 +396,19 @@ public class DialogueManager : MonoBehaviour
 
         pendingValidatedIndex = validatedIndex;
 
+        var currentEntry = dialogueEntries[currentIndex];
+
+        if (currentEntry.playerBlocked)
+        {
+            HandlePlayerBlocked();
+            return;
+        }
+
         //jump to validated index
         currentIndex = validatedIndex;
 
         //after playing the validated index, find next non-referenced index
-        Invoke(nameof(AdvanceToNextNonReferencedIndex), 0f);
+        Invoke(nameof(AdvanceToNextNonReferencedIndex), 2f);
     }
 
     private void AdvanceToNextNonReferencedIndex()
@@ -407,5 +430,27 @@ public class DialogueManager : MonoBehaviour
         // Add the animation to the Animation component and play it
         animationVisage.AddClip(animationClip, animationClip.name);
         animationVisage.Play(animationClip.name);
+    }
+
+    private void HandlePlayerBlocked()
+    {
+        if (blockedTriggered)
+            return;
+
+        blockedTriggered = true;
+
+        DestroyAllCubes();
+        // clear else uhh ajoute qq chose estuplé
+
+        //if (blockedAnimation != null && blockedAnimation != currentAnimation)
+        //{
+            //PlayMessageAnimation(blockedAnimation);
+            //currentAnimation = blockedAnimation;
+        //}
+
+        if (blockController != null)
+            blockController.LanceEffect();
+        else
+            Debug.Log("DialogueManager needs a bloquer reference for blocked behaviour.");
     }
 }

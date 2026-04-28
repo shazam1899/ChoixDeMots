@@ -87,7 +87,7 @@ public class SateGatherer : MonoBehaviour
         }
         else if(NumberBlock == 2 && MeanTime <= 8 && WeirdTime >= 15 || NumberBlock == 2 && MeanTime >= 8 && WeirdTime <= 15)
         {
-            Debug.Log("T'es trop bizarre")
+            Debug.Log("T'es trop bizarre");
         }
         else if (NumberBlock == 3)
         {

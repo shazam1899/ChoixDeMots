@@ -358,9 +358,18 @@ public class DialogueManager : MonoBehaviour
     private void SpawnCubes(List<string> options)
     {
         activeCubes.Clear();
+        HashSet<int> usedSpawnPoints = new HashSet<int>();
 
         for (int i = 0; i < options.Count; i++)
         {
+            int spawnIndex;
+            do
+            {
+                spawnIndex = Random.Range(0, cubeSpawnPoints.Length);
+            }
+            while (usedSpawnPoints.Contains(spawnIndex) && usedSpawnPoints.Count < cubeSpawnPoints.Length);
+
+            usedSpawnPoints.Add(spawnIndex);
             Transform spawnPoint = cubeSpawnPoints[Random.Range(0, cubeSpawnPoints.Length)];
             var cube = Instantiate(wordCubePrefab, spawnPoint.position, spawnPoint.rotation);
             cube.GetComponent<WordCube>().SetWord(options[i]);

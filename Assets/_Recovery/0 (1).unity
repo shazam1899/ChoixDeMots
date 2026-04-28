@@ -20449,35 +20449,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: 'dialogueEntries.Array.data[15].words.Array.data[5].options.Array.data[0]'
-      value: "la r\xE9compense\_(16)"
+      value: "la r\xE9compense"
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: 'dialogueEntries.Array.data[15].words.Array.data[5].options.Array.data[1]'
-      value: "le jeu\_(16)"
+      value: le jeu
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: 'dialogueEntries.Array.data[15].words.Array.data[5].options.Array.data[2]'
-      value: "l'\xE9v\xE8nement (16)"
+      value: "l'\xE9v\xE8nement"
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: 'dialogueEntries.Array.data[15].words.Array.data[5].options.Array.data[3]'
-      value: "la r\xE9compense\_(17)"
+      value: "l'\xE9v\xE8nement (18 )"
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: 'dialogueEntries.Array.data[15].words.Array.data[5].options.Array.data[4]'
-      value: "le jeu\_(17 )"
+      value: "l'\xE9v\xE8nement (18 )"
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: 'dialogueEntries.Array.data[15].words.Array.data[5].options.Array.data[5]'
-      value: "l'\xE9v\xE8nement (17 )"
+      value: "l'\xE9v\xE8nement (18 )"
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: 'dialogueEntries.Array.data[15].words.Array.data[5].options.Array.data[6]'
-      value: "le jeu\_(18 )"
+      value: "l'\xE9v\xE8nement (18 )"
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: 'dialogueEntries.Array.data[15].words.Array.data[5].options.Array.data[7]'
-      value: "le jeu\_(18 )"
+      value: "l'\xE9v\xE8nement (18 )"
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: 'dialogueEntries.Array.data[15].words.Array.data[5].options.Array.data[8]'
@@ -20885,15 +20885,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: 'dialogueEntries.Array.data[15].words.Array.data[5].optionIndices.Array.data[3]'
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: 'dialogueEntries.Array.data[15].words.Array.data[5].optionIndices.Array.data[4]'
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: 'dialogueEntries.Array.data[15].words.Array.data[5].optionIndices.Array.data[5]'
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: 'dialogueEntries.Array.data[15].words.Array.data[5].optionIndices.Array.data[6]'

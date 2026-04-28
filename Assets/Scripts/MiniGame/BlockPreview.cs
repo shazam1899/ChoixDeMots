@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class BlockPreview : MonoBehaviour
 {
+    public Material previewMaterial; // assigné dans l’inspector
+
     private GameObject preview;
     private GridBoard board;
     private BlockShape shape;
@@ -33,8 +35,7 @@ public class BlockPreview : MonoBehaviour
 
         foreach (var r in preview.GetComponentsInChildren<Renderer>())
         {
-            r.material = new Material(r.material);
-            r.material.color = new Color(0, 1, 0, 0.3f);
+            r.material = new Material(previewMaterial);
         }
     }
 
@@ -57,6 +58,7 @@ public class BlockPreview : MonoBehaviour
         preview.transform.rotation = finalRot;
 
         bool valid = placement.CanPlace(finalPos, finalRot);
+
         Color c = valid ? new Color(0, 1, 0, 0.3f) : new Color(1, 0, 0, 0.3f);
 
         foreach (var r in preview.GetComponentsInChildren<Renderer>())

@@ -9,6 +9,8 @@ public class SateGatherer : MonoBehaviour
     [SerializeField] private GameObject TxtFaucon;
     [SerializeField] private GameObject ImParesseux;
     [SerializeField] private GameObject TxtParesseux;
+    [SerializeField] private GameObject ImHippopotame;
+    [SerializeField] private GameObject TxtHippopotame;
     [SerializeField] private GameObject ImAutruche;
     [SerializeField] private GameObject TxtAutruche;
     [SerializeField] private GameObject ImPigeon;
@@ -21,6 +23,8 @@ public class SateGatherer : MonoBehaviour
     [SerializeField] private GameObject TxtHamster;
     [SerializeField] private GameObject ImOurs;
     [SerializeField] private GameObject TxtOurs;
+    [SerializeField] private GameObject ImCorgi;
+    [SerializeField] private GameObject TxtCorgi;
 
     int NumberBlock = 0;
     int NumberName = 0;
@@ -87,7 +91,9 @@ public class SateGatherer : MonoBehaviour
         }
         else if(NumberBlock == 2 && MeanTime <= 8 && WeirdTime >= 15 || NumberBlock == 2 && MeanTime >= 8 && WeirdTime <= 15)
         {
-            Debug.Log("T'es trop bizarre");
+            ImHippopotame.SetActive(true);
+            TxtHippopotame.SetActive(true);
+            Debug.Log("Hippopotame");
         }
         else if (NumberBlock == 3)
         {
@@ -136,5 +142,7 @@ public class SateGatherer : MonoBehaviour
             }
         }
         Debug.Log("Help");
+        ImCorgi.SetActive(true);
+        TxtCorgi.SetActive(true);
     }
 }

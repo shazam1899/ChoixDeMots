@@ -29811,7 +29811,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[28].senderName
-      value: NPC
+      value: Kauffy
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[29].senderName
@@ -29819,15 +29819,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[30].senderName
-      value: NPC
+      value: Kauffy
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[31].senderName
-      value: NPC
+      value: Kauffy
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[32].senderName
-      value: NPC
+      value: Kauffy
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[33].senderName
@@ -29835,7 +29835,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[34].senderName
-      value: NPC
+      value: Kauffy
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[35].senderName
@@ -29843,27 +29843,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[36].senderName
-      value: NPC
+      value: Kauffy
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[37].senderName
-      value: NPC
+      value: Kauffy
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[38].senderName
-      value: NPC
+      value: Kauffy
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[39].senderName
-      value: NPC
+      value: Kauffy
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[40].senderName
-      value: NPC
+      value: Kauffy
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[41].senderName
-      value: NPC
+      value: Kauffy
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[42].senderName
@@ -30039,7 +30039,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[17].words.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[18].words.Array.size
@@ -30107,7 +30107,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[34].words.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[35].words.Array.size
@@ -30115,7 +30115,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[36].words.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[37].words.Array.size
@@ -30135,7 +30135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[41].words.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[42].words.Array.size
@@ -30264,8 +30264,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[17].words.Array.data[0].word
-      value: "Ah, d\xE9sol\xE9 ! Je t'emb\xEAte avec mes affaires, revenons \xE0
-        notre sujet, que penses-tu de l'\xE9v\xE9nement ?"
+      value: "Ah, d\xE9sol\xE9 ! Je t'emb\xEAte avec mes affaires, "
+      objectReference: {fileID: 0}
+    - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
+      propertyPath: dialogueEntries.Array.data[17].words.Array.data[1].word
+      value: "revenons \xE0 notre sujet, que penses-tu de l'\xE9v\xE9nement ?"
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[18].words.Array.data[0].word
@@ -30339,13 +30342,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[34].words.Array.data[0].word
-      value: "Je trouve que laisser son enfant jouer \xE0 n'importe quel jeu n'est
-        pas une super m\xE9thode parentale, les jeux peuvent avoir des contenus violents,
-        tu joues \xE0 ce genre de jeu ?"
+      value: "Je trouve que laisser son enfant jouer \xE0 n'importe quel jeu "
+      objectReference: {fileID: 0}
+    - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
+      propertyPath: dialogueEntries.Array.data[34].words.Array.data[1].word
+      value: "n'est pas une super m\xE9thode parentale, les jeux peuvent avoir des
+        contenus violents, tu joues \xE0 ce genre de jeu ?"
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[36].words.Array.data[0].word
-      value: "Fais attention \xE0 toi, tu peux me parler s'il y a un probl\xE8me"
+      value: "Fais attention \xE0 toi, "
+      objectReference: {fileID: 0}
+    - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
+      propertyPath: dialogueEntries.Array.data[36].words.Array.data[1].word
+      value: "tu peux me parler s'il y a un probl\xE8me"
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[37].words.Array.data[0].word
@@ -30365,9 +30375,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[41].words.Array.data[0].word
-      value: "En parlant de \xE7a, o\xF9 habites-tu ? Comme nous sommes en train
-        de jouer \xE0 cette heure dans le m\xEAme serveur, on est s\xFBrement pas
-        bien loin l'un de l'autre, ne penses-tu pas ?"
+      value: "En parlant de \xE7a, o\xF9 habites-tu ? "
+      objectReference: {fileID: 0}
+    - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
+      propertyPath: dialogueEntries.Array.data[41].words.Array.data[1].word
+      value: "Comme nous sommes en train de jouer \xE0 cette heure dans le m\xEAme
+        serveur, on est s\xFBrement pas bien loin l'un de l'autre, ne penses-tu pas
+        ?"
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[42].words.Array.data[0].word

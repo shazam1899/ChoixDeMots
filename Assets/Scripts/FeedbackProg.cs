@@ -1,25 +1,21 @@
 using UnityEngine;
+using System.Collections;
 
 public class FeedbackProg : MonoBehaviour
 {
     [SerializeField] private GameObject AnnonceHUB;
     [SerializeField] private GameObject AnnonceIntermediaire;
 
-
-    private void OnTriggerEnter(Collider collider)
+    public void PopUp()
     {
-        if (collider.CompareTag("Player"))
-        {
-            AnnonceHUB.SetActive(false);
-            AnnonceIntermediaire.SetActive(true);
-        }
+        AnnonceHUB.SetActive(false);
+        AnnonceIntermediaire.SetActive(true);    
     }
 
-    private void OnTriggerExit(Collider collider)
-    {
-        if (collider.CompareTag("Player"))
-        {
-            AnnonceIntermediaire.SetActive(false);
-        }
-    }
+    //public IEnumerator ContentPopUp()
+    //{
+        //AnnonceHUB.SetActive(false);
+        //yield return new WaitForSeconds(1f);
+       // AnnonceIntermediaire.SetActive(true);    
+    //}
 }

@@ -20,7 +20,6 @@ public class FeedbackProg : MonoBehaviour
         if (collider.CompareTag("Player"))
         {
             AnnonceIntermediaire.SetActive(false);
-            AnnonceHUB.SetActive(true);
         }
     }
 }

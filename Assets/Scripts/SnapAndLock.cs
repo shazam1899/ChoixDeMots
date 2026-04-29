@@ -52,19 +52,5 @@ public class SnapAndLock : MonoBehaviour
         // Place l'objet exactement au snapPoint
         args.interactableObject.transform.position = snapPoint.position;
         args.interactableObject.transform.rotation = snapPoint.rotation;
-
-        // Met à jour le score
-        LeaderboardManager leaderboard = FindFirstObjectByType<LeaderboardManager>();
-        if (leaderboard != null)
-        {
-            foreach (var update in scoreUpdates)
-            {
-                leaderboard.UpdatePlayerScore(update.playerName, update.scoreValue);
-            }
-        }
-        else
-        {
-            Debug.LogWarning("SnapAndLock : Aucun LeaderboardManager trouvé dans la scène.");
-        }
     }
 }

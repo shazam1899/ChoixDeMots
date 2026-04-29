@@ -9,6 +9,20 @@ public class GameFlow : MonoBehaviour
     [Header("Ordre des niveaux")]
     public List<int> levelOrder = new List<int>() { 0, 1, 2 };
 
+    [Header("Scores par niveau")]
+    public List<LevelScoreConfig> levelScores;
+
+    [System.Serializable]
+    public class LevelScoreConfig
+    {
+        public int levelIndex;
+        public int scoreYOU;
+        public int scoreBeta;
+        public int scoreAlpha;
+        public int scoreGamma;
+    }
+
+
     [Header("Teleport Areas à activer après chaque niveau")]
     public List<GameObject> teleportAreas; // NE PAS mettre la zone de base ici !
     public List<GameObject> allSnapVolumes;
@@ -40,7 +54,8 @@ public class GameFlow : MonoBehaviour
     {
         Debug.Log("Mini-jeu terminé : " + currentLevel);
 
-        // 🔥 Activer la Teleport Area correspondante
+        // 🔥 ENVOYER LES SCORES AU LEADERBOARD
+        SendScoresToLeaderboard(currentLevel);
         if (currentLevel < teleportAreas.Count)
         {
             teleportAreas[currentLevel].SetActive(true);
@@ -90,9 +105,6 @@ public class GameFlow : MonoBehaviour
             disabler.enabled = true;
     }
 
-
-
-
     private IEnumerator LaunchFinal()
     {
         Thanks.SetActive(true);
@@ -101,4 +113,21 @@ public class GameFlow : MonoBehaviour
         TxtFinal.SetActive(true);
         final.SetActive(true);
     }
+
+    private void SendScoresToLeaderboard(int level)
+    {
+        var config = levelScores.Find(s => s.levelIndex == level);
+        if (config == null) return;
+
+        Dictionary<string, int> scores = new Dictionary<string, int>
+        {
+            { "YOU", config.scoreYOU },
+            { "Beta", config.scoreBeta },
+            { "Alpha", config.scoreAlpha },
+            { "Gamma", config.scoreGamma }
+        };
+
+        LeaderboardManager.Instance.AddScoreForLevel(level, scores);
+    }
+
 }

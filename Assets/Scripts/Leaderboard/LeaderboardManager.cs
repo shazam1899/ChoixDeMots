@@ -1,53 +1,63 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-//coucou : ) ce script a été crée à l'aide d'une IA et de Mr. Lubin 
+[System.Serializable]
+public class PlayerScore
+{
+    public string playerName;
+    public int totalScore;
+}
+
 public class LeaderboardManager : MonoBehaviour
 {
-    public Transform entryContainer; //Objet parent pour les lignes
-    public GameObject entryPrefab; //prefab pour une ligne
+    public static LeaderboardManager Instance;
 
-    private List<LeaderboardFeature> entries = new List<LeaderboardFeature>
+    [Header("UI")]
+    public Transform entryContainer;
+    public GameObject entryPrefab;
+
+    [Header("Players")]
+    public List<PlayerScore> players = new List<PlayerScore>
     {
-        new LeaderboardFeature { playerName = "YOU", score = 400},
-        new LeaderboardFeature { playerName = "Beta", score = 300},
-        new LeaderboardFeature { playerName = "Alpha", score = 200},
-        new LeaderboardFeature { playerName = "Gamma", score = 100},
+        new PlayerScore { playerName = "YOU", totalScore = 0 },
+        new PlayerScore { playerName = "Beta", totalScore = 0 },
+        new PlayerScore { playerName = "Alpha", totalScore = 0 },
+        new PlayerScore { playerName = "Gamma", totalScore = 0 },
     };
 
-    void Start()
+    private void Awake()
     {
-        PopulateLeaderboard();
-    } 
-
-    void PopulateLeaderboard()
-    {
-        foreach (Transform child in entryContainer) //Si le leaderboard est populé, on clear le board
-        {
-            Destroy(child.gameObject);
-        }
-
-        entries.Sort((a, b) => b.score.CompareTo(a.score));
-
-        foreach (var entry in entries)
-        {
-            var row = Instantiate(entryPrefab, entryContainer);
-            row.GetComponent<LeaderboardRow>().SetData(entry.playerName, entry.score);
-        }
+        Instance = this;
     }
 
-    public void UpdatePlayerScore(string playerName, int newScore)
+    private void Start()
     {
-        var playerEntry = entries.Find(e => e.playerName == playerName);
-        if (playerEntry != null)
+        RefreshUI();
+    }
+
+    public void AddScoreForLevel(int levelIndex, Dictionary<string, int> levelScores)
+    {
+        foreach (var kvp in levelScores)
         {
-            playerEntry.score = newScore;
+            var player = players.Find(p => p.playerName == kvp.Key);
+            if (player != null)
+                player.totalScore += kvp.Value;
         }
-        else
+
+        RefreshUI();
+    }
+
+    public void RefreshUI()
+    {
+        foreach (Transform child in entryContainer)
+            Destroy(child.gameObject);
+
+        players.Sort((a, b) => b.totalScore.CompareTo(a.totalScore));
+
+        foreach (var p in players)
         {
-            entries.Add(new LeaderboardFeature { playerName = playerName, score = newScore });
+            var row = Instantiate(entryPrefab, entryContainer);
+            row.GetComponent<LeaderboardRow>().SetData(p.playerName, p.totalScore);
         }
-        PopulateLeaderboard();
     }
 }

@@ -24,18 +24,14 @@ public class FixedBlockInitializerEditor : Editor
                     ? $"Config {i}"
                     : init.configurations[i].name;
 
-            selectedConfig = Mathf.Clamp(selectedConfig, 0, init.configurations.Count - 1);
             selectedConfig = EditorGUILayout.Popup("Configuration", selectedConfig, names);
 
             EditorGUILayout.BeginHorizontal();
             if (GUILayout.Button("Initialize Now"))
-            {
                 init.Initialize(selectedConfig);
-            }
+
             if (GUILayout.Button("Clear Board"))
-            {
                 init.ClearBoard();
-            }
             EditorGUILayout.EndHorizontal();
         }
         else
@@ -43,9 +39,7 @@ public class FixedBlockInitializerEditor : Editor
             EditorGUILayout.HelpBox("Aucune configuration définie.", MessageType.Info);
 
             if (GUILayout.Button("Clear Board"))
-            {
                 init.ClearBoard();
-            }
         }
     }
 }

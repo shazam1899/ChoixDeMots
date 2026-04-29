@@ -3,7 +3,9 @@ using UnityEngine;
 public class GridCompletionChecker : MonoBehaviour
 {
     private GridBoard board;
-    private bool wasFull = false; // état précédent
+    private bool wasFull = false;
+
+    public FixedBlockInitializer initializer;
 
     private void Awake()
     {
@@ -14,20 +16,12 @@ public class GridCompletionChecker : MonoBehaviour
     {
         bool isFull = IsGridFull();
 
-        // Transition : NON COMPLET → COMPLET
         if (!wasFull && isFull)
         {
-            Debug.Log("Grille complete");
-            // GameManager.Instance.OnGridCompleted();
+            Debug.Log("🔥 Grille complète !");
+            initializer?.CompleteMiniGame();
         }
 
-        // Transition : COMPLET → NON COMPLET
-        if (wasFull && !isFull)
-        {
-            Debug.Log("Grille plus complete (reset)");
-        }
-
-        // Mise à jour de l'état
         wasFull = isFull;
     }
 

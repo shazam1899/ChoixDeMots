@@ -314,6 +314,8 @@ MonoBehaviour:
   - {fileID: 0}
   chatScrollRect: {fileID: 3915273951259521064}
   socketDepthOffset: 0
+  socketPositionY: 0
+  socketPositionX: 0
   wordInteractionLayer:
     m_Bits: 512
   dialogueEntries:
@@ -893,4 +895,4 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.29

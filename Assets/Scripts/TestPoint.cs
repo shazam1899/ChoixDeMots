@@ -3,7 +3,6 @@ using UnityEngine;
 public class TestPoint : MonoBehaviour
 {
     public GameFlow progressionlocal;
-    public GameObject Moi;
     private bool triggered = false;
 
     private void OnTriggerEnter(Collider collider)
@@ -14,9 +13,10 @@ public class TestPoint : MonoBehaviour
 
             Debug.Log("TestPoint déclenché — lancement du niveau : " + progressionlocal.CurrentLevel);
 
-            Moi.SetActive(false);
+            // Désactive uniquement le TestPoint lui-même
+            gameObject.SetActive(false);
 
-            // 🔥 LANCER LE NIVEAU SUIVANT
+            // Lancer le niveau suivant
             progressionlocal.LaunchCurrentLevel();
         }
     }

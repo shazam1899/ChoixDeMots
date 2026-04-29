@@ -212,13 +212,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 67050383}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: -0, y: 0.9837257, z: -0, w: 0.17967674}
   m_LocalPosition: {x: 2.5, y: 1.322, z: -0.564}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 159.298, z: 0}
 --- !u!1001 &78994833
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -736,6 +736,18 @@ PrefabInstance:
     - target: {fileID: 5617776042993836742, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: m_Name
       value: ChatFeature
+      objectReference: {fileID: 0}
+    - target: {fileID: 7579109363139288827, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7579109363139288827, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7579109363139288827, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9099244146940974372, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: m_SizeDelta.x

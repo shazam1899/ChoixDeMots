@@ -266,6 +266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestPoint
   progressionlocal: {fileID: 1646082634}
+  Moi: {fileID: 0}
 --- !u!65 &60108383
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9575,6 +9576,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1138640740}
   m_CullTransparentMesh: 1
+--- !u!1001 &1139303779
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 390745b1a2bee9c48a531281d5c8eef3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 390745b1a2bee9c48a531281d5c8eef3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.245577
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 390745b1a2bee9c48a531281d5c8eef3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.0005007
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 390745b1a2bee9c48a531281d5c8eef3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.2667284
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 390745b1a2bee9c48a531281d5c8eef3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.00000009033345
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 390745b1a2bee9c48a531281d5c8eef3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.86602515
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 390745b1a2bee9c48a531281d5c8eef3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.000000052154085
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 390745b1a2bee9c48a531281d5c8eef3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5000004
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 390745b1a2bee9c48a531281d5c8eef3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 390745b1a2bee9c48a531281d5c8eef3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 390745b1a2bee9c48a531281d5c8eef3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 390745b1a2bee9c48a531281d5c8eef3, type: 3}
+      propertyPath: m_Name
+      value: cube dialogue
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 390745b1a2bee9c48a531281d5c8eef3, type: 3}
 --- !u!1 &1145905442
 GameObject:
   m_ObjectHideFlags: 0
@@ -11771,6 +11833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestPoint
   progressionlocal: {fileID: 1646082634}
+  Moi: {fileID: 0}
 --- !u!65 &1414792411
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13677,16 +13740,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fe99efa559074c4bb1321119085862a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameFlow
-  progression: 0
-  WaitTime: 2
-  minijeu1: {fileID: 2009244216}
-  minijeu1finish: 0
-  minijeu2: {fileID: 406616688}
-  minijeu2finish: 0
-  minijeu3: {fileID: 1761586562}
-  minijeu3finish: 0
+  initializer: {fileID: 0}
+  levelOrder: 000000000100000002000000
   final: {fileID: 0}
-  finalfinish: 0
+  Thanks: {fileID: 0}
+  TxtFinal: {fileID: 0}
+  WaitTime: 2
 --- !u!65 &1646082635
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16363,6 +16422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestPoint
   progressionlocal: {fileID: 1646082634}
+  Moi: {fileID: 0}
 --- !u!65 &2006698160
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20241,3 +20301,4 @@ SceneRoots:
   - {fileID: 2009244220}
   - {fileID: 406616692}
   - {fileID: 1761586566}
+  - {fileID: 1139303779}

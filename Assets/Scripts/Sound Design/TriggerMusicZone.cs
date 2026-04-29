@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 public class MusicTriggerZone : MonoBehaviour
 {
@@ -12,64 +11,22 @@ public class MusicTriggerZone : MonoBehaviour
     [Header("Durée du fade (secondes)")]
     public float fadeDuration = 1.5f;
 
-    private AudioSource audioSource;
-    private Coroutine currentFade;
-
-    private void Awake()
-    {
-        audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.loop = true;
-        audioSource.volume = 0f; // commence silencieux
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && musicOnEnter != null)
         {
-            PlayWithFade(musicOnEnter);
+            MusicPlayer.instance.PlayMusic(musicOnEnter, fadeDuration);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && musicOnExit != null)
         {
-            PlayWithFade(musicOnExit);
+            MusicPlayer.instance.PlayMusic(musicOnExit, fadeDuration);
         }
-    }
-
-    private void PlayWithFade(AudioClip newClip)
-    {
-        if (currentFade != null)
-            StopCoroutine(currentFade);
-
-        currentFade = StartCoroutine(FadeToClip(newClip));
-    }
-
-    private IEnumerator FadeToClip(AudioClip newClip)
-    {
-        // Fade out
-        float startVolume = audioSource.volume;
-
-        for (float t = 0; t < fadeDuration; t += Time.deltaTime)
-        {
-            audioSource.volume = Mathf.Lerp(startVolume, 0f, t / fadeDuration);
-            yield return null;
-        }
-
-        audioSource.volume = 0f;
-        audioSource.clip = newClip;
-        audioSource.Play();
-
-        // Fade in
-        for (float t = 0; t < fadeDuration; t += Time.deltaTime)
-        {
-            audioSource.volume = Mathf.Lerp(0f, 1f, t / fadeDuration);
-            yield return null;
-        }
-
-        audioSource.volume = 1f;
     }
 }
+
 
 

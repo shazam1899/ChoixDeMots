@@ -59,8 +59,8 @@ public class WordSlots : MonoBehaviour
             currentWord = cube.GetWord();
             if (slotText != null) slotText.text = currentWord; //update UI blank 
             
-            //hide the cube visibility
-            cube.SetVisible(false);
+            //(don't) hide the cube visibility
+            cube.SetVisible(true);
 
             if (isFirstSlot)
                 validator.OnFirstWordPlaced(this);

@@ -4,6 +4,7 @@ using UnityEditor.Animations;
 using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class PlayerMessage : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class PlayerMessage : MonoBehaviour
     public GameObject blankTextPrefab; //simple TextMeshProUGUI prefab
     public Transform wordsContainer; // horizontal layout group to hold words
     public List<TextMeshProUGUI> blankTexts = new List<TextMeshProUGUI>();
+    public Image wrongAnswerFeedback; //feedback to assign in inspector
+    private Coroutine wrongFeedbackCoroutine; 
 
     //one hidden gameObject per possible outcome index
     private Dictionary<int, GameObject> sentenceVariants = new Dictionary<int, GameObject>();
@@ -199,5 +202,60 @@ public class PlayerMessage : MonoBehaviour
         if (index < blankTexts.Count)
             return blankTexts[index];
         return null;
+    }
+
+    public void ShowWrongFeedback()
+    {
+        if (wrongFeedbackCoroutine != null)
+        {
+            StopCoroutine(wrongFeedbackCoroutine);
+            //also immediately hide the feedback
+            wrongAnswerFeedback.gameObject.SetActive(false);
+        }
+
+        wrongFeedbackCoroutine = StartCoroutine(WrongFeedbackCoroutine());
+    }
+
+    private IEnumerator WrongFeedbackCoroutine()
+    {
+        //fade in
+        wrongAnswerFeedback.gameObject.SetActive(true);
+        float duration = 0.3f; 
+        float elapsed = 0f;
+        Color color = wrongAnswerFeedback.color;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            color.a = Mathf.Lerp(0f, 1f, elapsed / duration);
+            wrongAnswerFeedback.color = color;
+            yield return null;
+        }
+
+        //hold
+        yield return new WaitForSeconds(1f);
+
+        //fade out
+        elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            color.a = Mathf.Lerp(1f, 0f, elapsed / duration);
+            wrongAnswerFeedback.color = color;
+            yield return null;
+        }
+
+        wrongAnswerFeedback.gameObject.SetActive(false);
+        wrongFeedbackCoroutine = null; //clear reference when done
+    }
+
+    public void ClearWrongFeedback()
+    {
+        if (wrongFeedbackCoroutine != null)
+        {
+            StopCoroutine(wrongFeedbackCoroutine);
+            wrongFeedbackCoroutine = null;
+        }
+        wrongAnswerFeedback.gameObject.SetActive(false);
     }
 }

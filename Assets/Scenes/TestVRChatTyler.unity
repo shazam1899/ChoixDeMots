@@ -243,6 +243,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1192862943841051729, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1437503494942307521, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -255,17 +259,33 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -0.000061035156
       objectReference: {fileID: 0}
+    - target: {fileID: 1923751523501904415, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1923751523501904415, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1923751523501904415, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
+      propertyPath: socketSize
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: blockController
       value: 
       objectReference: {fileID: 1709000276}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: socketPositionX
-      value: 5.6
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: socketPositionY
-      value: -29.3
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.size
@@ -3604,6 +3624,7 @@ MonoBehaviour:
   Blocked: 0
   Name: 
   ActiveTime: 0
+  HUBTel: {fileID: 0}
   PropsAvatar: []
   PropsHere: []
 --- !u!4 &1709000277

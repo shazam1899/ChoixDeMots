@@ -67,7 +67,7 @@ public class SentenceValidator : MonoBehaviour
 
     private void CollapseToFirstSlot()
     {
-        string firstWord = slots.Count > 0 ? slots[0].currentWord : "";
+        string firstWord = slots.Count > 0 ? slots[0].currentWord : "[...]";
         
         List<WordSlots> toRemove = new List<WordSlots>();
         //keep only first slot

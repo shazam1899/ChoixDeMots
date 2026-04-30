@@ -17,6 +17,7 @@ public class DialogueManager : MonoBehaviour
     public float socketDepthOffset = 0.1f; //how far in front of UI the socket spawns
     public float socketPositionY; //position Y of socket
     public float socketPositionX; //position X of socket
+    public float socketSize; //size of xrsocketinteractor
 
     //interaction layer for word cubes and slots must match
     public InteractionLayerMask wordInteractionLayer;
@@ -325,6 +326,7 @@ public class DialogueManager : MonoBehaviour
         {
             slotObject.transform.SetParent(blankText.transform, false);
             slotObject.transform.localPosition = new Vector3(-socketPositionX, -socketPositionY, -socketDepthOffset);
+            slotObject.transform.localScale = Vector3.one * socketSize;
         }
         else
         {

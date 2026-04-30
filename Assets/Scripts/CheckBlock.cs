@@ -59,7 +59,7 @@ public class CheckBlock : MonoBehaviour
 
     void HandleSequence()
     {
-        if (t > 0f && !step1Done)
+        if (t > 5f && !step1Done)
         {
             SetActiveArray(BadPropsHere1, false);
             SetActiveArray(BadPropsHere6, true);
@@ -67,14 +67,14 @@ public class CheckBlock : MonoBehaviour
             Debug.Log("Commence");
         }
 
-        if (t > 5f && !step2Done)
+        if (t > 15f && !step2Done)
         {
             SetActiveArray(BadPropsHere2, false);
             SetActiveArray(BadPropsHere7, true);
             step2Done = true;
         }
 
-        if (t > 15f && !step3Done)
+        if (t > 20f && !step3Done)
         {
             AudioNorm.SetActive(false);
             AudiDistordu1.SetActive(true);
@@ -86,14 +86,14 @@ public class CheckBlock : MonoBehaviour
             Debug.Log("Distorsion1");
         }
 
-        if (t > 20f && !step4Done)
+        if (t > 25f && !step4Done)
         {
             SetActiveArray(BadPropsHere4, false);
             SetActiveArray(BadPropsHere9, true);
             step4Done = true;
         }
 
-        if (t > 25f && !step5Done)
+        if (t > 28f && !step5Done)
         {
             AudiDistordu1.SetActive(false);
             AudiDistordu2.SetActive(true);

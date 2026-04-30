@@ -243,10 +243,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1192862943841051729, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1437503494942307521, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -258,18 +254,6 @@ PrefabInstance:
     - target: {fileID: 1437503494942307521, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.000061035156
-      objectReference: {fileID: 0}
-    - target: {fileID: 1923751523501904415, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1923751523501904415, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1923751523501904415, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: blockController
@@ -283,10 +267,6 @@ PrefabInstance:
       propertyPath: socketPositionY
       value: -29.3
       objectReference: {fileID: 0}
-    - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
-      propertyPath: blockedAnimation
-      value: 
-      objectReference: {fileID: 7400000, guid: b7129b74d349c0748b6ee8a5474c07e4, type: 2}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.size
       value: 17
@@ -364,24 +344,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
-      propertyPath: dialogueEntries.Array.data[8].playerBlocked
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
-      propertyPath: dialogueEntries.Array.data[0].words.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
-      propertyPath: dialogueEntries.Array.data[3].words.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[7].words.Array.size
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
-      propertyPath: dialogueEntries.Array.data[8].words.Array.size
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[9].words.Array.size
@@ -458,14 +422,6 @@ PrefabInstance:
         avec toi"
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
-      propertyPath: dialogueEntries.Array.data[0].words.Array.data[1].isEmpty
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
-      propertyPath: dialogueEntries.Array.data[0].words.Array.data[2].isEmpty
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[7].words.Array.data[1].isEmpty
       value: 1
       objectReference: {fileID: 0}
@@ -496,10 +452,6 @@ PrefabInstance:
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[12].words.Array.data[2].isIndexed
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
-      propertyPath: dialogueEntries.Array.data[0].words.Array.data[1].options.Array.size
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: dialogueEntries.Array.data[3].words.Array.data[2].options.Array.size
@@ -744,18 +696,6 @@ PrefabInstance:
     - target: {fileID: 5617776042993836742, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: m_Name
       value: ChatFeature
-      objectReference: {fileID: 0}
-    - target: {fileID: 7579109363139288827, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7579109363139288827, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7579109363139288827, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
-      propertyPath: m_Color.r
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9099244146940974372, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: m_SizeDelta.x

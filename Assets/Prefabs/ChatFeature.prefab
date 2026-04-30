@@ -199,7 +199,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -17.749, y: 0.0043671094}
+  m_AnchoredPosition: {x: -34.050175, y: -0.0020188112}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &215875340320433784
@@ -215,9 +215,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.VerticalLayoutGroup
   m_Padding:
-    m_Left: 94
+    m_Left: 205
     m_Right: 17
-    m_Top: 32
+    m_Top: 50
     m_Bottom: 100
   m_ChildAlignment: 0
   m_Spacing: 50
@@ -278,8 +278,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2, y: 66.895004}
-  m_SizeDelta: {x: -63, y: -0.2100029}
+  m_AnchoredPosition: {x: -1.0700073, y: 35.3}
+  m_SizeDelta: {x: -57.86001, y: -63.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8012861286865299424
 CanvasRenderer:
@@ -314,8 +314,8 @@ MonoBehaviour:
   - {fileID: 0}
   chatScrollRect: {fileID: 3915273951259521064}
   socketDepthOffset: 0
-  socketPositionY: 0
-  socketPositionX: 0
+  socketPositionY: -29.3
+  socketPositionX: 5.6
   wordInteractionLayer:
     m_Bits: 512
   dialogueEntries:
@@ -365,15 +365,16 @@ MonoBehaviour:
       isEmpty: 1
       isIndexed: 1
       options:
-      - sympa
+      - super
       - trop
       optionIndices: 0400000005000000
     - word: 
       isEmpty: 1
       isIndexed: 1
       options:
+      - "agr\xE9able"
       - facile
-      optionIndices: 05000000
+      optionIndices: 0400000005000000
     messageAnimation: {fileID: 0}
     playerBlocked: 0
   - senderName: NPC
@@ -409,11 +410,36 @@ MonoBehaviour:
       optionIndices: 
     messageAnimation: {fileID: 0}
     playerBlocked: 0
+  - senderName: YOU
+    isPlayerTurn: 1
+    isDialogueEnd: 0
+    words:
+    - word: Hey,
+      isEmpty: 0
+      isIndexed: 0
+      options: []
+      optionIndices: 
+    - word: 
+      isEmpty: 1
+      isIndexed: 1
+      options:
+      - ca va
+      - t'as bien
+      - "d\xE9sol\xE9"
+      optionIndices: 080000000b00000009000000
+    - word: 
+      isEmpty: 1
+      isIndexed: 1
+      options:
+      - "jou\xE9"
+      optionIndices: 0b000000
+    messageAnimation: {fileID: 0}
+    playerBlocked: 0
   - senderName: NPC
     isPlayerTurn: 0
-    isDialogueEnd: 1
+    isDialogueEnd: 0
     words:
-    - word: Ok C'est la fin
+    - word: "C'est toi depuis tout \xE0 l'heure qui arr\xEAte pas de m'embrouiller"
       isEmpty: 0
       isIndexed: 0
       options: []
@@ -424,7 +450,102 @@ MonoBehaviour:
     isPlayerTurn: 0
     isDialogueEnd: 0
     words:
-    - word: Ne joue pas ce dialogue
+    - word: "Tu crois que \xE7a va changer quoi que ce soit ?"
+      isEmpty: 0
+      isIndexed: 0
+      options: []
+      optionIndices: 
+    messageAnimation: {fileID: 0}
+    playerBlocked: 0
+  - senderName: NPC
+    isPlayerTurn: 0
+    isDialogueEnd: 0
+    words:
+    - word: ' T''es lourd'
+      isEmpty: 0
+      isIndexed: 0
+      options: []
+      optionIndices: 
+    messageAnimation: {fileID: 0}
+    playerBlocked: 0
+  - senderName: NPC
+    isPlayerTurn: 0
+    isDialogueEnd: 0
+    words:
+    - word: "C'est \xE7a, arr\xEAte avec ta piti\xE9, j'y allais juste pas \xE0 fond
+        je te dis !"
+      isEmpty: 0
+      isIndexed: 0
+      options: []
+      optionIndices: 
+    messageAnimation: {fileID: 0}
+    playerBlocked: 0
+  - senderName: YOU
+    isPlayerTurn: 1
+    isDialogueEnd: 0
+    words:
+    - word: Mais
+      isEmpty: 0
+      isIndexed: 0
+      options: []
+      optionIndices: 
+    - word: 
+      isEmpty: 1
+      isIndexed: 1
+      options:
+      - qu'est ce que
+      - je suis
+      - c'est quoi
+      optionIndices: 0d0000000e0000000f000000
+    - word: 
+      isEmpty: 1
+      isIndexed: 1
+      options:
+      - j'ai fais ?
+      - "vraiment d\xE9sol\xE9"
+      - "ton probl\xE8me"
+      optionIndices: 0d0000000e0000000f000000
+    messageAnimation: {fileID: 0}
+    playerBlocked: 0
+  - senderName: NPC
+    isPlayerTurn: 0
+    isDialogueEnd: 0
+    words:
+    - word: "T\u2019es vraiment trop nul, arr\xEAte de jouer"
+      isEmpty: 0
+      isIndexed: 0
+      options: []
+      optionIndices: 
+    messageAnimation: {fileID: 0}
+    playerBlocked: 0
+  - senderName: NPC
+    isPlayerTurn: 0
+    isDialogueEnd: 0
+    words:
+    - word: "Si tu es vraiment d\xE9sol\xE9, donne-moi ta r\xE9compense"
+      isEmpty: 0
+      isIndexed: 0
+      options: []
+      optionIndices: 
+    messageAnimation: {fileID: 0}
+    playerBlocked: 0
+  - senderName: NPC
+    isPlayerTurn: 0
+    isDialogueEnd: 0
+    words:
+    - word: "Mais c'est toi le probl\xE8me !"
+      isEmpty: 0
+      isIndexed: 0
+      options: []
+      optionIndices: 
+    messageAnimation: {fileID: 0}
+    playerBlocked: 0
+  - senderName: NPC
+    isPlayerTurn: 0
+    isDialogueEnd: 0
+    words:
+    - word: "Tu sais tellement pas jouer que le niveau des gens r\xE9gresse en jouant
+        avec toi"
       isEmpty: 0
       isIndexed: 0
       options: []
@@ -568,7 +689,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2420243001576127392}
   m_HandleRect: {fileID: 1192862943841051729}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -602,16 +723,16 @@ RectTransform:
   m_GameObject: {fileID: 5617776042993836742}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.0036541799, y: 0.0036541799, z: 0.0036541799}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.007431298, y: 0.007431298, z: 0.007431298}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 9099244146940974372}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 464.19998, y: 220.1}
-  m_SizeDelta: {x: 928.39996, y: 440.2}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1060.74, y: 602.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5777933702367075847
 Canvas:
@@ -750,7 +871,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -104}
-  m_SizeDelta: {x: 400, y: 424.7}
+  m_SizeDelta: {x: 612.45, y: 424.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7455458879560162123
 CanvasRenderer:
@@ -855,8 +976,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -17.5, y: 0}
-  m_SizeDelta: {x: -465, y: 0}
+  m_AnchoredPosition: {x: -6.6275024, y: 0}
+  m_SizeDelta: {x: -246.05501, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &121535130601627077
 CanvasRenderer:

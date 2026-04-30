@@ -79,7 +79,7 @@ public class WordSlots : MonoBehaviour
             cube.SetVisible(true);
         }
         
-        currentWord = "[...]";
+        currentWord = "";
         if (slotText != null) slotText.text = "[...]"; //reset UI blank
         
         if (isFirstSlot)

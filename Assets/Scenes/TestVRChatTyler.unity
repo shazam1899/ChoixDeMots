@@ -277,11 +277,11 @@ PrefabInstance:
       objectReference: {fileID: 1709000276}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: socketPositionX
-      value: -1.2
+      value: 5.6
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: socketPositionY
-      value: 2
+      value: -29.3
       objectReference: {fileID: 0}
     - target: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
       propertyPath: blockedAnimation

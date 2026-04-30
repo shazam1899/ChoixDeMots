@@ -28,8 +28,8 @@ public class SateGatherer : MonoBehaviour
 
     int NumberBlock = 0;
     int NumberName = 0;
-    float MeanTime = 0;
-    float WeirdTime = 0;
+    float MeanTime = -1;
+    float WeirdTime = -1;
 
     void Start()
     {
@@ -75,7 +75,7 @@ public class SateGatherer : MonoBehaviour
             Debug.Log("Mule");
             return;
         }
-        else if(NumberBlock == 2 && MeanTime <= 8 && WeirdTime <= 15)
+        else if(NumberBlock == 2 && MeanTime > 0 && MeanTime <= 8 && WeirdTime > 0 && WeirdTime <= 15)
         {
             ImFaucon.SetActive(true);
             TxtFaucon.SetActive(true);
@@ -94,6 +94,7 @@ public class SateGatherer : MonoBehaviour
             ImHippopotame.SetActive(true);
             TxtHippopotame.SetActive(true);
             Debug.Log("Hippopotame");
+            return;
         }
         else if (NumberBlock == 3)
         {

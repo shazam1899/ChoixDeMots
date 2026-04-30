@@ -29,6 +29,7 @@ public class GameFlow : MonoBehaviour
     public GameObject final;
     public GameObject Thanks;
     public GameObject TxtFinal;
+    public GameObject ButtonRestart;
     public float WaitTime = 2f;
 
     private int currentLevel = 0;
@@ -94,6 +95,7 @@ public class GameFlow : MonoBehaviour
 
         TxtFinal.SetActive(true);
         final.SetActive(true);
+        ButtonRestart.SetActive(true);
     }
 
     private void SendScoresToLeaderboard(int level)

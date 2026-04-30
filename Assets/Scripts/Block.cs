@@ -16,6 +16,7 @@ public class Bloquer : MonoBehaviour
     public AutoTeleport HUBTel;
 
     [SerializeField] private GameObject[] PropsAvatar;
+    [SerializeField] private GameObject[] PropsDistorion;
     [SerializeField] private GameObject[] PropsHere;
     private float StartTime;
 
@@ -50,6 +51,12 @@ public class Bloquer : MonoBehaviour
         for (int i = 0; i < PropsAvatar.Length; i++)
         {
             PropsAvatar[i].SetActive(false);
+            Debug.Log("près");
+        }
+
+        for (int i = 0; i < PropsDistorion.Length; i++)
+        {
+            PropsDistorion[i].SetActive(false);
             Debug.Log("derrière");
         }
         

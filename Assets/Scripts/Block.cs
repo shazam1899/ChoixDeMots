@@ -57,7 +57,7 @@ public class Bloquer : MonoBehaviour
         CheckPanel.SetActive(false);
         AudioAvatar.SetActive(false);
         AudioHUB.SetActive(true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         
         for (int i = 0; i < PropsHere.Length; i++)
         {

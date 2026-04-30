@@ -36,12 +36,14 @@ public class SateGatherer : MonoBehaviour
         SuccessBlock();
     }
 
-    public void SuccessBlock()
+ public void SuccessBlock()
     {
         NumberBlock = 0;
         NumberName = 0;
 
-        foreach (var item in FindObjectsByType<Bloquer>(FindObjectsSortMode.None))
+        var all = FindObjectsByType<Bloquer>(FindObjectsSortMode.None);
+
+        foreach (var item in all)
         {
             if(item.Blocked)
             {
@@ -89,7 +91,7 @@ public class SateGatherer : MonoBehaviour
             Debug.Log("Paresseux");
             return;
         }
-        else if(NumberBlock == 2 && MeanTime <= 8 && WeirdTime >= 15 || NumberBlock == 2 && MeanTime >= 8 && WeirdTime <= 15)
+        else if(NumberBlock == 2 && ((MeanTime > 0 && MeanTime <= 8 && WeirdTime >= 15) || (WeirdTime > 0 && MeanTime >= 8 && WeirdTime <= 15)))
         {
             ImHippopotame.SetActive(true);
             TxtHippopotame.SetActive(true);
@@ -104,37 +106,39 @@ public class SateGatherer : MonoBehaviour
             return;
         }
 
-        foreach (var item in FindObjectsByType<Bloquer>(FindObjectsSortMode.None))
+        foreach (var item in all)
         {
-            if (NumberBlock == 1 && item.Name == "mechant")
+            if (!item.Blocked) continue;
+
+            if (NumberBlock == 1 && item.Blocked && item.Name == "mechant")
             {
                 ImPigeon.SetActive(true);
                 TxtPigeon.SetActive(true);
                 Debug.Log("Pigeon");
                 return;
             }
-            else if (NumberBlock == 1 && item.Name == "gentil")
+            else if (NumberBlock == 1 && item.Blocked && item.Name == "gentil")
             {
                 ImSerpent.SetActive(true);
                 TxtSerpent.SetActive(true);
                 Debug.Log("Serpent");
                 return;
             }
-            else if (NumberBlock == 1 && item.Name == "bizarre")
+            else if (NumberBlock == 1 && item.Blocked && item.Name == "bizarre")
             {
                 ImCapybara.SetActive(true);
                 TxtCapybara.SetActive(true);
                 Debug.Log("Capybara");
                 return;
             }
-            else if(NumberBlock == 2 && item.Name == "cancel")
+            else if(NumberBlock == 2 && item.Blocked && item.Name == "cancel")
             {
                 ImOurs.SetActive(true);
                 TxtOurs.SetActive(true);
                 Debug.Log("Ours");
                 return;
             }
-            else if(NumberBlock == 3 && item.Name == "cancel")
+            else if(NumberBlock == 3 && item.Blocked && item.Name == "cancel")
             {
                 ImHamster.SetActive(true);
                 TxtHamster.SetActive(true);
@@ -142,6 +146,7 @@ public class SateGatherer : MonoBehaviour
                 return;
             }
         }
+
         Debug.Log("Help");
         ImCorgi.SetActive(true);
         TxtCorgi.SetActive(true);

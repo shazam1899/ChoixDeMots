@@ -22,12 +22,8 @@ public class GameFlow : MonoBehaviour
         public int scoreGamma;
     }
 
-
     [Header("Teleport Areas à activer après chaque niveau")]
     public List<GameObject> teleportAreas; // NE PAS mettre la zone de base ici !
-    public List<GameObject> allSnapVolumes;
-    public List<SnapDisabler> allSnapDisablers;
-
 
     [Header("Final")]
     public GameObject final;
@@ -40,11 +36,13 @@ public class GameFlow : MonoBehaviour
 
     private void Start()
     {
-        initializer.OnMiniGameCompleted += OnLevelCompleted;
+        if (initializer == null)
+        {
+            Debug.LogError("❌ initializer n'est pas assigné dans GameFlow !");
+            return;
+        }
 
-        // ❌ NE RIEN DÉSACTIVER ICI
-        // Tout ce qui est actif dans la scène reste actif
-        // Tout ce qui est désactivé reste désactivé
+        initializer.OnMiniGameCompleted += OnLevelCompleted;
 
         // 🔥 Lancer le premier niveau
         LaunchCurrentLevel();
@@ -56,13 +54,15 @@ public class GameFlow : MonoBehaviour
 
         // 🔥 ENVOYER LES SCORES AU LEADERBOARD
         SendScoresToLeaderboard(currentLevel);
+
+        // 🔥 Activer la Teleport Area correspondante
         if (currentLevel < teleportAreas.Count)
         {
             teleportAreas[currentLevel].SetActive(true);
-            Debug.Log("Activation Teleport Area  : " + teleportAreas[currentLevel].name);
+            Debug.Log("Activation Teleport Area : " + teleportAreas[currentLevel].name);
         }
 
-        // 🔥 Passer au niveau suivant (mais ne pas le lancer)
+        // 🔥 Passer au niveau suivant
         currentLevel++;
 
         if (currentLevel >= levelOrder.Count)
@@ -73,36 +73,18 @@ public class GameFlow : MonoBehaviour
 
     public void LaunchCurrentLevel()
     {
-        if (currentLevel >= levelOrder.Count) return;
-
-        int levelIndex = levelOrder[currentLevel];
-
-        Debug.Log("▶ Lancement du niveau : " + levelIndex);
-
-        // 🔥 Désactiver les SnapDisabler
-        foreach (var disabler in allSnapDisablers)
-            disabler.enabled = false;
-
-        // 🔥 Réactiver les SnapVolume
-        foreach (var snap in allSnapVolumes)
+        if (currentLevel >= levelOrder.Count)
         {
-            Debug.Log("Réactivation du SnapVolume : " + snap.name);
-            snap.SetActive(true);
+            Debug.Log("Tous les niveaux sont terminés.");
+            return;
         }
 
+        int levelIndex = levelOrder[currentLevel];
+        Debug.Log("▶ Lancement du niveau : " + levelIndex);
+
+        // 🔥 Lancer le minigame
         initializer.ClearBoard();
         initializer.Initialize(levelIndex);
-
-        // 🔥 Réactiver SnapDisabler APRÈS la téléportation
-        StartCoroutine(ReenableSnapDisablers());
-    }
-
-    private IEnumerator ReenableSnapDisablers()
-    {
-        yield return new WaitForSeconds(0.2f);
-
-        foreach (var disabler in allSnapDisablers)
-            disabler.enabled = true;
     }
 
     private IEnumerator LaunchFinal()
@@ -117,7 +99,11 @@ public class GameFlow : MonoBehaviour
     private void SendScoresToLeaderboard(int level)
     {
         var config = levelScores.Find(s => s.levelIndex == level);
-        if (config == null) return;
+        if (config == null)
+        {
+            Debug.LogWarning("⚠ Aucun score configuré pour le niveau " + level);
+            return;
+        }
 
         Dictionary<string, int> scores = new Dictionary<string, int>
         {
@@ -129,5 +115,4 @@ public class GameFlow : MonoBehaviour
 
         LeaderboardManager.Instance.AddScoreForLevel(level, scores);
     }
-
 }

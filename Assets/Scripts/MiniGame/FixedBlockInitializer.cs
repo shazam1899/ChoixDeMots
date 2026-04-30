@@ -30,9 +30,6 @@ public class FixedBlockInitializer : MonoBehaviour
     private GridBoard board;
     private Transform spawnedRoot;
 
-    private const string LAYER_INTERACTABLE = "Interactable";
-    private const string LAYER_NON_INTERACTABLE = "NonInteractable";
-
     private void EnsureBoard()
     {
         if (board == null)
@@ -72,21 +69,22 @@ public class FixedBlockInitializer : MonoBehaviour
         Vector3 worldPos = board.GridToWorld(entry.gridPosition.x, entry.gridPosition.y);
         Quaternion rot = Quaternion.Euler(-90f, entry.rotation, 0f);
 
-        // 🔥 IMPORTANT : parent = spawnedRoot
         GameObject block = Instantiate(entry.prefab, worldPos, rot, spawnedRoot);
 
         BlockShape shape = block.GetComponent<BlockShape>();
 
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         shape.EditorInitialize();
-        #endif
-        
+#endif
+
         var cells = shape.GetWorldCells(board, worldPos, rot);
         foreach (var c in cells)
             board.Occupy(c.x, c.y);
 
-        block.layer = LayerMask.NameToLayer(LAYER_NON_INTERACTABLE);
+        // ❌ SUPPRESSION DES LAYERS
+        // block.layer = LayerMask.NameToLayer("NonInteractable");
 
+        // ❌ SUPPRESSION XRGrabInteractable
         foreach (var comp in block.GetComponentsInChildren<Component>(true))
         {
             if (comp.GetType().Name.Contains("XRGrabInteractable"))
@@ -145,10 +143,10 @@ public class FixedBlockInitializer : MonoBehaviour
 
             Quaternion finalRot = Quaternion.Euler(-90f, prefab.transform.eulerAngles.y, prefab.transform.eulerAngles.z);
 
-            // 🔥 IMPORTANT : parent = spawnedRoot
             GameObject obj = Instantiate(prefab, pos, finalRot, spawnedRoot);
 
-            obj.layer = LayerMask.NameToLayer(LAYER_INTERACTABLE);
+            // ❌ SUPPRESSION DES LAYERS
+            // obj.layer = LayerMask.NameToLayer("Interactable");
 
             var rb = obj.GetComponent<Rigidbody>();
             if (rb)
@@ -172,7 +170,6 @@ public class FixedBlockInitializer : MonoBehaviour
         EnsureBoard();
         board.InitializeBoard();
 
-        // 🔥 SUPPRESSION GARANTIE
         List<GameObject> toDestroy = new List<GameObject>();
         foreach (Transform child in spawnedRoot)
             toDestroy.Add(child.gameObject);

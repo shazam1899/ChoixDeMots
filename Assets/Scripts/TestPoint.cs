@@ -13,14 +13,20 @@ public class TestPoint : MonoBehaviour
         {
             triggered = true;
 
-            ButtonHUB.SetActive(false);
+            if (ButtonHUB != null)
+            {
+                ButtonHUB.SetActive(false);
+            }
+            
             Debug.Log("TestPoint déclenché — lancement du niveau : " + progressionlocal.CurrentLevel);
-
+            
+            // Lancer le niveau suivant
+            progressionlocal.LaunchCurrentLevel();
+            
             // Désactive uniquement le TestPoint lui-même
             gameObject.SetActive(false);
 
-            // Lancer le niveau suivant
-            progressionlocal.LaunchCurrentLevel();
+            
         }
     }
 }

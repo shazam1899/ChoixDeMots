@@ -76,8 +76,11 @@ public class FixedBlockInitializer : MonoBehaviour
         GameObject block = Instantiate(entry.prefab, worldPos, rot, spawnedRoot);
 
         BlockShape shape = block.GetComponent<BlockShape>();
-        shape.EditorInitialize();
 
+        #if UNITY_EDITOR
+        shape.EditorInitialize();
+        #endif
+        
         var cells = shape.GetWorldCells(board, worldPos, rot);
         foreach (var c in cells)
             board.Occupy(c.x, c.y);

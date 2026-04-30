@@ -13,6 +13,7 @@ public class Bloquer : MonoBehaviour
     public bool Blocked = false;
     public string Name;
     public float ActiveTime;
+    public AutoTeleport HUBTel;
 
     [SerializeField] private GameObject[] PropsAvatar;
     [SerializeField] private GameObject[] PropsHere;
@@ -63,8 +64,13 @@ public class Bloquer : MonoBehaviour
         {
             PropsHere[i].SetActive(true);
             Debug.Log("toi");
-        }      
+        }
 
         Blocked = true;
+
+        yield return new WaitForSeconds(1f);
+        {
+            HUBTel.TeleportToHUB();
+        }
     }
 }

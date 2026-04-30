@@ -35,6 +35,8 @@ public class DialogueManager : MonoBehaviour
     //feature "se faire bloquer"
     public Bloquer blockController;
     //public GameObject blockedAnimation;
+    //feature se faire "teleporter"
+    public AutoTeleport TelController;
     private bool blockedTriggered = false;
     
 
@@ -45,6 +47,9 @@ public class DialogueManager : MonoBehaviour
 
         if (blockController == null)
             blockController = FindFirstObjectByType<Bloquer>();
+        
+        if (TelController == null)
+            TelController = FindFirstObjectByType<AutoTeleport>();
     }
 
     private void ScrollToBottom()
@@ -98,7 +103,7 @@ public class DialogueManager : MonoBehaviour
             if (entry.isDialogueEnd)
             {
                 Debug.Log("dialogue ended!");
-                return;
+                AutoEnd();
             }
             //Automatically show next entry after a delay
             Invoke(nameof(ShowNextEntry), 1.5f);
@@ -107,6 +112,15 @@ public class DialogueManager : MonoBehaviour
         {
             SpawnPlayerSentence(entry);
         }
+    }
+
+    private IEnumerator AutoEnd()
+    {
+        yield return new WaitForSeconds(2f);
+        if (TelController != null)
+            TelController.TeleportToHUB();
+        else
+            Debug.Log("DialogueManager needs a TeleportManager reference for auto behaviour.");
     }
 
     private bool IsReferencedIndex(int index)

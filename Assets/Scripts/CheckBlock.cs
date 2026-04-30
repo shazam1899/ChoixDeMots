@@ -6,12 +6,14 @@ public class CheckBlock : MonoBehaviour
     [SerializeField] private GameObject Block;
     [SerializeField] private float t;
 
-    [Header("Props")]
+    [Header("DepopProps")]
     [SerializeField] private GameObject[] BadPropsHere1;
     [SerializeField] private GameObject[] BadPropsHere2;
     [SerializeField] private GameObject[] BadPropsHere3;
     [SerializeField] private GameObject[] BadPropsHere4;
     [SerializeField] private GameObject[] BadPropsHere5;
+
+    [Header("Props")]
     [SerializeField] private GameObject[] BadPropsHere6;
     [SerializeField] private GameObject[] BadPropsHere7;
     [SerializeField] private GameObject[] BadPropsHere8;

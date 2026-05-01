@@ -7,7 +7,7 @@ using System;
 //using System.Reflection.Metadata.Ecma335;
 
 [RequireComponent(typeof(CanvasGroup))]
-public class UIManager : MonoBehaviour
+public class ChatAnim : MonoBehaviour
 {
     public float duration = 0.4f;
     public float offsetX = 100f;

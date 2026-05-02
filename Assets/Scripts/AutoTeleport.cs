@@ -17,11 +17,11 @@ public class AutoTeleport : MonoBehaviour
 
     public void TeleportToHUB()
     {
-        //if (transition == null || player == null || TeleportPoint == null)
-        //{
-            //Debug.LogWarning("Références manquantes !");
-            //return;
-        //}
+        if (Transition == null || Player == null || TeleportPoint == null || Head == null)
+        {
+            Debug.LogWarning("Références manquantes !");
+            return;
+        }
 
         StartCoroutine(TeleportRoutine());
     }

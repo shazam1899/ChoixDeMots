@@ -13,6 +13,8 @@ public class TestPoint : MonoBehaviour
         {
             triggered = true;
 
+            progressionlocal.prog += 1;
+
             if (ButtonHUB != null)
             {
                 ButtonHUB.SetActive(false);

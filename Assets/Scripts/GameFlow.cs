@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 public class GameFlow : MonoBehaviour
 {
@@ -31,7 +32,7 @@ public class GameFlow : MonoBehaviour
     public GameObject TxtFinal;
     public GameObject ButtonRestart;
     public float WaitTime = 2f;
-
+    public int prog = 0;
     private int currentLevel = 0;
     public int CurrentLevel => currentLevel;
 
@@ -70,6 +71,11 @@ public class GameFlow : MonoBehaviour
         //{
             //StartCoroutine(LaunchFinal());
         //}
+
+        if (prog >= 3)
+        {
+            StartCoroutine(LaunchFinal());
+        }
     }
 
     public void LaunchCurrentLevel()

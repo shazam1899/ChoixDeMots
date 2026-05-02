@@ -24,13 +24,13 @@ public class ChatApparition : MonoBehaviour
 
     private IEnumerator SpawnChat()
     {
-        yield return new WaitForSecondsRealtime(3f);
+        yield return new WaitForSecondsRealtime(1f);
         Chat.SetActive(true);
     }
 
         private IEnumerator SpawnBloque()
     {
-        yield return new WaitForSecondsRealtime(5f);
+        yield return new WaitForSecondsRealtime(2f);
         ButtonBlock.SetActive(true);
     }
 

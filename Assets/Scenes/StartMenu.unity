@@ -473,8 +473,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AutoTeleport
   TeleportPoint: {fileID: 0}
+  Player: {fileID: 0}
+  Head: {fileID: 0}
   TeleportUI: {fileID: 858105615}
-  player: {fileID: 0}
+  Transition: {fileID: 0}
+  distance: 10
 --- !u!1 &497662970
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,9 +503,9 @@ Transform:
   m_GameObject: {fileID: 497662970}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -959, y: 0, z: 584.9238}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -716, y: -12, z: 484}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1599588717}
   - {fileID: 1407780756}
@@ -770,8 +773,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc226267bf6e9c547a8dfff567e76f50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Transition
-  TransitionUI: {fileID: 858105618}
-  UI: {fileID: 858105615}
+  canvasGroup: {fileID: 0}
+  defaultDuration: 1
 --- !u!225 &858105618
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1733,7 +1736,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8806329115733545878, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -938
+      value: -548
       objectReference: {fileID: 0}
     - target: {fileID: 8806329115733545878, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
       propertyPath: m_LocalRotation.w

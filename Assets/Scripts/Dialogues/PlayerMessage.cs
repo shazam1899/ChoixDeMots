@@ -113,7 +113,6 @@ public class PlayerMessage : MonoBehaviour
             var tmp = variantObject.GetComponent<TextMeshProUGUI>();
             tmp.text = variantText.Trim();
             variantObject.SetActive(false); //hidden until validated
-            Debug.Log("Index:" + index);
             sentenceVariants[index] = variantObject;
         }
     }
@@ -121,12 +120,9 @@ public class PlayerMessage : MonoBehaviour
     //called on validation - hides placeholder, shows correct variant
     public void ShowValidatedSentence(int validatedIndex)
     {
-        Debug.Log("ShowValidatedSentence called with index: " + validatedIndex);
-        Debug.Log("MessageText component: " + messageText);
         //hide placeholder
             if (messageText != null)
         {
-            Debug.Log("Current messageText: '" + messageText.text + "'");
             //messageText.gameObject.SetActive(false);
         }
                 
@@ -134,15 +130,11 @@ public class PlayerMessage : MonoBehaviour
         if (sentenceVariants.ContainsKey(validatedIndex))
         {
             var variantObj = sentenceVariants[validatedIndex];
-            Debug.Log("Variant object: " + variantObj);
             var tmp = variantObj.GetComponent<TextMeshProUGUI>();
-            Debug.Log("Variant TMP Component: " + tmp);
             if (tmp != null)
             {
                 var validatedText = tmp.text;
-                Debug.Log("Validated text from variant: '" + validatedText + "'");
                 messageText.text = validatedText;
-                Debug.Log("Set messageText to: '" + messageText.text + "'");
             }
             
 

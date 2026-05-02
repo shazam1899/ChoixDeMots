@@ -30,7 +30,7 @@ public class DialogueManager : MonoBehaviour
 
     private List<GameObject> activeCubes = new List<GameObject>();
     public int pendingValidatedIndex = -1;
-    private GameObject currentAnimation;
+    public GameObject currentAnimation;
 
     //feature "se faire bloquer"
     public Bloquer blockController;
@@ -61,8 +61,6 @@ public class DialogueManager : MonoBehaviour
 
     public void ShowNextEntry()
     {
-        
-        
         if (currentIndex >= dialogueEntries.Count)
             return;
 
@@ -82,7 +80,15 @@ public class DialogueManager : MonoBehaviour
             Debug.Log("HandlePlayerBlocked called");
             return;
         }
-
+        //Play animation if assigned
+        if (entry.messageAnimation != null && entry.messageAnimation != currentAnimation)
+            {
+                
+                PlayMessageAnimation(entry.messageAnimation);
+                currentAnimation.SetActive(true);
+                currentAnimation = entry.messageAnimation; //store as current
+            }
+            //if no animation is assigned, previous one keeps playing 
         if (!entry.isPlayerTurn)
         {
             //Spawn NPC Message
@@ -93,13 +99,7 @@ public class DialogueManager : MonoBehaviour
             ScrollToBottom();
             currentIndex++;
 
-            //Play animation if assigned
-            if (entry.messageAnimation != null && entry.messageAnimation != currentAnimation)
-            {
-                PlayMessageAnimation(entry.messageAnimation);
-                currentAnimation = entry.messageAnimation; //store as current
-            }
-            //if no animation is assigned, previous one keeps playing 
+            
 
             //stop dialogue if entry is marked as the end
             if (entry.isDialogueEnd)
@@ -317,7 +317,6 @@ public class DialogueManager : MonoBehaviour
     //creates a WordSlot GameObject entirely thru code yay
     private WordSlots CreateWordSlot(Vector3 position, string[] options, int[] optionIndices, TMPro.TextMeshProUGUI blankText)
     {
-        Debug.Log("Y'a un game object qui se crée normalement");
         
         //create game object
         GameObject slotObject = new GameObject("WordSlot");

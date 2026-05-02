@@ -64,7 +64,7 @@ public class DialogueManagerEditor : Editor
                 entry.senderName = EditorGUILayout.TextField("Sender", entry.senderName);
                 entry.isPlayerTurn = EditorGUILayout.Toggle("Is Player Turn", entry.isPlayerTurn);
                 entry.isDialogueEnd = EditorGUILayout.Toggle("Is dialogue end?", entry.isDialogueEnd);
-                entry.messageAnimation = (AnimationClip)EditorGUILayout.ObjectField("Message Animation", entry.messageAnimation, typeof(AnimationClip), false);
+                entry.messageAnimation = (GameObject)EditorGUILayout.ObjectField("Message Animation", entry.messageAnimation, typeof(Animator), false);
                 entry.playerBlocked = EditorGUILayout.Toggle("Player blocked", entry.playerBlocked);
             
                 EditorGUILayout.Space(4);

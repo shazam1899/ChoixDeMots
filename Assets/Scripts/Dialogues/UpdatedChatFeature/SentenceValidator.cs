@@ -112,11 +112,8 @@ public class SentenceValidator : MonoBehaviour
             }
         }
 
-        Debug.Log($"CheckSentence: All slots filled = {allSlotsFilled}, slot count = {slots.Count}");
-
         if (!allSlotsFilled) 
         {
-            Debug.Log("CheckSentence: Not all slots filled, returning without feedback");
             return;
         }
         
@@ -127,7 +124,6 @@ public class SentenceValidator : MonoBehaviour
             if (slot.isIndexed)
             {
                 firstIndex = slot.GetCurrentIndex();
-                Debug.Log($"CheckSentence: Found indexed slot with index {firstIndex}, word='{slot.currentWord}'");
                 break;
             }
         }
@@ -142,7 +138,6 @@ public class SentenceValidator : MonoBehaviour
 
         //count indexed slots needed
         int indexedSlotsNeeded = dialogueManager.CountWordsForIndex(firstIndex);
-        Debug.Log($"CheckSentence: Indexed slots needed for index {firstIndex} = {indexedSlotsNeeded}");
 
         //count non indexed slots
         int nonIndexedSlots = 0;
@@ -151,14 +146,11 @@ public class SentenceValidator : MonoBehaviour
             if (!slot.isIndexed)
                 nonIndexedSlots++;
         }
-        Debug.Log($"CheckSentence: Non-indexed slots = {nonIndexedSlots}");
 
         //make sure we have all slots needed before validating
         int totalNeeded = indexedSlotsNeeded + nonIndexedSlots;
-        Debug.Log($"CheckSentence: Total slots needed = {totalNeeded}, current slots = {slots.Count}");
         if (slots.Count < totalNeeded)
         {
-            Debug.Log("CheckSentence: Not enough slots, returning");
             return;
         }
             
@@ -187,7 +179,6 @@ public class SentenceValidator : MonoBehaviour
             if (!slot.isIndexed && slot.currentWord == "") return;
         }
         
-        Debug.Log("CheckSentence: All validation passed! Sentence is correct");
         //All slots match the same index, sentence is correct
         OnSentenceCorrect(firstIndex);
     }

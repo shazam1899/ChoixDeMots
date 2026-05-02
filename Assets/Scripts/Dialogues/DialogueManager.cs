@@ -78,7 +78,9 @@ public class DialogueManager : MonoBehaviour
         
         if (entry.playerBlocked)
         {
+            Debug.Log("HandlePlayerBlocked will be called");
             HandlePlayerBlocked();
+            Debug.Log("HandlePlayerBlocked called");
             return;
         }
 
@@ -105,9 +107,10 @@ public class DialogueManager : MonoBehaviour
             {
                 Debug.Log("dialogue ended!");
                 AutoEnd();
+                return;
             }
             //Automatically show next entry after a delay
-            Invoke(nameof(ShowNextEntry), 1.5f);
+            Invoke(nameof(ShowNextEntry), 3f);
         }
         else
         {
@@ -461,6 +464,7 @@ public class DialogueManager : MonoBehaviour
 
     private void HandlePlayerBlocked()
     {
+        Debug.Log("this is HandlePlayerBlocked reporting for duty");
         if (blockedTriggered)
             return;
 

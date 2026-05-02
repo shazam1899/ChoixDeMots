@@ -66,10 +66,10 @@ public class GameFlow : MonoBehaviour
         // 🔥 Passer au niveau suivant
         currentLevel++;
 
-        if (currentLevel >= levelOrder.Count)
-        {
-            StartCoroutine(LaunchFinal());
-        }
+        //if (currentLevel >= levelOrder.Count)
+        //{
+            //StartCoroutine(LaunchFinal());
+        //}
     }
 
     public void LaunchCurrentLevel()

@@ -215,7 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.VerticalLayoutGroup
   m_Padding:
-    m_Left: 205
+    m_Left: 266
     m_Right: 17
     m_Top: 50
     m_Bottom: 100
@@ -316,6 +316,7 @@ MonoBehaviour:
   socketDepthOffset: 0
   socketPositionY: -29.3
   socketPositionX: 5.6
+  socketSize: 0
   wordInteractionLayer:
     m_Bits: 512
   dialogueEntries:
@@ -872,7 +873,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 3}
-  m_SizeDelta: {x: 676.85, y: 236.5}
+  m_SizeDelta: {x: 725.9, y: 334.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7455458879560162123
 CanvasRenderer:

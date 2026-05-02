@@ -341,7 +341,7 @@ public class DialogueManager : MonoBehaviour
         //Add a trigger collider for the socket to work
         SphereCollider collider = slotObject.AddComponent<SphereCollider>();
         collider.isTrigger = true;
-        collider.radius = 0.1f;
+        collider.radius = 0.5f;
 
         //add and initialize WordSlot
         WordSlots slot = slotObject.AddComponent<WordSlots>();

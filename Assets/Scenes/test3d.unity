@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.05
@@ -1482,9 +1482,11 @@ MonoBehaviour:
   Blocked: 0
   Name: gentil
   ActiveTime: 0
+  HUBTel: {fileID: 0}
   PropsAvatar:
   - {fileID: 1482317146}
   - {fileID: 735631788}
+  PropsDistorion: []
   PropsHere:
   - {fileID: 615834411}
   - {fileID: 1228359901}
@@ -3241,6 +3243,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 427718349578265408, guid: a4a8eccbc0fd7b04dbca4de8462c3dc7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 427718349578265408, guid: a4a8eccbc0fd7b04dbca4de8462c3dc7, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 427718349578265408, guid: a4a8eccbc0fd7b04dbca4de8462c3dc7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 427718349578265408, guid: a4a8eccbc0fd7b04dbca4de8462c3dc7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1894177598704106528, guid: a4a8eccbc0fd7b04dbca4de8462c3dc7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1894177598704106528, guid: a4a8eccbc0fd7b04dbca4de8462c3dc7, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1894177598704106528, guid: a4a8eccbc0fd7b04dbca4de8462c3dc7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1894177598704106528, guid: a4a8eccbc0fd7b04dbca4de8462c3dc7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4200153018504727814, guid: a4a8eccbc0fd7b04dbca4de8462c3dc7, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -3304,6 +3338,22 @@ PrefabInstance:
     - target: {fileID: 7857939946845173006, guid: a4a8eccbc0fd7b04dbca4de8462c3dc7, type: 3}
       propertyPath: m_Name
       value: MiniGameCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8558092779952769026, guid: a4a8eccbc0fd7b04dbca4de8462c3dc7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8558092779952769026, guid: a4a8eccbc0fd7b04dbca4de8462c3dc7, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8558092779952769026, guid: a4a8eccbc0fd7b04dbca4de8462c3dc7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8558092779952769026, guid: a4a8eccbc0fd7b04dbca4de8462c3dc7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8991129995851849946, guid: a4a8eccbc0fd7b04dbca4de8462c3dc7, type: 3}
       propertyPath: m_LocalScale.x
@@ -12625,9 +12675,11 @@ MonoBehaviour:
   Blocked: 0
   Name: mechant
   ActiveTime: 0
+  HUBTel: {fileID: 0}
   PropsAvatar:
   - {fileID: 2020808374}
   - {fileID: 1925784888}
+  PropsDistorion: []
   PropsHere:
   - {fileID: 733675728}
   - {fileID: 1023710782}
@@ -16168,6 +16220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestPoint
   progressionlocal: {fileID: 1160704126}
+  ButtonHUB: {fileID: 0}
 --- !u!65 &947074259
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16580,9 +16633,11 @@ MonoBehaviour:
   Blocked: 0
   Name: cancel
   ActiveTime: 0
+  HUBTel: {fileID: 0}
   PropsAvatar:
   - {fileID: 1482317146}
   - {fileID: 735631788}
+  PropsDistorion: []
   PropsHere:
   - {fileID: 295916498}
   - {fileID: 1398023952}
@@ -19296,17 +19351,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameFlow
   initializer: {fileID: 1986689682}
   levelOrder: 000000000100000002000000
+  levelScores: []
   teleportAreas:
   - {fileID: 2129576148}
   - {fileID: 635368293}
   - {fileID: 937130695}
-  allSnapVolumes:
-  - {fileID: 266428755}
-  allSnapDisablers:
-  - {fileID: 545767288}
   final: {fileID: 1751199230}
   Thanks: {fileID: 505305709}
   TxtFinal: {fileID: 303821105}
+  ButtonRestart: {fileID: 0}
   WaitTime: 2
 --- !u!65 &1160704127
 BoxCollider:
@@ -19755,6 +19808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestPoint
   progressionlocal: {fileID: 1160704126}
+  ButtonHUB: {fileID: 0}
 --- !u!65 &1197617845
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23400,11 +23454,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CheckBlock
   Block: {fileID: 2092143930}
   t: 0
-  BadPropsHere1: {fileID: 0}
-  BadPropsHere2: {fileID: 0}
-  BadPropsHere3: {fileID: 0}
-  BadPropsHere4: {fileID: 0}
-  BadPropsHere5: {fileID: 0}
+  BadPropsHere1:
+  - {fileID: 0}
+  BadPropsHere2:
+  - {fileID: 0}
+  BadPropsHere3:
+  - {fileID: 0}
+  BadPropsHere4:
+  - {fileID: 0}
+  BadPropsHere5:
+  - {fileID: 0}
+  BadPropsHere6: []
+  BadPropsHere7: []
+  BadPropsHere8: []
+  BadPropsHere9: []
+  BadPropsHere10: []
   AudioNorm: {fileID: 1737943350}
   AudiDistordu1: {fileID: 1157522555}
   AudiDistordu2: {fileID: 12352131}
@@ -24889,9 +24953,11 @@ MonoBehaviour:
   Blocked: 0
   Name: bizarre
   ActiveTime: 0
+  HUBTel: {fileID: 0}
   PropsAvatar:
   - {fileID: 1672616061}
   - {fileID: 2130520637}
+  PropsDistorion: []
   PropsHere:
   - {fileID: 236002290}
   - {fileID: 1321512559}
@@ -25093,9 +25159,11 @@ MonoBehaviour:
   Blocked: 0
   Name: gentil
   ActiveTime: 0
+  HUBTel: {fileID: 0}
   PropsAvatar:
   - {fileID: 1482317146}
   - {fileID: 735631788}
+  PropsDistorion: []
   PropsHere:
   - {fileID: 295916498}
   - {fileID: 1398023952}
@@ -28631,10 +28699,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6643478468260908956, guid: 7cd8725a06c17c943aa7cea4fc01e960, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9c63e45c835b8b747a42061c2ff2f6bb, type: 2}
+    - target: {fileID: 338287787664450668, guid: 7cd8725a06c17c943aa7cea4fc01e960, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9c63e45c835b8b747a42061c2ff2f6bb, type: 2}
     - target: {fileID: 919132149155446097, guid: 7cd8725a06c17c943aa7cea4fc01e960, type: 3}
       propertyPath: m_Name
       value: Retopo Groomerfbx
       objectReference: {fileID: 0}
+    - target: {fileID: 3100912408244683543, guid: 7cd8725a06c17c943aa7cea4fc01e960, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9c63e45c835b8b747a42061c2ff2f6bb, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29594,6 +29674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestPoint
   progressionlocal: {fileID: 1160704126}
+  ButtonHUB: {fileID: 0}
 --- !u!65 &1701167548
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33020,8 +33101,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
-  m_Color: {r: 1, g: 0.9456522, b: 0.85, a: 1}
-  m_Intensity: 0.5
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -33063,7 +33144,7 @@ Light:
   m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 7.22507e+28, y: 4.857942e+30, z: 3.3733157e+27, w: 1.8960404e+31}
@@ -33595,10 +33676,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2226547466544181870, guid: 0064efe089af4fe43a7a88d13ace95f2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d74431069f461564fab43bbf1411d76f, type: 2}
     - target: {fileID: 919132149155446097, guid: 0064efe089af4fe43a7a88d13ace95f2, type: 3}
       propertyPath: m_Name
       value: Retopo Gentil
       objectReference: {fileID: 0}
+    - target: {fileID: 1988440922322567865, guid: 0064efe089af4fe43a7a88d13ace95f2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d74431069f461564fab43bbf1411d76f, type: 2}
+    - target: {fileID: 6803940423770836405, guid: 0064efe089af4fe43a7a88d13ace95f2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d74431069f461564fab43bbf1411d76f, type: 2}
+    - target: {fileID: 8591357723340376073, guid: 0064efe089af4fe43a7a88d13ace95f2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d74431069f461564fab43bbf1411d76f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -36905,11 +37002,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CheckBlock
   Block: {fileID: 1622981984}
   t: 0
-  BadPropsHere1: {fileID: 0}
-  BadPropsHere2: {fileID: 0}
-  BadPropsHere3: {fileID: 0}
-  BadPropsHere4: {fileID: 0}
-  BadPropsHere5: {fileID: 0}
+  BadPropsHere1:
+  - {fileID: 0}
+  BadPropsHere2:
+  - {fileID: 0}
+  BadPropsHere3:
+  - {fileID: 0}
+  BadPropsHere4:
+  - {fileID: 0}
+  BadPropsHere5:
+  - {fileID: 0}
+  BadPropsHere6: []
+  BadPropsHere7: []
+  BadPropsHere8: []
+  BadPropsHere9: []
+  BadPropsHere10: []
   AudioNorm: {fileID: 0}
   AudiDistordu1: {fileID: 0}
   AudiDistordu2: {fileID: 0}

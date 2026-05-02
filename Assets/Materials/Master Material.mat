@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Master Material
-  m_Shader: {fileID: -6465566751694194690, guid: 502dae927bbbb4049a88fbe32b7bdc6c, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: f41c4226628a90c4897737e4d76cc83c, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
@@ -79,7 +79,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_a4cc7075ff864f0788df44fe4f38a9e3_Out_0_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 1c528a2cc1eebc54ea7d82cbdd320efb, type: 3}
+        m_Texture: {fileID: 2800000, guid: 351f23e9b71fa894dadc7771487736ff, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -125,13 +125,17 @@ Material:
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _RampOffset: 0.41
     - _ReceiveShadows: 1
     - _RimLightStrenght: 0
+    - _Rim_Light_Angle: 0.5
     - _Rim_Threshold: 0.5
     - _Rotation: 0
+    - _SelfSHadowing_Angle: 0.5
     - _Smmothness: 0
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
+    - _Smoothning: 0
     - _Soft_Dots_Gradient: 1
     - _Softness: 0
     - _SpecularHighlights: 1
@@ -154,6 +158,7 @@ Material:
     - _Light_Color: {r: 1, g: 1, b: 1, a: 1}
     - _Rim_Color: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _Tinting: {r: 0.5, g: 0.5, b: 0.5, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &7232670985138694902

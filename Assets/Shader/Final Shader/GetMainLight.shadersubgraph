@@ -222,7 +222,8 @@
     "m_StageCapability": 3,
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
-    "m_Labels": []
+    "m_Labels": [],
+    "m_LiteralMode": false
 }
 
 {
@@ -318,7 +319,8 @@
     "m_StageCapability": 3,
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
-    "m_Labels": []
+    "m_Labels": [],
+    "m_LiteralMode": false
 }
 
 {
@@ -443,7 +445,8 @@
     "m_StageCapability": 3,
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
-    "m_Labels": []
+    "m_Labels": [],
+    "m_LiteralMode": false
 }
 
 {
@@ -542,10 +545,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 1.6000100374221802,
-            "y": 0.0000152587890625,
-            "width": 227.20004272460938,
-            "height": 349.60003662109377
+            "x": 0.0,
+            "y": 0.0,
+            "width": 0.0,
+            "height": 0.0
         }
     },
     "m_Slots": [
@@ -575,7 +578,7 @@
     },
     "m_SourceType": 0,
     "m_FunctionName": "MainLight",
-    "m_FunctionSource": "c48b2d0abea9fd04b96cc75bb50f969d",
+    "m_FunctionSource": "b42ef69d60309e749ae20cf67cbe28c6",
     "m_FunctionSourceUsePragmas": true,
     "m_FunctionBody": "Enter function body here..."
 }
@@ -587,6 +590,9 @@
     "m_Guid": {
         "m_GuidSerialized": "d3c51cd9-ac95-40c7-9f26-94b156e7269a"
     },
+    "promotedFromAssetID": "",
+    "promotedFromCategoryName": "",
+    "promotedOrdering": -1,
     "m_Name": "WorldPos",
     "m_DefaultRefNameVersion": 0,
     "m_RefNameGeneratedByDisplayName": "",

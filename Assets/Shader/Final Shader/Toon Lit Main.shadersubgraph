@@ -651,8 +651,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 159.99996948242188,
-            "y": -312.79998779296877,
+            "x": 157.59999084472657,
+            "y": -311.99993896484377,
             "width": 312.7999267578125,
             "height": 213.5999755859375
         }
@@ -696,7 +696,7 @@
     },
     "m_SourceType": 0,
     "m_FunctionName": "ToonShading",
-    "m_FunctionSource": "526a041d17627814588c0eb803bf9539",
+    "m_FunctionSource": "1d4079a517c0bb547a0bdf311b994b6a",
     "m_FunctionSourceUsePragmas": true,
     "m_FunctionBody": "Enter function body here..."
 }
@@ -774,10 +774,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -127.19995880126953,
-            "y": -232.80001831054688,
-            "width": 137.5999755859375,
-            "height": 33.60003662109375
+            "x": -146.40000915527345,
+            "y": -155.9999542236328,
+            "width": 138.40000915527345,
+            "height": 33.5999755859375
         }
     },
     "m_Slots": [
@@ -907,7 +907,7 @@
         }
     ],
     "synonyms": [],
-    "m_Precision": 0,
+    "m_Precision": 3,
     "m_PreviewExpanded": true,
     "m_DismissedVersion": 0,
     "m_PreviewMode": 0,

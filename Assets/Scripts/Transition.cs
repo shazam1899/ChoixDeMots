@@ -61,6 +61,8 @@ public class Transition : MonoBehaviour
 
         yield return null; // évite glitch visuel Unity
 
+        yield return new WaitForSeconds(2f);
+
         // fade out
         yield return Fade(0f, d);
 

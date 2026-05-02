@@ -14335,7 +14335,7 @@ GameObject:
   - component: {fileID: 796831868}
   - component: {fileID: 796831869}
   m_Layer: 0
-  m_Name: Transition
+  m_Name: TransitionObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14358,7 +14358,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 502, y: 407.5}
+  m_AnchoredPosition: {x: 502, y: 187}
   m_SizeDelta: {x: 1004, y: 815}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &796831869
@@ -15044,7 +15044,7 @@ GameObject:
   - component: {fileID: 827281405}
   - component: {fileID: 827281406}
   m_Layer: 0
-  m_Name: riririr
+  m_Name: CanvaGroupandScript
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27185,7 +27185,8 @@ Transform:
   m_LocalPosition: {x: 439, y: 187, z: -907}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1650772012}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1218162552
@@ -31581,7 +31582,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AutoTeleport
   TeleportPoint: {fileID: 2099283639}
   Player: {fileID: 1218162551}
+  Head: {fileID: 1218162551}
+  TeleportUI: {fileID: 796831868}
   Transition: {fileID: 827281406}
+  distance: 500
 --- !u!1 &1463140942
 GameObject:
   m_ObjectHideFlags: 0
@@ -35704,18 +35708,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1650772009}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -21.56}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 885.44}
+  m_LocalScale: {x: 0.001, y: 0.001, z: 0.001}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1604473099}
   - {fileID: 592972572}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1218162551}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1651, y: 756}
+  m_AnchoredPosition: {x: -2090, y: 569}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1652155168
@@ -44356,6 +44360,5 @@ SceneRoots:
   - {fileID: 1267544693}
   - {fileID: 1137237494}
   - {fileID: 465825626}
-  - {fileID: 1650772012}
   - {fileID: 796831868}
   - {fileID: 236759437}

@@ -30,8 +30,7 @@ public class DialogueManager : MonoBehaviour
 
     private List<GameObject> activeCubes = new List<GameObject>();
     public int pendingValidatedIndex = -1;
-    private AnimationClip currentAnimation;
-    public Animation animationVisage;
+    private GameObject currentAnimation;
 
     //feature "se faire bloquer"
     public Bloquer blockController;
@@ -450,16 +449,18 @@ public class DialogueManager : MonoBehaviour
     /// Plays an animation clip on the animator if available
     /// </summary>
     /// <param name="animationClip">The animation clip to play</param>
-    public void PlayMessageAnimation(AnimationClip animationClip)
+    public void PlayMessageAnimation(GameObject animationObject)
     {
-        if (animationVisage == null)
+        if (animationObject == null)
         {
             Debug.LogWarning("AnimationVisage component not assigned on DialogueManager!");
             return;
         }
-        // Add the animation to the Animation component and play it
-        animationVisage.AddClip(animationClip, animationClip.name);
-        animationVisage.Play(animationClip.name);
+        Animation anim = animationObject.GetComponent<Animation>();
+        if (anim != null)
+            anim.Play();
+        else 
+            Debug.LogWarning("No animation component found on animation object bro");
     }
 
     private void HandlePlayerBlocked()

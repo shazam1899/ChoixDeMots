@@ -4,6 +4,7 @@ public class TestPoint : MonoBehaviour
 {
     public GameFlow progressionlocal;
     public GameObject ButtonHUB;
+    
 
     private bool triggered = false;
 
@@ -33,7 +34,7 @@ public class TestPoint : MonoBehaviour
             return;
         }
 
-        progressionlocal.prog += 1;
+        progressionlocal.AddProgress();
         Debug.Log("[TestPoint] Progression incrémentée : " + progressionlocal.prog);
 
         if (ButtonHUB != null)

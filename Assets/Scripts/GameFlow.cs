@@ -23,8 +23,10 @@ public class GameFlow : MonoBehaviour
         public int scoreGamma;
     }
 
-    [Header("Teleport Areas à activer après chaque niveau")]
+    [Header("Debloquer !")]
     public List<GameObject> teleportAreas; // NE PAS mettre la zone de base ici !
+    public List<GameObject> UIAnnonce;
+    public List<GameObject> Recompenses;
 
     [Header("Final")]
     public GameObject final;
@@ -35,6 +37,8 @@ public class GameFlow : MonoBehaviour
     public int prog = 0;
     private int currentLevel = 0;
     public int CurrentLevel => currentLevel;
+
+    private bool finalLaunched = false;
 
     private void Start()
     {
@@ -58,9 +62,11 @@ public class GameFlow : MonoBehaviour
         SendScoresToLeaderboard(currentLevel);
 
         // 🔥 Activer la Teleport Area correspondante
-        if (currentLevel < teleportAreas.Count)
+        if (currentLevel < teleportAreas.Count && currentLevel < UIAnnonce.Count && currentLevel < Recompenses.Count)
         {
             teleportAreas[currentLevel].SetActive(true);
+            UIAnnonce[currentLevel].SetActive(true);
+            Recompenses[currentLevel].SetActive(true);
             Debug.Log("Activation Teleport Area : " + teleportAreas[currentLevel].name);
         }
 
@@ -72,10 +78,10 @@ public class GameFlow : MonoBehaviour
             //StartCoroutine(LaunchFinal());
         //}
 
-        if (prog >= 3)
-        {
-            StartCoroutine(LaunchFinal());
-        }
+        //if (prog >= 3)
+        //{
+            //StartCoroutine(LaunchFinal());
+        //}
     }
 
     public void LaunchCurrentLevel()
@@ -92,6 +98,23 @@ public class GameFlow : MonoBehaviour
         // 🔥 Lancer le minigame
         initializer.ClearBoard();
         initializer.Initialize(levelIndex);
+    }
+
+    public void AddProgress()
+    {
+        prog++;
+        Debug.Log("[GameFlow] Progression : " + prog);
+
+        CheckFinalCondition();
+    }
+
+    private void CheckFinalCondition()
+    {
+        if (!finalLaunched && prog >= 3)
+        {
+            finalLaunched = true;
+            StartCoroutine(LaunchFinal());
+        }
     }
 
     private IEnumerator LaunchFinal()

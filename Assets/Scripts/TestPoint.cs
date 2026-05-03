@@ -35,6 +35,7 @@ public class TestPoint : MonoBehaviour
         }
 
         progressionlocal.AddProgress();
+        Debug.Log("[TestPoint] GameFlow ID : " + progressionlocal.GetInstanceID());
         Debug.Log("[TestPoint] Progression incrémentée : " + progressionlocal.prog);
 
         if (ButtonHUB != null)

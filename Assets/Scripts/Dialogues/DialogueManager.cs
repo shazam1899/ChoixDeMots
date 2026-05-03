@@ -410,13 +410,16 @@ public class DialogueManager : MonoBehaviour
             var cube = Instantiate(wordCubePrefab, spawnPoint.position, spawnPoint.rotation);
             cube.GetComponent<WordCube>().SetWord(options[i]);
             activeCubes.Add(cube);
+            Debug.Log($"Added cube to activateCubes, total: {activeCubes.Count}");
         }
     }
 
     public void DestroyAllCubes()
     {
+        Debug.Log($"DestroyAllCubes called, count: {activeCubes.Count}");
         foreach (var cube in activeCubes)
         {
+            Debug.Log($"Destroying cube: {cube?.name}");
             if (cube != null)
                 Destroy(cube);
         }
@@ -499,11 +502,7 @@ public class DialogueManager : MonoBehaviour
         DestroyAllCubes();
         // clear else uhh ajoute qq chose estuplé
 
-        //if (blockedAnimation != null && blockedAnimation != currentAnimation)
-        //{
-            //PlayMessageAnimation(blockedAnimation);
-            //currentAnimation = blockedAnimation;
-        //}
+        currentAnimation.SetActive(false);
 
         if (blockController != null)
             blockController.LanceEffect();

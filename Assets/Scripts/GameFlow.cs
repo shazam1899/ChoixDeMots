@@ -103,7 +103,7 @@ public class GameFlow : MonoBehaviour
     public void AddProgress()
     {
         prog++;
-        Debug.Log("[GameFlow] Progression : " + prog);
+        Debug.Log("[GameFlow] Progression : " + prog + " | Instance ID : " + GetInstanceID());
 
         CheckFinalCondition();
     }

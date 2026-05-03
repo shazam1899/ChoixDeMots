@@ -4453,7 +4453,7 @@
     "m_Title": "Correct screen space aspect ratio",
     "m_Position": {
         "x": -3521.599853515625,
-        "y": 1393.60009765625
+        "y": 1393.5997314453125
     }
 }
 
@@ -5750,7 +5750,7 @@
     "m_ObjectId": "2051056a9d8c471e809bf5cfc8b36ebc",
     "m_Title": "Gradients Levels",
     "m_Position": {
-        "x": -2964.0,
+        "x": -2964.000244140625,
         "y": -2084.0
     }
 }
@@ -7639,8 +7639,8 @@
     "m_ObjectId": "3a2b31b6973a438d8aab516531cc3b96",
     "m_Title": "Get diffuse lighting value",
     "m_Position": {
-        "x": -4079.199951171875,
-        "y": 339.2000732421875
+        "x": -4079.19970703125,
+        "y": 339.2001647949219
     }
 }
 
@@ -9263,8 +9263,8 @@
     "m_ObjectId": "5488da0ad48e4eab8534e0b3e02858ac",
     "m_Title": "Remap values",
     "m_Position": {
-        "x": -3024.7998046875,
-        "y": 894.400146484375
+        "x": -3024.799560546875,
+        "y": 894.4000244140625
     }
 }
 
@@ -18524,7 +18524,7 @@
     "m_Title": "Generate halftone grid",
     "m_Position": {
         "x": -2729.599853515625,
-        "y": 1492.0
+        "y": 1491.9998779296875
     }
 }
 
@@ -19127,7 +19127,7 @@
     "m_Title": "Rim Iight",
     "m_Position": {
         "x": -2963.199951171875,
-        "y": -77.5999755859375
+        "y": -77.60003662109375
     }
 }
 
@@ -20013,7 +20013,7 @@
     "m_KeywordScope": 0,
     "m_KeywordStages": 63,
     "m_Entries": [],
-    "m_Value": 1,
+    "m_Value": 0,
     "m_IsEditable": true
 }
 

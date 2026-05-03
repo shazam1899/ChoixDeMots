@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2981223680518354462
+--- !u!114 &-1611657941116714887
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,12 +20,11 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Herbe
+  m_Name: Puit Rouge
   m_Shader: {fileID: -6465566751694194690, guid: f41c4226628a90c4897737e4d76cc83c, type: 3}
   m_Parent: {fileID: 2100000, guid: b35a702f95e2cca49bfc84b033def290, type: 2}
   m_ModifiedSerializedProperties: 2
-  m_ValidKeywords:
-  - _USE_SCREEN_SPACE
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
@@ -38,17 +37,23 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _Base_Color:
+        m_Texture: {fileID: 2800000, guid: b9867d09688af0d41a8aed3047ea0c86, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CircleDensity: 46.4
-    - _FalloffThreshold: 0
-    - _Lit_Threshold: 6.02
-    - _SelfSHadowing_Angle: 0.42
+    - _CircleDensity: 20.65
+    - _FalloffThreshold: 2.05
+    - _Fresnel_Power: 4.49
+    - _Lit_Threshold: 0.94
+    - _RimLightStrenght: 1
+    - _Rim_Light_Angle: 0.68
+    - _Rotation: -0.23
     - _Soft_Dots_Gradient: 0
-    - _Use_Flat_Color: 1
+    - _USE_SCREEN_SPACE: 0
     m_Colors:
-    - _Dark_Color: {r: 0.4641509, g: 0.4641509, b: 0.4641509, a: 1}
-    - _Flat_Color: {r: 0.14462799, g: 0.690566, b: 0.17820373, a: 1}
+    - _Dark_Color: {r: 0.22264141, g: 0.22264141, b: 0.22264141, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

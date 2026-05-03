@@ -127,8 +127,8 @@ Material:
     - _RampOffset: 0.41
     - _ReceiveShadows: 1
     - _RimLightStrenght: 1
-    - _Rim_Light_Angle: 0.584
-    - _Rim_Threshold: 0.51
+    - _Rim_Light_Angle: 0.42
+    - _Rim_Threshold: 0.62
     - _Rotation: 0
     - _SelfSHadowing_Angle: 0.5
     - _Smmothness: 0

@@ -7,12 +7,11 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Path
+  m_Name: Boite au lettres
   m_Shader: {fileID: -6465566751694194690, guid: f41c4226628a90c4897737e4d76cc83c, type: 3}
   m_Parent: {fileID: 2100000, guid: b35a702f95e2cca49bfc84b033def290, type: 2}
   m_ModifiedSerializedProperties: 2
-  m_ValidKeywords:
-  - _USE_SCREEN_SPACE
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
@@ -22,23 +21,30 @@ Material:
     RenderType: Opaque
   disabledShaderPasses:
   - MOTIONVECTORS
-  m_LockedProperties: 
+  m_LockedProperties: _Soft_Dots_Gradient
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _FalloffThreshold: 0.81
-    - _Lit_Threshold: -1.45
+    - _CircleDensity: 32.4
+    - _FalloffThreshold: 3.94
+    - _Fresnel_Power: 1.58
+    - _Lit_Threshold: 2.19
+    - _RimLightStrenght: 1
+    - _Rim_Light_Angle: 0.528
+    - _Rim_Threshold: 0.43
+    - _Rotation: 0.07
     - _SelfSHadowing_Angle: 0
+    - _Soft_Dots_Gradient: 0
+    - _USE_SCREEN_SPACE: 0
     - _Use_Flat_Color: 1
     m_Colors:
-    - _Dark_Color: {r: 0.3433962, g: 0.3433962, b: 0.3433962, a: 1}
-    - _Flat_Color: {r: 0.3962264, g: 0.32536855, b: 0.25642574, a: 1}
-    - _Tinting: {r: 0.3886792, g: 0.3886792, b: 0.3886792, a: 0}
+    - _Dark_Color: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
+    - _Flat_Color: {r: 0.7019608, g: 0.6313726, b: 0.45490196, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &7945284648433091637
+--- !u!114 &7284659514118863415
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

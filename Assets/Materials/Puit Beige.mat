@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-1611657941116714887
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Editor::UnityEditor.Rendering.Universal.AssetVersion
+  version: 10
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -7,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Path
+  m_Name: Puit Beige
   m_Shader: {fileID: -6465566751694194690, guid: f41c4226628a90c4897737e4d76cc83c, type: 3}
   m_Parent: {fileID: 2100000, guid: b35a702f95e2cca49bfc84b033def290, type: 2}
   m_ModifiedSerializedProperties: 2
@@ -25,29 +38,18 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _Base_Color:
+        m_Texture: {fileID: 2800000, guid: 49f82f7f44a65244ab1c5d2c33ee3eec, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _FalloffThreshold: 0.81
-    - _Lit_Threshold: -1.45
+    - _Fresnel_Power: 1.71
+    - _RimLightStrenght: 1
+    - _Rim_Light_Angle: 0.52
     - _SelfSHadowing_Angle: 0
-    - _Use_Flat_Color: 1
     m_Colors:
-    - _Dark_Color: {r: 0.3433962, g: 0.3433962, b: 0.3433962, a: 1}
-    - _Flat_Color: {r: 0.3962264, g: 0.32536855, b: 0.25642574, a: 1}
-    - _Tinting: {r: 0.3886792, g: 0.3886792, b: 0.3886792, a: 0}
+    - _Dark_Color: {r: 0.4566037, g: 0.4566037, b: 0.4566037, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &7945284648433091637
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Editor::UnityEditor.Rendering.Universal.AssetVersion
-  version: 10

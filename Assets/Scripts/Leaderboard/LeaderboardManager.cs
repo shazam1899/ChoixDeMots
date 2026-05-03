@@ -60,4 +60,20 @@ public class LeaderboardManager : MonoBehaviour
             row.GetComponent<LeaderboardRow>().SetData(p.playerName, p.totalScore);
         }
     }
+
+    public void AddScoreForLevel(int levelIndex, Dictionary<string, int> levelScores, string npcName = "")
+    {
+        foreach (var kvp in levelScores)
+        {
+            var player = players.Find(p => p.playerName == kvp.Key);
+            if (player != null)
+                player.totalScore += kvp.Value;
+        }
+
+        RefreshUI();
+
+        //trigger friend notification
+        if (FriendNotificationManager.Instance != null && npcName != "")
+            FriendNotificationManager.Instance.TriggerFriendNotification(npcName);
+    }
 }

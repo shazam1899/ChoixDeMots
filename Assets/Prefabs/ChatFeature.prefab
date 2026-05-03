@@ -314,8 +314,8 @@ MonoBehaviour:
   - {fileID: 0}
   chatScrollRect: {fileID: 3915273951259521064}
   socketDepthOffset: 0
-  socketPositionY: -29.3
-  socketPositionX: 5.6
+  socketPositionY: 0
+  socketPositionX: 0
   socketSize: 0
   wordInteractionLayer:
     m_Bits: 512
@@ -556,7 +556,8 @@ MonoBehaviour:
   currentIndex: 0
   currentPlayerMessage: {fileID: 0}
   pendingValidatedIndex: -1
-  animationVisage: {fileID: 0}
+  currentAnimation: {fileID: 0}
+  defaultAnimation: {fileID: 0}
   blockController: {fileID: 0}
   TelController: {fileID: 0}
 --- !u!114 &787193652513828910
@@ -781,7 +782,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &1513221969838294812
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -31,6 +31,7 @@ public class DialogueManager : MonoBehaviour
     private List<GameObject> activeCubes = new List<GameObject>();
     public int pendingValidatedIndex = -1;
     public GameObject currentAnimation;
+    public GameObject defaultAnimation;
 
     //feature "se faire bloquer"
     public Bloquer blockController;
@@ -39,7 +40,7 @@ public class DialogueManager : MonoBehaviour
     public AutoTeleport TelController;
     private bool blockedTriggered = false;
     
-
+    #region Start
     void Start()
     {
         validator = FindFirstObjectByType<SentenceValidator>();
@@ -50,15 +51,23 @@ public class DialogueManager : MonoBehaviour
         
         if (TelController == null)
             TelController = FindFirstObjectByType<AutoTeleport>();
+
+        if (defaultAnimation != null)
+            PlayMessageAnimation(defaultAnimation);
     }
 
+    #endregion
+
+    #region ScrollToBottom
     private void ScrollToBottom()
     {
         Canvas.ForceUpdateCanvases();
         if (chatScrollRect != null)
             chatScrollRect.verticalNormalizedPosition = 0f;
     }
+    #endregion
 
+    #region  ShowNextEntry
     public void ShowNextEntry()
     {
         if (currentIndex >= dialogueEntries.Count)
@@ -85,7 +94,6 @@ public class DialogueManager : MonoBehaviour
             {
                 
                 PlayMessageAnimation(entry.messageAnimation);
-                currentAnimation.SetActive(true);
                 currentAnimation = entry.messageAnimation; //store as current
             }
             //if no animation is assigned, previous one keeps playing 
@@ -116,7 +124,9 @@ public class DialogueManager : MonoBehaviour
             SpawnPlayerSentence(entry);
         }
     }
+    #endregion
 
+    #region AutoEnd
     private IEnumerator AutoEnd()
     {
         yield return new WaitForSeconds(2f);
@@ -125,7 +135,9 @@ public class DialogueManager : MonoBehaviour
         else
             Debug.Log("DialogueManager needs a TeleportManager reference for auto behaviour.");
     }
+    #endregion
 
+    #region IsReferencedIndex
     private bool IsReferencedIndex(int index)
     {
         foreach (var entry in dialogueEntries)
@@ -144,7 +156,9 @@ public class DialogueManager : MonoBehaviour
         }
         return false;
     }
+    #endregion
 
+    #region BuildSentence
     private string BuildSentence(List<WordEntry> words)
     {
         string sentence = "";
@@ -154,6 +168,7 @@ public class DialogueManager : MonoBehaviour
         }
         return sentence.Trim();
     }
+    #endregion
 
     public int CountWordsForIndex(int index)
     {
@@ -179,6 +194,7 @@ public class DialogueManager : MonoBehaviour
         return Mathf.Max(1, count);
     }
 
+    #region SpawnDynamicSlots + coroutine
     public void SpawnDynamicSlots(int count, int linkedIndex)
     {
         StartCoroutine(SpawnDynamicSlotsCoroutine(count, linkedIndex));
@@ -273,6 +289,7 @@ public class DialogueManager : MonoBehaviour
             validator.AddSlot(slot);
         }
     }
+    #endregion
     private void SpawnPlayerSentence(DialogueData entry)
     {
         activeSlots.Clear();
@@ -341,7 +358,7 @@ public class DialogueManager : MonoBehaviour
         //Add a trigger collider for the socket to work
         SphereCollider collider = slotObject.AddComponent<SphereCollider>();
         collider.isTrigger = true;
-        collider.radius = 0.5f;
+        collider.radius = 1f;
 
         //add and initialize WordSlot
         WordSlots slot = slotObject.AddComponent<WordSlots>();
@@ -455,11 +472,20 @@ public class DialogueManager : MonoBehaviour
             Debug.LogWarning("AnimationVisage component not assigned on DialogueManager!");
             return;
         }
+
+        //deactivate previous animation object
+        if (currentAnimation != null)
+            currentAnimation.SetActive(false);
+
+        animationObject.SetActive(true);
         Animation anim = animationObject.GetComponent<Animation>();
         if (anim != null)
             anim.Play();
         else 
             Debug.LogWarning("No animation component found on animation object bro");
+
+        //store as current
+        currentAnimation = animationObject;
     }
 
     private void HandlePlayerBlocked()

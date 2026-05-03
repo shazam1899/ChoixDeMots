@@ -11,8 +11,7 @@ Material:
   m_Shader: {fileID: -6465566751694194690, guid: f41c4226628a90c4897737e4d76cc83c, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _SPECULAR_SETUP
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -103,7 +102,7 @@ Material:
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
     - _CastShadows: 1
-    - _CircleDensity: 26.01
+    - _CircleDensity: 42.22
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -113,12 +112,12 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _FalloffThreshold: 1.4
+    - _FalloffThreshold: 7.15
     - _Fresnel_Power: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Lit_Threshold: 0.75
+    - _Lit_Threshold: 2.39
     - _Metallic: 0
     - _Normal_Stenght: 1
     - _OcclusionStrength: 1
@@ -128,7 +127,7 @@ Material:
     - _RampOffset: 0.41
     - _ReceiveShadows: 1
     - _RimLightStrenght: 1
-    - _Rim_Light_Angle: 0.5
+    - _Rim_Light_Angle: 0.584
     - _Rim_Threshold: 0.51
     - _Rotation: 0
     - _SelfSHadowing_Angle: 0.5
@@ -144,7 +143,7 @@ Material:
     - _Surface: 0
     - _USE_SCREEN_SPACE: 0
     - _Use_Flat_Color: 0
-    - _WorkflowMode: 0
+    - _WorkflowMode: 1
     - _XRMotionVectorsPass: 1
     - _ZTest: 4
     - _ZWrite: 1

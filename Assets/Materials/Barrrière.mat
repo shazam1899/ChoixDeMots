@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-4693337471091366044
+--- !u!114 &-5111904919242530523
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,11 +20,12 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Master Material Variant
+  m_Name: "Barrri\xE8re"
   m_Shader: {fileID: -6465566751694194690, guid: f41c4226628a90c4897737e4d76cc83c, type: 3}
   m_Parent: {fileID: 2100000, guid: b35a702f95e2cca49bfc84b033def290, type: 2}
   m_ModifiedSerializedProperties: 2
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _USE_SCREEN_SPACE
   m_InvalidKeywords: []
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
@@ -37,16 +38,14 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs:
-    - _Texture2DAsset_a4cc7075ff864f0788df44fe4f38a9e3_Out_0_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 351f23e9b71fa894dadc7771487736ff, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+    m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _CircleDensity: 36.52
-    - _QueueControl: 0
-    - _USE_SCREEN_SPACE: 0
-    m_Colors: []
+    - _CircleDensity: 37.31
+    - _FalloffThreshold: 23.98
+    - _Lit_Threshold: 10.8
+    - _Use_Flat_Color: 1
+    m_Colors:
+    - _Flat_Color: {r: 0.49019608, g: 0.28627452, b: 0.1254902, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

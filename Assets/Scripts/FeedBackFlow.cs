@@ -9,14 +9,14 @@ public class FeedBackFlow : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            insideCount++;
+            //insideCount++;
 
-            if (insideCount == 1)
-            {
+            //if (insideCount == 1)
+            //{
                 Debug.Log("bb");
-                foreach (var obj in snapVolume)
-                    obj?.SetActive(false);
-            }
+                //foreach (var obj in snapVolume)
+                    //obj?.SetActive(false);
+            //}
         }
     }
 

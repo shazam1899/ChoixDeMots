@@ -101,12 +101,12 @@ public class GameFlow : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            insideCount++;
+            //insideCount++;
 
-            if (insideCount == 1)
-            {
+            //if (insideCount == 1)
+            //{
                 CheckFinalCondition();
-            }
+            //}
         }
     }
 

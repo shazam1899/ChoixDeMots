@@ -16,7 +16,7 @@ public class PlaySoundOnTrigger : MonoBehaviour
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         source = GetComponent<AudioSource>();
     }

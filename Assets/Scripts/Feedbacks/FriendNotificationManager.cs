@@ -58,7 +58,7 @@ public class FriendNotificationManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Notification... hello do you hear me");
+        
         if (!notificationActive) return;
 
         //rotate arrow to point toward teleporter

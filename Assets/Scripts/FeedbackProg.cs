@@ -20,7 +20,7 @@ public class FeedbackProg : MonoBehaviour
         AnnonceIntermediaire.SetActive(true);
 
         // 🔊 Joue le son de notification
-        NotificationSound.Instance.PlayNotification(notificationSound);
+        //NotificationSound.Instance.PlayNotification(notificationSound);
     }
 
     public void TeloportToInt()
@@ -31,7 +31,7 @@ public class FeedbackProg : MonoBehaviour
         AnnonceZone.SetActive(true);
 
         // 🔊 Joue le son de notification
-        NotificationSound.Instance.PlayNotification(notificationSound);
+        //NotificationSound.Instance.PlayNotification(notificationSound);
     }
 
     public void TeloportToZone()
@@ -42,7 +42,7 @@ public class FeedbackProg : MonoBehaviour
         PermTeleportPointZone.SetActive(true);
 
         // 🔊 Joue le son de notification
-        NotificationSound.Instance.PlayNotification(notificationSound);
+        //NotificationSound.Instance.PlayNotification(notificationSound);
     }
 }
 

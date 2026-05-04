@@ -65,7 +65,7 @@ public class GameFlow : MonoBehaviour
         Debug.Log("Mini-jeu terminé : " + currentLevel); 
 
          // 🔊 Joue le son de fin de niveau
-        LevelCompleteSound.Instance.PlaySound(levelCompleteSound);
+        //LevelCompleteSound.Instance.PlaySound(levelCompleteSound);
 
         SendScoresToLeaderboard(currentLevel); // Envoie les scores du niveau actuel au LeaderboardManager
 

@@ -32,6 +32,8 @@ public class DialogueManager : MonoBehaviour
     public int pendingValidatedIndex = -1;
     public GameObject currentAnimation;
     public GameObject defaultAnimation;
+    public GameObject currentBodyAnimation;
+    public GameObject defaultBodyAnimation;
 
     //feature "se faire bloquer"
     public Bloquer blockController;
@@ -54,6 +56,9 @@ public class DialogueManager : MonoBehaviour
 
         if (defaultAnimation != null)
             PlayMessageAnimation(defaultAnimation);
+
+        if (defaultBodyAnimation != null)
+            PlayBodyAnimation(defaultBodyAnimation);
     }
 
     #endregion
@@ -70,6 +75,16 @@ public class DialogueManager : MonoBehaviour
     #region  ShowNextEntry
     public void ShowNextEntry()
     {
+         var entry = dialogueEntries[currentIndex]; 
+         
+         if (entry.playerBlocked)
+        {
+            Debug.Log("HandlePlayerBlocked will be called");
+            HandlePlayerBlocked();
+            Debug.Log("HandlePlayerBlocked called");
+            return;
+        }
+        
         if (currentIndex >= dialogueEntries.Count)
             return;
 
@@ -80,15 +95,6 @@ public class DialogueManager : MonoBehaviour
             return;
         }
         
-        var entry = dialogueEntries[currentIndex]; 
-        
-        if (entry.playerBlocked)
-        {
-            Debug.Log("HandlePlayerBlocked will be called");
-            HandlePlayerBlocked();
-            Debug.Log("HandlePlayerBlocked called");
-            return;
-        }
         //Play animation if assigned
         if (entry.messageAnimation != null && entry.messageAnimation != currentAnimation)
             {
@@ -97,6 +103,12 @@ public class DialogueManager : MonoBehaviour
                 currentAnimation = entry.messageAnimation; //store as current
             }
             //if no animation is assigned, previous one keeps playing 
+
+            if (entry.bodyAnimation != null && entry.bodyAnimation != currentBodyAnimation)
+            {
+                PlayBodyAnimation(entry.bodyAnimation);
+                currentBodyAnimation = entry.bodyAnimation; //store as current
+            }
         if (!entry.isPlayerTurn)
         {
             //Spawn NPC Message
@@ -358,7 +370,7 @@ public class DialogueManager : MonoBehaviour
         //Add a trigger collider for the socket to work
         SphereCollider collider = slotObject.AddComponent<SphereCollider>();
         collider.isTrigger = true;
-        collider.radius = 1f;
+        collider.radius = 3f;
 
         //add and initialize WordSlot
         WordSlots slot = slotObject.AddComponent<WordSlots>();
@@ -489,6 +501,29 @@ public class DialogueManager : MonoBehaviour
 
         //store as current
         currentAnimation = animationObject;
+    }
+
+    public void PlayBodyAnimation(GameObject animationObject)
+    {
+        if (animationObject == null)
+        {
+            Debug.LogWarning("AnimationVisage component not assigned on DialogueManager!");
+            return;
+        }
+
+        //deactivate previous animation object
+        if (currentBodyAnimation != null)
+            currentBodyAnimation.SetActive(false);
+
+        animationObject.SetActive(true);
+        Animation anim = animationObject.GetComponent<Animation>();
+        if (anim != null)
+            anim.Play();
+        else 
+            Debug.LogWarning("No animation component found on animation object bro");
+
+        //store as current
+        currentBodyAnimation = animationObject;
     }
 
     private void HandlePlayerBlocked()

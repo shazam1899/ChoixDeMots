@@ -19,5 +19,6 @@ public class DialogueData
     public bool isDialogueEnd; //stops dialogue when entry plays
     public List<WordEntry> words; //each word in the sentence
     public GameObject messageAnimation; //animation to play when this message displays
+    public GameObject bodyAnimation; 
     public bool playerBlocked; //is the player blocked ? 
 }

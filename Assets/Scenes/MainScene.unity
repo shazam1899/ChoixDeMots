@@ -17890,7 +17890,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4803614339566677342, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.426488
+      value: 11.411
       objectReference: {fileID: 0}
     - target: {fileID: 4803614339566677342, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
       propertyPath: m_LocalPosition.y
@@ -17898,7 +17898,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4803614339566677342, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.382
+      value: 7.614
       objectReference: {fileID: 0}
     - target: {fileID: 4803614339566677342, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
       propertyPath: m_LocalRotation.w
@@ -17936,7 +17936,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4332805695139172968, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -32154,19 +32155,19 @@ MonoBehaviour:
   levelScores:
   - levelIndex: 0
     scoreYOU: 500
-    scoreBeta: 400
-    scoreAlpha: 300
-    scoreGamma: 200
+    scoreLeGoat: 400
+    scoreMoulinRouge: 350
+    scoreKauffy: 50
   - levelIndex: 1
     scoreYOU: 1000
-    scoreBeta: 1200
-    scoreAlpha: 600
-    scoreGamma: 250
+    scoreLeGoat: 800
+    scoreMoulinRouge: 2000
+    scoreKauffy: 150
   - levelIndex: 2
     scoreYOU: 2000
-    scoreBeta: 1800
-    scoreAlpha: 1500
-    scoreGamma: 400
+    scoreLeGoat: 1700
+    scoreMoulinRouge: 1900
+    scoreKauffy: 300
   teleportAreas:
   - {fileID: 964856382}
   - {fileID: 845282214}
@@ -49269,7 +49270,7 @@ MonoBehaviour:
   entryContainer: {fileID: 936174662}
   entryPrefab: {fileID: 3108630900362198423, guid: 31eebba8de01ef040b40b8b66f6e94d9, type: 3}
   players:
-  - playerName: YOU
+  - playerName: TOI
     totalScore: 0
   - playerName: LeGoat404
     totalScore: 0
@@ -52151,7 +52152,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4803614339566677342, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.426488
+      value: 11.411
       objectReference: {fileID: 0}
     - target: {fileID: 4803614339566677342, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
       propertyPath: m_LocalPosition.y
@@ -52159,7 +52160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4803614339566677342, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.119236
+      value: 8.351236
       objectReference: {fileID: 0}
     - target: {fileID: 4803614339566677342, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
       propertyPath: m_LocalRotation.w
@@ -52197,7 +52198,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4332805695139172968, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -65712,7 +65714,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4803614339566677342, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.426488
+      value: 11.411
       objectReference: {fileID: 0}
     - target: {fileID: 4803614339566677342, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
       propertyPath: m_LocalPosition.y
@@ -65720,7 +65722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4803614339566677342, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.784236
+      value: 8.016235
       objectReference: {fileID: 0}
     - target: {fileID: 4803614339566677342, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
       propertyPath: m_LocalRotation.w
@@ -65758,7 +65760,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4332805695139172968, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

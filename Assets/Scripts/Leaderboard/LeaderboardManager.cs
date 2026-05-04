@@ -16,18 +16,21 @@ public class LeaderboardManager : MonoBehaviour
     public Transform entryContainer;
     public GameObject entryPrefab;
 
-    [Header("Players")]
-    public List<PlayerScore> players = new List<PlayerScore>
-    {
-        new PlayerScore { playerName = "YOU", totalScore = 0 },
-        new PlayerScore { playerName = "Beta", totalScore = 0 },
-        new PlayerScore { playerName = "Alpha", totalScore = 0 },
-        new PlayerScore { playerName = "Gamma", totalScore = 0 },
-    };
+    // 🔥 LISTE FIXE AVEC LES BONS NOMS
+    public List<PlayerScore> players = new List<PlayerScore>();
 
     private void Awake()
     {
         Instance = this;
+
+        // 🔥 On force un tableau CLEAN à chaque lancement
+        players = new List<PlayerScore>
+        {
+            new PlayerScore { playerName = "TOI", totalScore = 0 },
+            new PlayerScore { playerName = "LeGoat404", totalScore = 0 },
+            new PlayerScore { playerName = "FouduMoulinRouge", totalScore = 0 },
+            new PlayerScore { playerName = "Kauffy", totalScore = 0 },
+        };
     }
 
     private void Start()
@@ -37,11 +40,15 @@ public class LeaderboardManager : MonoBehaviour
 
     public void AddScoreForLevel(int levelIndex, Dictionary<string, int> levelScores)
     {
-        foreach (var kvp in levelScores)
+        // 🔥 1. Reset des scores
+        foreach (var p in players)
+            p.totalScore = 0;
+
+        // 🔥 2. Appliquer les scores du niveau
+        foreach (var p in players)
         {
-            var player = players.Find(p => p.playerName == kvp.Key);
-            if (player != null)
-                player.totalScore += kvp.Value;
+            if (levelScores.ContainsKey(p.playerName))
+                p.totalScore = levelScores[p.playerName];
         }
 
         RefreshUI();
@@ -49,31 +56,18 @@ public class LeaderboardManager : MonoBehaviour
 
     public void RefreshUI()
     {
-        foreach (Transform child in entryContainer)
-            Destroy(child.gameObject);
+        // 🔥 Nettoyage INSTANTANÉ (évite rank 5,6,7,8)
+        for (int i = entryContainer.childCount - 1; i >= 0; i--)
+            DestroyImmediate(entryContainer.GetChild(i).gameObject);
 
+        // 🔥 Tri décroissant
         players.Sort((a, b) => b.totalScore.CompareTo(a.totalScore));
 
+        // 🔥 Affichage EXACTEMENT des 4 joueurs
         foreach (var p in players)
         {
             var row = Instantiate(entryPrefab, entryContainer);
             row.GetComponent<LeaderboardRow>().SetData(p.playerName, p.totalScore);
         }
-    }
-
-    public void AddScoreForLevel(int levelIndex, Dictionary<string, int> levelScores, string npcName = "")
-    {
-        foreach (var kvp in levelScores)
-        {
-            var player = players.Find(p => p.playerName == kvp.Key);
-            if (player != null)
-                player.totalScore += kvp.Value;
-        }
-
-        RefreshUI();
-
-        //trigger friend notification
-        if (FriendNotificationManager.Instance != null && npcName != "")
-            FriendNotificationManager.Instance.TriggerFriendNotification(npcName);
     }
 }

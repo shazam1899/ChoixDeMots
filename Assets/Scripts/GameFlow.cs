@@ -18,9 +18,9 @@ public class GameFlow : MonoBehaviour
     {
         public int levelIndex;
         public int scoreYOU;
-        public int scoreBeta;
-        public int scoreAlpha;
-        public int scoreGamma;
+        public int scoreLeGoat;
+        public int scoreMoulinRouge;
+        public int scoreKauffy;
     }
 
     [Header("Debloquer !")]
@@ -70,7 +70,6 @@ public class GameFlow : MonoBehaviour
             Debug.Log("Activation Teleport Area : " + teleportAreas[currentLevel].name);
         }
 
-        // 🔥 Passer au niveau suivant
         currentLevel++;
 
         //if (currentLevel >= levelOrder.Count)
@@ -95,7 +94,6 @@ public class GameFlow : MonoBehaviour
         int levelIndex = levelOrder[currentLevel];
         Debug.Log("▶ Lancement du niveau : " + levelIndex);
 
-        // 🔥 Lancer le minigame
         initializer.ClearBoard();
         initializer.Initialize(levelIndex);
     }
@@ -138,10 +136,10 @@ public class GameFlow : MonoBehaviour
 
         Dictionary<string, int> scores = new Dictionary<string, int>
         {
-            { "YOU", config.scoreYOU },
-            { "Beta", config.scoreBeta },
-            { "Alpha", config.scoreAlpha },
-            { "Gamma", config.scoreGamma }
+            { "TOI", config.scoreYOU },
+            { "LeGoat404", config.scoreLeGoat },
+            { "FouduMoulinRouge", config.scoreMoulinRouge },
+            { "Kauffy", config.scoreKauffy }
         };
 
         LeaderboardManager.Instance.AddScoreForLevel(level, scores);

@@ -535,6 +535,7 @@ public class DialogueManager : MonoBehaviour
         blockedTriggered = true;
 
         DestroyAllCubes();
+        wordCubePrefab.SetActive(false);
         // clear else uhh ajoute qq chose estuplé
 
         currentAnimation.SetActive(false);

@@ -14,6 +14,7 @@ public class Bloquer : MonoBehaviour
     public string Name;
     public float ActiveTime;
     public AutoTeleport HUBTel;
+    public DialogueManager dialogueManager;
 
     [SerializeField] private GameObject[] PropsAvatar;
     [SerializeField] private GameObject[] PropsDistorion;
@@ -74,6 +75,7 @@ public class Bloquer : MonoBehaviour
         }
 
         Blocked = true;
+        dialogueManager.DestroyAllCubes();
 
         yield return new WaitForSeconds(1f);
         {

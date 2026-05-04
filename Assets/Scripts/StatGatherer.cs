@@ -84,14 +84,14 @@ public class SateGatherer : MonoBehaviour
             Debug.Log("Faucon");
             return;
         }
-        else if(NumberBlock == 2 && MeanTime >= 8 && WeirdTime >= 15)
+        else if(NumberBlock == 2 && MeanTime >= 8 && WeirdTime >= 25)
         {
             ImParesseux.SetActive(true);
             TxtParesseux.SetActive(true);
             Debug.Log("Paresseux");
             return;
         }
-        else if(NumberBlock == 2 && ((MeanTime > 0 && MeanTime <= 8 && WeirdTime >= 15) || (WeirdTime > 0 && MeanTime >= 8 && WeirdTime <= 15)))
+        else if(NumberBlock == 2 && ((MeanTime > 0 && MeanTime <= 8 && WeirdTime >= 25) || (WeirdTime > 0 && MeanTime >= 8 && WeirdTime <= 25)))
         {
             ImHippopotame.SetActive(true);
             TxtHippopotame.SetActive(true);

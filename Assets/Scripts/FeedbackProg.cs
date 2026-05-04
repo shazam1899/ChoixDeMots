@@ -27,7 +27,7 @@ public class FeedbackProg : MonoBehaviour
     {
         AnnonceIntermediaire.SetActive(false);
         Player.position = TeleportPointINT.position;
-        Player.rotation = TeleportPointINT.rotation;
+        //Player.rotation = TeleportPointINT.rotation;
         AnnonceZone.SetActive(true);
 
         // 🔊 Joue le son de notification
@@ -38,7 +38,7 @@ public class FeedbackProg : MonoBehaviour
     {
         AnnonceZone.SetActive(false);
         Player.position = TeleportPointZone.position;
-        Player.rotation = TeleportPointZone.rotation;
+        //Player.rotation = TeleportPointZone.rotation;
         PermTeleportPointZone.SetActive(true);
 
         // 🔊 Joue le son de notification

@@ -13,5 +13,30 @@ public class LeaderboardRow : MonoBehaviour
         rankText.text = (transform.GetSiblingIndex() + 1).ToString();
         nameText.text = name;
         scoreText.text = score.ToString();
+
+        bool isPlayer = name.Trim().ToUpper() == "TOI";
+
+        Color highlightColor = new Color(1f, 0.84f, 0f); // doré
+
+        if (isPlayer)
+        {
+            nameText.fontStyle = FontStyles.Bold;
+            rankText.fontStyle = FontStyles.Bold;
+            scoreText.fontStyle = FontStyles.Bold;
+
+            nameText.color = highlightColor;
+            rankText.color = highlightColor;
+            scoreText.color = highlightColor;
+        }
+        else
+        {
+            nameText.fontStyle = FontStyles.Normal;
+            rankText.fontStyle = FontStyles.Normal;
+            scoreText.fontStyle = FontStyles.Normal;
+
+            nameText.color = Color.white;
+            rankText.color = Color.white;
+            scoreText.color = Color.white;
+        }
     }
 }

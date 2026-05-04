@@ -74,6 +74,7 @@ public class CheckBlock : MonoBehaviour
             SetActiveArray(BadPropsHere2, false);
             SetActiveArray(BadPropsHere7, true);
             step2Done = true;
+            Debug.Log("Distorsion1");
         }
 
         if (t > 25f && !step3Done)
@@ -82,7 +83,6 @@ public class CheckBlock : MonoBehaviour
             SetActiveArray(BadPropsHere8, true);
 
             step3Done = true;
-            Debug.Log("Distorsion1");
         }
 
         if (t > 30f && !step4Done)

@@ -33,7 +33,7 @@ public class AutoTeleport : MonoBehaviour
         yield return Transition.Play(() =>
         {
             Player.position = TeleportPoint.position;
-            Player.rotation = TeleportPoint.rotation;
+            //Player.rotation = TeleportPoint.rotation;
 
             Vector3 forward = Head.forward;
             forward.y = 0;

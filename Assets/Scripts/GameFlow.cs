@@ -34,6 +34,10 @@ public class GameFlow : MonoBehaviour
     public GameObject TxtFinal;
     public GameObject ButtonRestart;
     public float WaitTime = 2f;
+
+    [Header("Sons")]
+    public AudioClip levelCompleteSound;
+
     public int prog = 0;
     private int currentLevel = 0;
     public int CurrentLevel => currentLevel;
@@ -56,7 +60,12 @@ public class GameFlow : MonoBehaviour
 
     private void OnLevelCompleted() // Appelé à la fin de chaque mini-jeu 
     {
+        
+
         Debug.Log("Mini-jeu terminé : " + currentLevel); 
+
+         // 🔊 Joue le son de fin de niveau
+        LevelCompleteSound.Instance.PlaySound(levelCompleteSound);
 
         SendScoresToLeaderboard(currentLevel); // Envoie les scores du niveau actuel au LeaderboardManager
 

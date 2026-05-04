@@ -1,3 +1,5 @@
+
+//Code réaliser par Dylan LAUNAY avec Copilot
 using UnityEngine;
 
 [ExecuteAlways]
@@ -8,7 +10,7 @@ public class BlockShapeGizmo : MonoBehaviour
     private BlockShape shape;
     private GridBoard board;
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmos() // Dessine les gizmos pour visualiser les cellules occupées par le bloc dans l'éditeur, en utilisant une matrice de transformation qui applique la position et la rotation du bloc mais ignore l'échelle pour assurer que les gizmos représentent correctement les cellules de la grille
     {
         if (shape == null)
             shape = GetComponent<BlockShape>();
@@ -19,16 +21,16 @@ public class BlockShapeGizmo : MonoBehaviour
         if (shape == null || shape.localCells == null || board == null)
             return;
 
-        float cs = board.cellSize; // taille EXACTE d'une cellule
+        float cs = board.cellSize; // taille d'une cellule
 
         Gizmos.color = lineColor;
 
-        // --- MATRICE : position + rotation Y/Z du bloc, mais X = 0 ---
+        //MATRICE : position + rotation Y/Z du bloc, mais X = 0
         Matrix4x4 forcedMatrix =
             Matrix4x4.TRS(
                 transform.position,
                 Quaternion.Euler(0f, transform.eulerAngles.y, transform.eulerAngles.z),
-                Vector3.one // IMPORTANT : pas de scale du bloc
+                Vector3.one //pas de scale du bloc
             );
 
         Matrix4x4 old = Gizmos.matrix;
@@ -36,7 +38,7 @@ public class BlockShapeGizmo : MonoBehaviour
 
         foreach (var cell in shape.localCells)
         {
-            // Position locale EXACTE (à plat)
+            // Position locale
             Vector3 center = new Vector3(cell.x * cs, 0f, cell.y * cs);
 
             // Coins du carré

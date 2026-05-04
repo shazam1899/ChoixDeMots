@@ -1,3 +1,4 @@
+//Code réaliser par Dylan LAUNAY, avec l'aide de Copilot pour comprendre la logique et debugger
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -6,7 +7,7 @@ public class FixedBlockInitializer : MonoBehaviour
     public System.Action OnMiniGameCompleted;
 
     [System.Serializable]
-    public class FixedBlockEntry
+    public class FixedBlockEntry //config pour chaque bloc à placer : prefab, position sur la grille et rotation en degrés (0,90,180,270)
     {
         public GameObject prefab;
         public Vector2Int gridPosition;
@@ -14,23 +15,23 @@ public class FixedBlockInitializer : MonoBehaviour
     }
 
     [System.Serializable]
-    public class FixedBlockConfig
+    public class FixedBlockConfig //config pour chaque niveau : nom du niveau et liste des blocs à placer
     {
         public string name;
         public List<FixedBlockEntry> entries = new List<FixedBlockEntry>();
     }
 
-    public List<FixedBlockConfig> configurations = new List<FixedBlockConfig>();
-    public List<GameObject> allBlockPrefabs = new List<GameObject>();
+    public List<FixedBlockConfig> configurations = new List<FixedBlockConfig>(); //configurations pour chaque niveau, à configurer dans l'inspecteur
+    public List<GameObject> allBlockPrefabs = new List<GameObject>(); // Liste de tous les prefabs de blocs, à configurer dans l'inspecteur pour pouvoir les faire spawn dans la zone de spawn
 
-    public Transform spawnAreaCenter;
-    public Vector3 spawnAreaSize = new Vector3(4, 2, 2);
+    public Transform spawnAreaCenter; // Centre de la zone de spawn pour les blocs restants, à configurer dans l'inspecteur
+    public Vector3 spawnAreaSize = new Vector3(4, 2, 2); // Taille de la zone de spawn pour les blocs restants, à configurer dans l'inspecteur (X = largeur, Y = hauteur, Z = profondeur)
     public float spawnGridSpacing = 1.2f;
 
     private GridBoard board;
     private Transform spawnedRoot;
 
-    private void EnsureBoard()
+    private void EnsureBoard() //references au board 
     {
         if (board == null)
         {
@@ -62,7 +63,7 @@ public class FixedBlockInitializer : MonoBehaviour
         SpawnRemainingBlocks(config);
     }
 
-    private bool SpawnAndPlace(FixedBlockEntry entry)
+    private bool SpawnAndPlace(FixedBlockEntry entry) // Instancie un bloc à partir de son prefab, le placer à la position et rotation spécifiées sur la grille, et occuper les cellules correspondantes sur le board
     {
         EnsureBoard();
 
@@ -73,6 +74,7 @@ public class FixedBlockInitializer : MonoBehaviour
 
         BlockShape shape = block.GetComponent<BlockShape>();
 
+//editeur : initialiser les cellules locales du bloc pour pouvoir les occuper sur le board
 #if UNITY_EDITOR
         shape.EditorInitialize();
 #endif
@@ -81,10 +83,6 @@ public class FixedBlockInitializer : MonoBehaviour
         foreach (var c in cells)
             board.Occupy(c.x, c.y);
 
-        // ❌ SUPPRESSION DES LAYERS
-        // block.layer = LayerMask.NameToLayer("NonInteractable");
-
-        // ❌ SUPPRESSION XRGrabInteractable
         foreach (var comp in block.GetComponentsInChildren<Component>(true))
         {
             if (comp.GetType().Name.Contains("XRGrabInteractable"))
@@ -107,7 +105,7 @@ public class FixedBlockInitializer : MonoBehaviour
         return true;
     }
 
-    private void SpawnRemainingBlocks(FixedBlockConfig config)
+    private void SpawnRemainingBlocks(FixedBlockConfig config) // Instancie les blocs qui ne sont pas dans la configuration du niveau et les place dans la zone de spawn
     {
         HashSet<GameObject> used = new HashSet<GameObject>();
         foreach (var e in config.entries)
@@ -145,9 +143,6 @@ public class FixedBlockInitializer : MonoBehaviour
 
             GameObject obj = Instantiate(prefab, pos, finalRot, spawnedRoot);
 
-            // ❌ SUPPRESSION DES LAYERS
-            // obj.layer = LayerMask.NameToLayer("Interactable");
-
             var rb = obj.GetComponent<Rigidbody>();
             if (rb)
             {
@@ -165,7 +160,7 @@ public class FixedBlockInitializer : MonoBehaviour
         }
     }
 
-    public void ClearBoard()
+    public void ClearBoard() // Libère toutes les cellules du board et détruit tous les blocs instanciés dans la zone de spawn pour réinitialiser le niveau
     {
         EnsureBoard();
         board.InitializeBoard();
@@ -178,9 +173,9 @@ public class FixedBlockInitializer : MonoBehaviour
             Destroy(obj);
     }
 
-    public void CompleteMiniGame()
+    public void CompleteMiniGame() // Appelé lorsque le mini-jeu est complété pour déclencher l'événement de complétion du mini-jeu
     {
-        Debug.Log("🔥 Mini-jeu complété !");
+        Debug.Log("Mini-jeu complété !");
         OnMiniGameCompleted?.Invoke();
     }
 }

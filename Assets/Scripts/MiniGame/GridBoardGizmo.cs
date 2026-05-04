@@ -1,10 +1,11 @@
+//Code réaliser par Dylan LAUNAY avec Copilot
 using UnityEngine;
 
 public class GridBoardGizmo : MonoBehaviour
 {
     public GridBoard board;
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmos() // Dessine les gizmos pour visualiser la grille du board dans l'éditeur en parcourant les dimensions du board et en dessinant un cube filaire à la position de chaque cellule en utilisant la taille des cellules pour déterminer l'espacement
     {
         if (board == null) board = GetComponent<GridBoard>();
         if (board == null) return;

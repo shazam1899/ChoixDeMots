@@ -1,3 +1,4 @@
+//Code réaliser par Dylan LAUNAY, avec l'aide de Copilot pour comprendre la logique et debugger
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,11 +6,11 @@ public class BlockShape : MonoBehaviour
 {
     public Vector2Int[] localCells;
 
+    // Méthode pour obtenir les cellules de la grille occupées par le bloc à une position et rotation données, en appliquant la rotation aux cellules locales du bloc et en les convertissant en coordonnées de grille basées sur la position du bloc dans le monde
     public List<Vector2Int> GetWorldCells(GridBoard board, Vector3 worldPos, Quaternion worldRot)
     {
         if (localCells == null || localCells.Length == 0)
         {
-            Debug.LogError("❌ BlockShape : localCells est VIDE sur " + gameObject.name);
             return null;
         }
 
@@ -44,11 +45,11 @@ public class BlockShape : MonoBehaviour
     }
 
 #if UNITY_EDITOR
-    public void EditorInitialize()
+    public void EditorInitialize() //initialiser les cellules locales du bloc pour l'éditeur
     {
         if (localCells == null || localCells.Length == 0)
         {
-            Debug.LogWarning("⚠ BlockShape EditorInitialize : localCells vide sur " + gameObject.name);
+            Debug.LogWarning("BlockShape EditorInitialize : localCells vide sur " + gameObject.name);
         }
     }
 #endif

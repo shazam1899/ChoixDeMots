@@ -1,3 +1,7 @@
+
+//Code réaliser par Dylan LAUNAY avec Copilot
+
+// Script d'éditeur personnalisé pour le composant FixedBlockInitializer, permettant de sélectionner une configuration de niveau dans l'inspecteur et d'initialiser ou réinitialiser le plateau de jeu directement depuis l'éditeur pour faciliter le développement et les tests des niveaux du mini-jeu
 #if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;

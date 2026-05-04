@@ -220,7 +220,7 @@ MonoBehaviour:
     m_Top: 50
     m_Bottom: 100
   m_ChildAlignment: 0
-  m_Spacing: 55
+  m_Spacing: 60
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -330,6 +330,7 @@ MonoBehaviour:
       options: []
       optionIndices: 
     messageAnimation: {fileID: 0}
+    bodyAnimation: {fileID: 0}
     playerBlocked: 0
   - senderName: YOU
     isPlayerTurn: 1
@@ -341,6 +342,7 @@ MonoBehaviour:
       options: []
       optionIndices: 
     messageAnimation: {fileID: 0}
+    bodyAnimation: {fileID: 0}
     playerBlocked: 0
   - senderName: NPC
     isPlayerTurn: 0
@@ -352,6 +354,7 @@ MonoBehaviour:
       options: []
       optionIndices: 
     messageAnimation: {fileID: 0}
+    bodyAnimation: {fileID: 0}
     playerBlocked: 0
   - senderName: YOU
     isPlayerTurn: 1
@@ -377,6 +380,7 @@ MonoBehaviour:
       - facile
       optionIndices: 0400000005000000
     messageAnimation: {fileID: 0}
+    bodyAnimation: {fileID: 0}
     playerBlocked: 0
   - senderName: NPC
     isPlayerTurn: 0
@@ -388,6 +392,7 @@ MonoBehaviour:
       options: []
       optionIndices: 
     messageAnimation: {fileID: 0}
+    bodyAnimation: {fileID: 0}
     playerBlocked: 0
   - senderName: NPC
     isPlayerTurn: 0
@@ -399,6 +404,7 @@ MonoBehaviour:
       options: []
       optionIndices: 
     messageAnimation: {fileID: 0}
+    bodyAnimation: {fileID: 0}
     playerBlocked: 0
   - senderName: NPC
     isPlayerTurn: 0
@@ -410,6 +416,7 @@ MonoBehaviour:
       options: []
       optionIndices: 
     messageAnimation: {fileID: 0}
+    bodyAnimation: {fileID: 0}
     playerBlocked: 0
   - senderName: YOU
     isPlayerTurn: 1
@@ -435,6 +442,7 @@ MonoBehaviour:
       - "jou\xE9"
       optionIndices: 0b000000
     messageAnimation: {fileID: 0}
+    bodyAnimation: {fileID: 0}
     playerBlocked: 0
   - senderName: NPC
     isPlayerTurn: 0
@@ -446,6 +454,7 @@ MonoBehaviour:
       options: []
       optionIndices: 
     messageAnimation: {fileID: 0}
+    bodyAnimation: {fileID: 0}
     playerBlocked: 0
   - senderName: NPC
     isPlayerTurn: 0
@@ -457,6 +466,7 @@ MonoBehaviour:
       options: []
       optionIndices: 
     messageAnimation: {fileID: 0}
+    bodyAnimation: {fileID: 0}
     playerBlocked: 0
   - senderName: NPC
     isPlayerTurn: 0
@@ -468,6 +478,7 @@ MonoBehaviour:
       options: []
       optionIndices: 
     messageAnimation: {fileID: 0}
+    bodyAnimation: {fileID: 0}
     playerBlocked: 0
   - senderName: NPC
     isPlayerTurn: 0
@@ -480,6 +491,7 @@ MonoBehaviour:
       options: []
       optionIndices: 
     messageAnimation: {fileID: 0}
+    bodyAnimation: {fileID: 0}
     playerBlocked: 0
   - senderName: YOU
     isPlayerTurn: 1
@@ -507,6 +519,7 @@ MonoBehaviour:
       - "ton probl\xE8me"
       optionIndices: 0d0000000e0000000f000000
     messageAnimation: {fileID: 0}
+    bodyAnimation: {fileID: 0}
     playerBlocked: 0
   - senderName: NPC
     isPlayerTurn: 0
@@ -518,6 +531,7 @@ MonoBehaviour:
       options: []
       optionIndices: 
     messageAnimation: {fileID: 0}
+    bodyAnimation: {fileID: 0}
     playerBlocked: 0
   - senderName: NPC
     isPlayerTurn: 0
@@ -529,6 +543,7 @@ MonoBehaviour:
       options: []
       optionIndices: 
     messageAnimation: {fileID: 0}
+    bodyAnimation: {fileID: 0}
     playerBlocked: 0
   - senderName: NPC
     isPlayerTurn: 0
@@ -540,6 +555,7 @@ MonoBehaviour:
       options: []
       optionIndices: 
     messageAnimation: {fileID: 0}
+    bodyAnimation: {fileID: 0}
     playerBlocked: 0
   - senderName: NPC
     isPlayerTurn: 0
@@ -552,12 +568,15 @@ MonoBehaviour:
       options: []
       optionIndices: 
     messageAnimation: {fileID: 0}
+    bodyAnimation: {fileID: 0}
     playerBlocked: 0
   currentIndex: 0
   currentPlayerMessage: {fileID: 0}
   pendingValidatedIndex: -1
   currentAnimation: {fileID: 0}
   defaultAnimation: {fileID: 0}
+  currentBodyAnimation: {fileID: 0}
+  defaultBodyAnimation: {fileID: 0}
   blockController: {fileID: 0}
   TelController: {fileID: 0}
 --- !u!114 &787193652513828910
@@ -782,7 +801,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &1513221969838294812
 MonoBehaviour:
   m_ObjectHideFlags: 0

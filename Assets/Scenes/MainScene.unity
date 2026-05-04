@@ -1040,7 +1040,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a00e5fdd68fa2e40b313506610a9267, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.59
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a00e5fdd68fa2e40b313506610a9267, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3660,6 +3660,7 @@ MonoBehaviour:
   Name: gentil
   ActiveTime: 0
   HUBTel: {fileID: 1074464859}
+  dialogueManager: {fileID: 649054123}
   PropsAvatar:
   - {fileID: 72688011}
   - {fileID: 924494161}
@@ -12746,9 +12747,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.07042362, g: 0.3896444, b: 0.5924529, a: 1}
     m_PressedColor: {r: 0.3230242, g: 0.5754717, b: 0.37733018, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 1, g: 0, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -23989,7 +23990,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 566317590}
+      - m_Target: {fileID: 363382945}
         m_TargetAssemblyTypeName: FeedbackProg, Assembly-CSharp
         m_MethodName: TeloportToZone
         m_Mode: 1
@@ -34735,6 +34736,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &649054123 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
+  m_PrefabInstance: {fileID: 1234735204}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16a48dbf117b2554693d7e6120096c30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
 --- !u!1 &651282920
 GameObject:
   m_ObjectHideFlags: 0
@@ -36411,6 +36423,7 @@ MonoBehaviour:
   Name: mechant
   ActiveTime: 0
   HUBTel: {fileID: 304941899}
+  dialogueManager: {fileID: 2047874326}
   PropsAvatar:
   - {fileID: 715378048}
   - {fileID: 559826432}
@@ -36484,7 +36497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a00e5fdd68fa2e40b313506610a9267, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.51011443
+      value: 0.27011445
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a00e5fdd68fa2e40b313506610a9267, type: 3}
       propertyPath: m_LocalPosition.z
@@ -37545,7 +37558,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a00e5fdd68fa2e40b313506610a9267, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.55848694
+      value: 0.31848696
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a00e5fdd68fa2e40b313506610a9267, type: 3}
       propertyPath: m_LocalPosition.z
@@ -49719,6 +49732,7 @@ MonoBehaviour:
   Name: cancel
   ActiveTime: 0
   HUBTel: {fileID: 1074464859}
+  dialogueManager: {fileID: 0}
   PropsAvatar:
   - {fileID: 72688011}
   - {fileID: 924494161}
@@ -75426,6 +75440,7 @@ MonoBehaviour:
   Name: bizarre
   ActiveTime: 0
   HUBTel: {fileID: 120594450}
+  dialogueManager: {fileID: 1942543088}
   PropsAvatar:
   - {fileID: 194840890}
   - {fileID: 1286261498}
@@ -76376,6 +76391,7 @@ MonoBehaviour:
   Name: t
   ActiveTime: 0
   HUBTel: {fileID: 0}
+  dialogueManager: {fileID: 0}
   PropsAvatar:
   - {fileID: 0}
   - {fileID: 0}
@@ -81328,15 +81344,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4ef67a508287bc14fb57bf68542ddf0f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.161627
+      value: 16.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4ef67a508287bc14fb57bf68542ddf0f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1260519
+      value: -0.37
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4ef67a508287bc14fb57bf68542ddf0f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 39.077396
+      value: 39.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4ef67a508287bc14fb57bf68542ddf0f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -89623,15 +89639,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a00e5fdd68fa2e40b313506610a9267, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.241985
+      value: 15.57
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a00e5fdd68fa2e40b313506610a9267, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6516275
+      value: 0.36
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a00e5fdd68fa2e40b313506610a9267, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 35.413284
+      value: 35.16
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a00e5fdd68fa2e40b313506610a9267, type: 3}
       propertyPath: m_LocalRotation.w
@@ -104007,15 +104023,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a00e5fdd68fa2e40b313506610a9267, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.7
+      value: 17.028015
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a00e5fdd68fa2e40b313506610a9267, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7
+      value: 0.40837252
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a00e5fdd68fa2e40b313506610a9267, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 33.96
+      value: 33.706715
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a00e5fdd68fa2e40b313506610a9267, type: 3}
       propertyPath: m_LocalRotation.w
@@ -106114,6 +106130,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1942543088 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
+  m_PrefabInstance: {fileID: 1809892162}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16a48dbf117b2554693d7e6120096c30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
 --- !u!1 &1945157007
 GameObject:
   m_ObjectHideFlags: 0
@@ -109671,15 +109698,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a00e5fdd68fa2e40b313506610a9267, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.371553
+      value: 18.699568
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a00e5fdd68fa2e40b313506610a9267, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.731513
+      value: 0.43988556
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a00e5fdd68fa2e40b313506610a9267, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 32.69492
+      value: 32.441635
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a00e5fdd68fa2e40b313506610a9267, type: 3}
       propertyPath: m_LocalRotation.w
@@ -110096,7 +110123,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 566317590}
+      - m_Target: {fileID: 1196420789}
         m_TargetAssemblyTypeName: FeedbackProg, Assembly-CSharp
         m_MethodName: TeloportToZone
         m_Mode: 1
@@ -112531,6 +112558,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &2047874326 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2731103165869769011, guid: 447fc4df8f0019941a97b9beecbd2275, type: 3}
+  m_PrefabInstance: {fileID: 175563650}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16a48dbf117b2554693d7e6120096c30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
 --- !u!1 &2048690864
 GameObject:
   m_ObjectHideFlags: 0

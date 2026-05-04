@@ -75,7 +75,9 @@ public class Bloquer : MonoBehaviour
         }
 
         Blocked = true;
+        Debug.Log("DestroyAllCubes is called");
         dialogueManager.DestroyAllCubes();
+        Debug.Log("DestroyAllCubes was called !!!!");
 
         yield return new WaitForSeconds(1f);
         {

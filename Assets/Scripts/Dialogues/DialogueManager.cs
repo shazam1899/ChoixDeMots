@@ -141,7 +141,7 @@ public class DialogueManager : MonoBehaviour
     #region AutoEnd
     private IEnumerator AutoEnd()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
         if (TelController != null)
             TelController.TeleportToHUB();
         else

@@ -1,14 +1,15 @@
+//Code réaliser par Dylan LAUNAY à partir du code de base réalise par Tyler GUERIN , avec l'aide de Copilot pour comprendre la logique et debugger
 using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class PlayerScore
+public class PlayerScore // Classe pour stocker le nom du joueur et son score total
 {
     public string playerName;
     public int totalScore;
 }
 
-public class LeaderboardManager : MonoBehaviour
+public class LeaderboardManager : MonoBehaviour 
 {
     public static LeaderboardManager Instance;
 
@@ -16,14 +17,12 @@ public class LeaderboardManager : MonoBehaviour
     public Transform entryContainer;
     public GameObject entryPrefab;
 
-    // 🔥 LISTE FIXE AVEC LES BONS NOMS
-    public List<PlayerScore> players = new List<PlayerScore>();
+    public List<PlayerScore> players = new List<PlayerScore>(); // Liste des joueurs et de leurs scores, initialisée dans Awake()
 
     private void Awake()
     {
         Instance = this;
 
-        // 🔥 On force un tableau CLEAN à chaque lancement
         players = new List<PlayerScore>
         {
             new PlayerScore { playerName = "TOI", totalScore = 0 },
@@ -38,14 +37,12 @@ public class LeaderboardManager : MonoBehaviour
         RefreshUI();
     }
 
-    public void AddScoreForLevel(int levelIndex, Dictionary<string, int> levelScores)
+    public void AddScoreForLevel(int levelIndex, Dictionary<string, int> levelScores) 
     {
-        // 🔥 1. Reset des scores
-        foreach (var p in players)
+        foreach (var p in players) // Réinitialise les scores totaux avant de les mettre à jour avec les scores du niveau actuel
             p.totalScore = 0;
 
-        // 🔥 2. Appliquer les scores du niveau
-        foreach (var p in players)
+        foreach (var p in players) // Met à jour les scores totaux des joueurs en fonction des scores du niveau actuel
         {
             if (levelScores.ContainsKey(p.playerName))
                 p.totalScore = levelScores[p.playerName];
@@ -56,18 +53,15 @@ public class LeaderboardManager : MonoBehaviour
 
     public void RefreshUI()
     {
-        // 🔥 Nettoyage INSTANTANÉ (évite rank 5,6,7,8)
-        for (int i = entryContainer.childCount - 1; i >= 0; i--)
+        for (int i = entryContainer.childCount - 1; i >= 0; i--) // Supprime tous les éléments enfants de entryContainer pour rafraîchir l'affichage du leaderboard
             DestroyImmediate(entryContainer.GetChild(i).gameObject);
 
-        // 🔥 Tri décroissant
-        players.Sort((a, b) => b.totalScore.CompareTo(a.totalScore));
+        players.Sort((a, b) => b.totalScore.CompareTo(a.totalScore)); // Trie les joueurs par score total décroissant pour afficher le meilleur score en haut du leaderboard
 
-        // 🔥 Affichage EXACTEMENT des 4 joueurs
         foreach (var p in players)
         {
-            var row = Instantiate(entryPrefab, entryContainer);
-            row.GetComponent<LeaderboardRow>().SetData(p.playerName, p.totalScore);
+            var row = Instantiate(entryPrefab, entryContainer); // Instancie une nouvelle ligne de leaderboard à partir du prefab entryPrefab et la place sous entryContainer
+            row.GetComponent<LeaderboardRow>().SetData(p.playerName, p.totalScore); // Appelle la méthode SetData de LeaderboardRow pour afficher le nom du joueur et son score total dans la ligne du leaderboard
         }
     }
 }

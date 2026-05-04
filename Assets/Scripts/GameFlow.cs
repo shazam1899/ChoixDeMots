@@ -1,20 +1,20 @@
+//Code réaliser par Dylan LAUNAY à partir du code de base réalise par Clara DENIEL, avec l'aide de Copilot pour comprendre la logique et debugger
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 
 public class GameFlow : MonoBehaviour
 {
-    public FixedBlockInitializer initializer;
+    public FixedBlockInitializer initializer; 
 
-    [Header("Ordre des niveaux")]
-    public List<int> levelOrder = new List<int>() { 0, 1, 2 };
+    [Header("Ordre des niveaux")] 
+    public List<int> levelOrder = new List<int>() { 0, 1, 2 }; // Ordre fixe des niveaux (0,1,2)
 
     [Header("Scores par niveau")]
-    public List<LevelScoreConfig> levelScores;
+    public List<LevelScoreConfig> levelScores; // Configurable dans l'inspecteur pour chaque niveau (Leaderboard)
 
     [System.Serializable]
-    public class LevelScoreConfig
+    public class LevelScoreConfig // Classe pour configurer les scores de chaque niveau dans l'inspecteur
     {
         public int levelIndex;
         public int scoreYOU;
@@ -23,12 +23,12 @@ public class GameFlow : MonoBehaviour
         public int scoreKauffy;
     }
 
-    [Header("Debloquer !")]
-    public List<GameObject> teleportAreas; // NE PAS mettre la zone de base ici !
-    public List<GameObject> UIAnnonce;
-    public List<GameObject> Recompenses;
+    [Header("Debloquer !")] // Listes configurables dans l'inspecteur pour les zones de téléportation, annonces et récompenses
+    public List<GameObject> teleportAreas; // Téléport Areas à activer après chaque niveau
+    public List<GameObject> UIAnnonce; // Annonces à activer après chaque niveau
+    public List<GameObject> Recompenses; // Récompenses à activer après chaque niveau
 
-    [Header("Final")]
+    [Header("Final")] // Objets à activer pour la scène finale
     public GameObject final;
     public GameObject Thanks;
     public GameObject TxtFinal;
@@ -38,30 +38,29 @@ public class GameFlow : MonoBehaviour
     private int currentLevel = 0;
     public int CurrentLevel => currentLevel;
 
-    private bool finalLaunched = false;
+    private bool finalLaunched = false; // Flag pour éviter de lancer la scène finale plusieurs fois
 
-    private void Start()
+    private void Start() // Initialisation du GameFlow
     {
         if (initializer == null)
         {
-            Debug.LogError("❌ initializer n'est pas assigné dans GameFlow !");
+            Debug.LogError("initializer n'est pas assigné dans GameFlow !");
             return;
         }
 
         initializer.OnMiniGameCompleted += OnLevelCompleted;
 
-        // 🔥 Lancer le premier niveau
+        //Lance le premier niveau
         LaunchCurrentLevel();
     }
 
-    private void OnLevelCompleted()
+    private void OnLevelCompleted() // Appelé à la fin de chaque mini-jeu 
     {
-        Debug.Log("Mini-jeu terminé : " + currentLevel);
+        Debug.Log("Mini-jeu terminé : " + currentLevel); 
 
-        // 🔥 ENVOYER LES SCORES AU LEADERBOARD
-        SendScoresToLeaderboard(currentLevel);
+        SendScoresToLeaderboard(currentLevel); // Envoie les scores du niveau actuel au LeaderboardManager
 
-        // 🔥 Activer la Teleport Area correspondante
+        //Active la Teleport Area correspondante
         if (currentLevel < teleportAreas.Count && currentLevel < UIAnnonce.Count && currentLevel < Recompenses.Count)
         {
             teleportAreas[currentLevel].SetActive(true);
@@ -70,7 +69,7 @@ public class GameFlow : MonoBehaviour
             Debug.Log("Activation Teleport Area : " + teleportAreas[currentLevel].name);
         }
 
-        currentLevel++;
+        currentLevel++; // Passe au niveau suivant
 
         //if (currentLevel >= levelOrder.Count)
         //{
@@ -83,41 +82,41 @@ public class GameFlow : MonoBehaviour
         //}
     }
 
-    public void LaunchCurrentLevel()
+    public void LaunchCurrentLevel() // Lance le niveau actuel en fonction de l'ordre défini dans levelOrder
     {
-        if (currentLevel >= levelOrder.Count)
+        if (currentLevel >= levelOrder.Count) // Vérifie si tous les niveaux ont été joués
         {
             Debug.Log("Tous les niveaux sont terminés.");
             return;
         }
 
-        int levelIndex = levelOrder[currentLevel];
-        Debug.Log("▶ Lancement du niveau : " + levelIndex);
+        int levelIndex = levelOrder[currentLevel]; // Récupère l'index du niveau à lancer
+        Debug.Log("Lancement du niveau : " + levelIndex); 
 
-        initializer.ClearBoard();
-        initializer.Initialize(levelIndex);
+        initializer.ClearBoard(); // Nettoie le plateau avant de lancer le nouveau niveau
+        initializer.Initialize(levelIndex); // Initialise le niveau en fonction de l'index défini dans levelOrder
     }
 
-    public void AddProgress()
+    public void AddProgress() // Méthode pour ajouter de la progression, appelée à la fin de chaque mini-jeu
     {
-        prog++;
-        Debug.Log("[GameFlow] Progression : " + prog + " | Instance ID : " + GetInstanceID());
+        prog++; // Incrémente la progression
+        Debug.Log("[GameFlow] Progression : " + prog + " | Instance ID : " + GetInstanceID()); 
 
-        CheckFinalCondition();
+        CheckFinalCondition(); // Vérifie si la condition pour lancer la scène finale est remplie
     }
 
-    private void CheckFinalCondition()
+    private void CheckFinalCondition() // Vérifie si la progression a atteint le seuil pour lancer la scène finale
     {
-        if (!finalLaunched && prog >= 3)
+        if (!finalLaunched && prog >= 3) // Si la progression est suffisante et que la scène finale n'a pas encore été lancée
         {
             finalLaunched = true;
-            StartCoroutine(LaunchFinal());
+            StartCoroutine(LaunchFinal()); // Lance la scène finale après un délai défini par WaitTime
         }
     }
 
-    private IEnumerator LaunchFinal()
-    {
-        Thanks.SetActive(true);
+    private IEnumerator LaunchFinal() // Coroutine pour lancer la scène finale avec un délai
+    { 
+        Thanks.SetActive(true); 
         yield return new WaitForSeconds(WaitTime);
 
         TxtFinal.SetActive(true);
@@ -125,16 +124,16 @@ public class GameFlow : MonoBehaviour
         ButtonRestart.SetActive(true);
     }
 
-    private void SendScoresToLeaderboard(int level)
+    private void SendScoresToLeaderboard(int level) // Envoie les scores du niveau actuel au LeaderboardManager pour mise à jour de l'affichage
     {
-        var config = levelScores.Find(s => s.levelIndex == level);
+        var config = levelScores.Find(s => s.levelIndex == level); // Trouve la configuration de score correspondant au niveau actuel dans la liste levelScores
         if (config == null)
         {
-            Debug.LogWarning("⚠ Aucun score configuré pour le niveau " + level);
+            Debug.LogWarning("Aucun score configuré pour le niveau " + level);
             return;
         }
 
-        Dictionary<string, int> scores = new Dictionary<string, int>
+        Dictionary<string, int> scores = new Dictionary<string, int> // Crée un dictionnaire de scores à partir de la configuration du niveau actuel
         {
             { "TOI", config.scoreYOU },
             { "LeGoat404", config.scoreLeGoat },
@@ -142,6 +141,6 @@ public class GameFlow : MonoBehaviour
             { "Kauffy", config.scoreKauffy }
         };
 
-        LeaderboardManager.Instance.AddScoreForLevel(level, scores);
+        LeaderboardManager.Instance.AddScoreForLevel(level, scores); // Appelle la méthode AddScoreForLevel du LeaderboardManager pour mettre à jour les scores et rafraîchir l'affichage du leaderboard
     }
 }

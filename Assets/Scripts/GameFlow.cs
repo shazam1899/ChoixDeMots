@@ -97,12 +97,25 @@ public class GameFlow : MonoBehaviour
         initializer.Initialize(levelIndex); // Initialise le niveau en fonction de l'index défini dans levelOrder
     }
 
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.CompareTag("Player"))
+        {
+            insideCount++;
+
+            if (insideCount == 1)
+            {
+                CheckFinalCondition();
+            }
+        }
+    }
+
     public void AddProgress() // Méthode pour ajouter de la progression, appelée à la fin de chaque mini-jeu
     {
         prog++; // Incrémente la progression
         Debug.Log("[GameFlow] Progression : " + prog + " | Instance ID : " + GetInstanceID()); 
 
-        CheckFinalCondition(); // Vérifie si la condition pour lancer la scène finale est remplie
+        //CheckFinalCondition(); // Vérifie si la condition pour lancer la scène finale est remplie
     }
 
     private void CheckFinalCondition() // Vérifie si la progression a atteint le seuil pour lancer la scène finale

@@ -42,7 +42,7 @@ public class AutoTeleport : MonoBehaviour
             TeleportUI.position = Head.position + forward * distance;
 
             TeleportUI.LookAt(Head);
-            TeleportUI.Rotate(0, 180, 0); // sinon inversé
+            TeleportUI.Rotate(0, 0, 0); // sinon inversé
         });
     }
 }

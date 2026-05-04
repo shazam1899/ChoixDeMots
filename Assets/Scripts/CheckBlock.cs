@@ -69,6 +69,8 @@ public class CheckBlock : MonoBehaviour
 
         if (t > 20f && !step2Done)
         {
+            AudioNorm.SetActive(false);
+            AudiDistordu1.SetActive(true);
             SetActiveArray(BadPropsHere2, false);
             SetActiveArray(BadPropsHere7, true);
             step2Done = true;
@@ -76,9 +78,6 @@ public class CheckBlock : MonoBehaviour
 
         if (t > 25f && !step3Done)
         {
-            AudioNorm.SetActive(false);
-            AudiDistordu1.SetActive(true);
-
             SetActiveArray(BadPropsHere3, false);
             SetActiveArray(BadPropsHere8, true);
 

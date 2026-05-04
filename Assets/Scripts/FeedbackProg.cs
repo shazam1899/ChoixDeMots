@@ -9,11 +9,12 @@ public class FeedbackProg : MonoBehaviour
     [SerializeField] private GameObject AnnonceHUB;
     [SerializeField] private GameObject AnnonceIntermediaire;
     [SerializeField] private GameObject AnnonceZone;
+    [SerializeField] private GameObject PermTeleportPointZone;
 
     public void PopUp()
     {
         AnnonceHUB.SetActive(false);
-        AnnonceIntermediaire.SetActive(true);    
+        AnnonceIntermediaire.SetActive(true);   
     }
 
     public void TeloportToInt()
@@ -22,7 +23,6 @@ public class FeedbackProg : MonoBehaviour
         Player.position = TeleportPointINT.position;
         Player.rotation = TeleportPointINT.rotation;
         AnnonceZone.SetActive(true);
-
     }
 
     public void TeloportToZone()
@@ -30,6 +30,7 @@ public class FeedbackProg : MonoBehaviour
         AnnonceZone.SetActive(false);
         Player.position = TeleportPointZone.position;
         Player.rotation = TeleportPointZone.rotation;
+        PermTeleportPointZone.SetActive(true);
     }
 
     //public IEnumerator ContentPopUp()

@@ -99,7 +99,7 @@ Material:
     - _BlendOp: 0
     - _BumpScale: 1
     - _CastShadows: 1
-    - _CircleDensity: 29.8
+    - _CircleDensity: 81.4
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -127,7 +127,7 @@ Material:
     - _Rim_Threshold: 0.5
     - _Rotation: 0
     - _SampleGI: 0
-    - _SelfSHadowing_Angle: 0.268
+    - _SelfSHadowing_Angle: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _Smoothning: 0
@@ -146,7 +146,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Dark_Color: {r: 0.245283, g: 0.245283, b: 0.245283, a: 1}
+    - _Dark_Color: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Flat_Color: {r: 0, g: 0, b: 0, a: 1}
     - _Light_Color: {r: 1, g: 1, b: 1, a: 1}

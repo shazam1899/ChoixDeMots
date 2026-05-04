@@ -4452,8 +4452,8 @@
     "m_ObjectId": "1404e07b6a984636aaf27081ccc930c9",
     "m_Title": "Correct screen space aspect ratio",
     "m_Position": {
-        "x": -3521.599853515625,
-        "y": 1393.5997314453125
+        "x": -3521.0,
+        "y": 1395.0
     }
 }
 
@@ -5750,8 +5750,8 @@
     "m_ObjectId": "2051056a9d8c471e809bf5cfc8b36ebc",
     "m_Title": "Gradients Levels",
     "m_Position": {
-        "x": -2964.000244140625,
-        "y": -2084.0
+        "x": -2963.0,
+        "y": -2082.0
     }
 }
 
@@ -7639,8 +7639,8 @@
     "m_ObjectId": "3a2b31b6973a438d8aab516531cc3b96",
     "m_Title": "Get diffuse lighting value",
     "m_Position": {
-        "x": -4079.19970703125,
-        "y": 339.2001647949219
+        "x": -4079.0,
+        "y": 341.0
     }
 }
 
@@ -9263,8 +9263,8 @@
     "m_ObjectId": "5488da0ad48e4eab8534e0b3e02858ac",
     "m_Title": "Remap values",
     "m_Position": {
-        "x": -3024.799560546875,
-        "y": 894.4000244140625
+        "x": -3024.0,
+        "y": 896.0
     }
 }
 
@@ -18523,8 +18523,8 @@
     "m_ObjectId": "d8776bce1a4c422ba24558e01ea63409",
     "m_Title": "Generate halftone grid",
     "m_Position": {
-        "x": -2729.599853515625,
-        "y": 1491.9998779296875
+        "x": -2729.0,
+        "y": 1494.0
     }
 }
 
@@ -19126,8 +19126,8 @@
     "m_ObjectId": "dfe763076a2d43acba0224f2c0c61a44",
     "m_Title": "Rim Iight",
     "m_Position": {
-        "x": -2963.199951171875,
-        "y": -77.60003662109375
+        "x": -2963.0,
+        "y": -76.0
     }
 }
 

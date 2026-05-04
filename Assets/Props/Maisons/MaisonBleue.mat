@@ -102,7 +102,7 @@ Material:
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
     - _CastShadows: 1
-    - _CircleDensity: 42.22
+    - _CircleDensity: 45.7
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2

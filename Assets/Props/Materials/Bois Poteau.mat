@@ -7,12 +7,11 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sable
+  m_Name: Bois Poteau
   m_Shader: {fileID: -6465566751694194690, guid: f41c4226628a90c4897737e4d76cc83c, type: 3}
-  m_Parent: {fileID: 2100000, guid: b35a702f95e2cca49bfc84b033def290, type: 2}
+  m_Parent: {fileID: 2100000, guid: 3ca4bc0aad69c0341a3e39a2ccda1e40, type: 2}
   m_ModifiedSerializedProperties: 2
-  m_ValidKeywords:
-  - _USE_SCREEN_SPACE
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
@@ -27,16 +26,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Ints: []
-    m_Floats:
-    - _FalloffThreshold: -0.17
-    - _Lit_Threshold: 4.54
-    - _Use_Flat_Color: 1
-    m_Colors:
-    - _Dark_Color: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
-    - _Flat_Color: {r: 1, g: 0.99607843, b: 0.5058824, a: 1}
+    m_Floats: []
+    m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &7493825859804042356
+--- !u!114 &2506982208539534806
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

@@ -41,11 +41,14 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _CircleDensity: 37.31
-    - _FalloffThreshold: 23.98
-    - _Lit_Threshold: 10.8
+    - _CircleDensity: 34.22
+    - _FalloffThreshold: 25.1
+    - _Lit_Threshold: 12.5
+    - _Rim_Light_Angle: 0.387
+    - _SelfSHadowing_Angle: 0.58
     - _Use_Flat_Color: 1
     m_Colors:
+    - _Dark_Color: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 1}
     - _Flat_Color: {r: 0.49019608, g: 0.28627452, b: 0.1254902, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

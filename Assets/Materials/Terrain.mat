@@ -30,7 +30,10 @@ Material:
     m_Floats:
     - _FalloffThreshold: -1.96
     - _Lit_Threshold: 5.38
-    m_Colors: []
+    - _Use_Flat_Color: 1
+    m_Colors:
+    - _Dark_Color: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
+    - _Flat_Color: {r: 1, g: 0.76862746, b: 0.4117647, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &7493825859804042356

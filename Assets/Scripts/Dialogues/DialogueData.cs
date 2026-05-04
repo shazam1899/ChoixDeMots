@@ -21,4 +21,5 @@ public class DialogueData
     public GameObject messageAnimation; //animation to play when this message displays
     public GameObject bodyAnimation; 
     public bool playerBlocked; //is the player blocked ? 
+    public bool donneReward; // does the message give you a reward ? 
 }

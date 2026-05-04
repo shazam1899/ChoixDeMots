@@ -15,6 +15,7 @@ public class Bloquer : MonoBehaviour
     public float ActiveTime;
     public AutoTeleport HUBTel;
     public DialogueManager dialogueManager;
+    public GameObject username;
 
     [SerializeField] private GameObject[] PropsAvatar;
     [SerializeField] private GameObject[] PropsDistorion;
@@ -66,6 +67,8 @@ public class Bloquer : MonoBehaviour
         CheckPanel.SetActive(false);
         AudioAvatar.SetActive(false);
         AudioHUB.SetActive(true);
+        username.SetActive(false);
+
         yield return new WaitForSeconds(1f);
         
         for (int i = 0; i < PropsHere.Length; i++)

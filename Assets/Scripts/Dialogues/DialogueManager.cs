@@ -41,6 +41,9 @@ public class DialogueManager : MonoBehaviour
     //feature se faire "teleporter"
     public AutoTeleport TelController;
     private bool blockedTriggered = false;
+
+    //reward we get when player gives it to us
+    public GameObject récompense;
     
     #region Start
     void Start()
@@ -59,6 +62,8 @@ public class DialogueManager : MonoBehaviour
 
         if (defaultBodyAnimation != null)
             PlayBodyAnimation(defaultBodyAnimation);
+
+        récompense.SetActive(false);
     }
 
     #endregion
@@ -83,6 +88,11 @@ public class DialogueManager : MonoBehaviour
             HandlePlayerBlocked();
             Debug.Log("HandlePlayerBlocked called");
             return;
+        }
+
+        if (entry.donneReward)
+        {
+            récompense.SetActive(true);
         }
         
         if (currentIndex >= dialogueEntries.Count)
@@ -405,6 +415,7 @@ public class DialogueManager : MonoBehaviour
 
     private void SpawnCubes(List<string> options)
     {
+        
         activeCubes.Clear();
         HashSet<int> usedSpawnPoints = new HashSet<int>();
 
@@ -535,7 +546,7 @@ public class DialogueManager : MonoBehaviour
         blockedTriggered = true;
 
         DestroyAllCubes();
-        wordCubePrefab.SetActive(false);
+        //wordCubePrefab.SetActive(false);
         // clear else uhh ajoute qq chose estuplé
 
         currentAnimation.SetActive(false);

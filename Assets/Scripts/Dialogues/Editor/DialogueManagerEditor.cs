@@ -67,6 +67,7 @@ public class DialogueManagerEditor : Editor
                 entry.messageAnimation = (GameObject)EditorGUILayout.ObjectField("Message Animation", entry.messageAnimation, typeof(Animator), false);
                 entry.bodyAnimation = (GameObject)EditorGUILayout.ObjectField("Body Animation", entry.bodyAnimation, typeof(Animator), false);
                 entry.playerBlocked = EditorGUILayout.Toggle("Player blocked", entry.playerBlocked);
+                entry.donneReward = EditorGUILayout.Toggle("Give reward?", entry.donneReward);
             
                 EditorGUILayout.Space(4);
                 EditorGUILayout.LabelField("Words", EditorStyles.miniBoldLabel);

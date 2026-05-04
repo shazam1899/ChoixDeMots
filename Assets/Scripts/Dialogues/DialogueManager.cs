@@ -113,7 +113,7 @@ public class DialogueManager : MonoBehaviour
             if (entry.isDialogueEnd)
             {
                 Debug.Log("dialogue ended!");
-                AutoEnd();
+                StartCoroutine(AutoEnd());
                 return;
             }
             //Automatically show next entry after a delay

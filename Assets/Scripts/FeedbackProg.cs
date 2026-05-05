@@ -44,5 +44,10 @@ public class FeedbackProg : MonoBehaviour
         // 🔊 Joue le son de notification
         //NotificationSound.Instance.PlayNotification(notificationSound);
     }
+
+    public void TeloportToHUB()
+    {
+        Player.position = TeleportPointINT.position;
+    }
 }
 

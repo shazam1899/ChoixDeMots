@@ -68,6 +68,9 @@ public class Bloquer : MonoBehaviour
         AudioAvatar.SetActive(false);
         AudioHUB.SetActive(true);
         username.SetActive(false);
+        Debug.Log("DestroyAllCubes is called");
+        dialogueManager.DestroyAllCubes();
+        Debug.Log("DestroyAllCubes was called !!!!");
 
         yield return new WaitForSeconds(1f);
         
@@ -78,9 +81,7 @@ public class Bloquer : MonoBehaviour
         }
 
         Blocked = true;
-        Debug.Log("DestroyAllCubes is called");
-        dialogueManager.DestroyAllCubes();
-        Debug.Log("DestroyAllCubes was called !!!!");
+        
 
         yield return new WaitForSeconds(1f);
         {

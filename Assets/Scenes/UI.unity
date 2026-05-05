@@ -3589,6 +3589,8 @@ MonoBehaviour:
   Name: bizarre
   ActiveTime: 0
   HUBTel: {fileID: 0}
+  dialogueManager: {fileID: 0}
+  username: {fileID: 0}
   PropsAvatar:
   - {fileID: 1257287415}
   - {fileID: 1113703369}
@@ -3600,6 +3602,7 @@ MonoBehaviour:
   - {fileID: 1722593452}
   - {fileID: 858408575}
   - {fileID: 740097503}
+  sphereRenderer: {fileID: 0}
 --- !u!4 &212110324
 Transform:
   m_ObjectHideFlags: 0
@@ -3670,6 +3673,8 @@ MonoBehaviour:
   Name: mechant
   ActiveTime: 0
   HUBTel: {fileID: 0}
+  dialogueManager: {fileID: 0}
+  username: {fileID: 0}
   PropsAvatar:
   - {fileID: 95384905}
   - {fileID: 1498746044}
@@ -3683,6 +3688,7 @@ MonoBehaviour:
   - {fileID: 636197718}
   - {fileID: 21930956}
   - {fileID: 295997870}
+  sphereRenderer: {fileID: 0}
 --- !u!1001 &219582700
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4480,7 +4486,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &236759435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7403,7 +7409,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1651, y: 0}
+  m_AnchoredPosition: {x: -57, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &473354136
@@ -10000,7 +10006,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f2d1a836d1f31a4489bf06cd209ce45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  snapVolume: {fileID: 0}
+  snapVolume:
+  - {fileID: 0}
 --- !u!65 &600880925
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12013,8 +12020,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d78611c9afa21db4a8fbc6757de5d64e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FeedbackProg
+  TeleportPointINT: {fileID: 0}
+  TeleportPointZone: {fileID: 0}
+  Player: {fileID: 0}
   AnnonceHUB: {fileID: 804622957}
   AnnonceIntermediaire: {fileID: 403380108}
+  AnnonceZone: {fileID: 0}
+  PermTeleportPointZone: {fileID: 0}
+  notificationSound: {fileID: 0}
 --- !u!4 &672020634
 Transform:
   m_ObjectHideFlags: 0
@@ -14340,7 +14353,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &796831868
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27575,7 +27588,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f2d1a836d1f31a4489bf06cd209ce45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  snapVolume: {fileID: 0}
+  snapVolume:
+  - {fileID: 0}
 --- !u!65 &1253138370
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28112,7 +28126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f2d1a836d1f31a4489bf06cd209ce45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  snapVolume: {fileID: 0}
+  snapVolume:
+  - {fileID: 0}
 --- !u!65 &1289579798
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33526,8 +33541,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d78611c9afa21db4a8fbc6757de5d64e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FeedbackProg
+  TeleportPointINT: {fileID: 0}
+  TeleportPointZone: {fileID: 0}
+  Player: {fileID: 0}
   AnnonceHUB: {fileID: 2079579155}
   AnnonceIntermediaire: {fileID: 403380108}
+  AnnonceZone: {fileID: 0}
+  PermTeleportPointZone: {fileID: 0}
+  notificationSound: {fileID: 0}
 --- !u!4 &1565594138
 Transform:
   m_ObjectHideFlags: 0
@@ -39164,8 +39185,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d78611c9afa21db4a8fbc6757de5d64e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FeedbackProg
+  TeleportPointINT: {fileID: 0}
+  TeleportPointZone: {fileID: 0}
+  Player: {fileID: 0}
   AnnonceHUB: {fileID: 1448553605}
   AnnonceIntermediaire: {fileID: 403380108}
+  AnnonceZone: {fileID: 0}
+  PermTeleportPointZone: {fileID: 0}
+  notificationSound: {fileID: 0}
 --- !u!4 &1846197959
 Transform:
   m_ObjectHideFlags: 0
@@ -41922,7 +41949,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f2d1a836d1f31a4489bf06cd209ce45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  snapVolume: {fileID: 0}
+  snapVolume:
+  - {fileID: 0}
 --- !u!65 &2037172186
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -42112,6 +42140,8 @@ MonoBehaviour:
   Name: gentil
   ActiveTime: 0
   HUBTel: {fileID: 0}
+  dialogueManager: {fileID: 0}
+  username: {fileID: 0}
   PropsAvatar:
   - {fileID: 1320777220}
   - {fileID: 1593010060}
@@ -42125,6 +42155,7 @@ MonoBehaviour:
   - {fileID: 1293301589}
   - {fileID: 1652827446}
   - {fileID: 1846180515}
+  sphereRenderer: {fileID: 0}
 --- !u!1 &2073419090
 GameObject:
   m_ObjectHideFlags: 0
@@ -44205,8 +44236,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d78611c9afa21db4a8fbc6757de5d64e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FeedbackProg
+  TeleportPointINT: {fileID: 0}
+  TeleportPointZone: {fileID: 0}
+  Player: {fileID: 0}
   AnnonceHUB: {fileID: 747839095}
   AnnonceIntermediaire: {fileID: 403380108}
+  AnnonceZone: {fileID: 0}
+  PermTeleportPointZone: {fileID: 0}
+  notificationSound: {fileID: 0}
 --- !u!4 &2140134304
 Transform:
   m_ObjectHideFlags: 0

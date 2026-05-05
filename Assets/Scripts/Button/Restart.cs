@@ -5,6 +5,6 @@ public class Restart : MonoBehaviour
 {
     public void Relance()
     {
-        SceneManager.LoadScene("StarMenu");
+        SceneManager.LoadScene("StartMenu");
     }
 }

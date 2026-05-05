@@ -16,8 +16,8 @@ public class FeedbackProg : MonoBehaviour
 
     public void PopUp()
     {
-        AnnonceHUB.SetActive(false);
-        AnnonceIntermediaire.SetActive(true);
+        if(AnnonceHUB != null) AnnonceHUB.SetActive(false);
+        if(AnnonceIntermediaire != null) AnnonceIntermediaire.SetActive(true);
 
         // 🔊 Joue le son de notification
         //NotificationSound.Instance.PlayNotification(notificationSound);
@@ -25,10 +25,10 @@ public class FeedbackProg : MonoBehaviour
 
     public void TeloportToInt()
     {
-        AnnonceIntermediaire.SetActive(false);
+        if(AnnonceIntermediaire != null) AnnonceIntermediaire.SetActive(false);
         Player.position = TeleportPointINT.position;
         //Player.rotation = TeleportPointINT.rotation;
-        AnnonceZone.SetActive(true);
+        if(AnnonceZone != null) AnnonceZone.SetActive(true);
 
         // 🔊 Joue le son de notification
         //NotificationSound.Instance.PlayNotification(notificationSound);
@@ -36,7 +36,7 @@ public class FeedbackProg : MonoBehaviour
 
     public void TeloportToZone()
     {
-        AnnonceZone.SetActive(false);
+        if(AnnonceZone != null) AnnonceZone.SetActive(false);
         Player.position = TeleportPointZone.position;
         //Player.rotation = TeleportPointZone.rotation;
         PermTeleportPointZone.SetActive(true);

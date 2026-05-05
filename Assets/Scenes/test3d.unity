@@ -1581,6 +1581,7 @@ MonoBehaviour:
   PropsHere:
   - {fileID: 615834411}
   - {fileID: 1228359901}
+  sphereRenderer: {fileID: 0}
 --- !u!1 &68554966
 GameObject:
   m_ObjectHideFlags: 0
@@ -13741,6 +13742,7 @@ MonoBehaviour:
   - {fileID: 733675728}
   - {fileID: 1023710782}
   - {fileID: 0}
+  sphereRenderer: {fileID: 0}
 --- !u!1001 &683017376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17784,6 +17786,7 @@ MonoBehaviour:
   PropsHere:
   - {fileID: 295916498}
   - {fileID: 1398023952}
+  sphereRenderer: {fileID: 0}
 --- !u!4 &959633050
 Transform:
   m_ObjectHideFlags: 0
@@ -20642,6 +20645,7 @@ MonoBehaviour:
   - {fileID: 937130695}
   UIAnnonce: []
   Recompenses: []
+  FeedBackClassement: []
   final: {fileID: 1751199230}
   Thanks: {fileID: 505305709}
   TxtFinal: {fileID: 303821105}
@@ -24776,6 +24780,7 @@ MonoBehaviour:
   AudioNorm: {fileID: 1737943350}
   AudiDistordu1: {fileID: 1157522555}
   AudiDistordu2: {fileID: 12352131}
+  sphereRenderer: {fileID: 0}
 --- !u!1001 &1345208101
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25575,7 +25580,6 @@ GameObject:
   - component: {fileID: 1371910163}
   - component: {fileID: 1371910162}
   - component: {fileID: 1371910161}
-  - component: {fileID: 1371910165}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -25675,28 +25679,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
---- !u!95 &1371910165
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1371910160}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4493772c0484cb849b4e0e9e10c14dd3, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1373153106
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26569,6 +26551,7 @@ MonoBehaviour:
   - {fileID: 1321512559}
   - {fileID: 1224918761}
   - {fileID: 988564678}
+  sphereRenderer: {fileID: 0}
 --- !u!1 &1448352381
 GameObject:
   m_ObjectHideFlags: 0
@@ -26775,6 +26758,7 @@ MonoBehaviour:
   PropsHere:
   - {fileID: 295916498}
   - {fileID: 1398023952}
+  sphereRenderer: {fileID: 0}
 --- !u!1 &1482317146
 GameObject:
   m_ObjectHideFlags: 0
@@ -38987,6 +38971,7 @@ MonoBehaviour:
   AudioNorm: {fileID: 0}
   AudiDistordu1: {fileID: 0}
   AudiDistordu2: {fileID: 0}
+  sphereRenderer: {fileID: 0}
 --- !u!1001 &2112135867
 PrefabInstance:
   m_ObjectHideFlags: 0

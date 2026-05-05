@@ -27,6 +27,7 @@ public class GameFlow : MonoBehaviour
     public List<GameObject> teleportAreas; // Téléport Areas à activer après chaque niveau
     public List<GameObject> UIAnnonce; // Annonces à activer après chaque niveau
     public List<GameObject> Recompenses; // Récompenses à activer après chaque niveau
+    public List<GameObject> FeedBackClassement; // Position du joueur dans le classement à activer à chaque niveau
 
     [Header("Final")] // Objets à activer pour la scène finale
     public GameObject final;
@@ -70,11 +71,12 @@ public class GameFlow : MonoBehaviour
         SendScoresToLeaderboard(currentLevel); // Envoie les scores du niveau actuel au LeaderboardManager
 
         //Active la Teleport Area correspondante
-        if (currentLevel < teleportAreas.Count && currentLevel < UIAnnonce.Count && currentLevel < Recompenses.Count)
+        if (currentLevel < teleportAreas.Count && currentLevel < UIAnnonce.Count && currentLevel < Recompenses.Count && currentLevel < FeedBackClassement.Count)
         {
             teleportAreas[currentLevel].SetActive(true);
             UIAnnonce[currentLevel].SetActive(true);
             Recompenses[currentLevel].SetActive(true);
+            FeedBackClassement[currentLevel].SetActive(true);
             Debug.Log("Activation Teleport Area : " + teleportAreas[currentLevel].name);
         }
 

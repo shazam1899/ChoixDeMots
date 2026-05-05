@@ -20,6 +20,10 @@ public class Bloquer : MonoBehaviour
     [SerializeField] private GameObject[] PropsAvatar;
     [SerializeField] private GameObject[] PropsDistorion;
     [SerializeField] private GameObject[] PropsHere;
+
+    [SerializeField] private Renderer sphereRenderer;
+    private Material mat;
+
     private float StartTime;
 
     private void OnEnable()
@@ -44,6 +48,9 @@ public class Bloquer : MonoBehaviour
 
     public IEnumerator BloqueEffect()
     {
+        Debug.Log("DestroyAllCubes is called");
+        dialogueManager.DestroyAllCubes();
+        Debug.Log("DestroyAllCubes was called !!!!");
         VFXBlock.SetActive(true);
         Avatar.SetActive(false);
         Debug.Log("Je");
@@ -68,9 +75,11 @@ public class Bloquer : MonoBehaviour
         AudioAvatar.SetActive(false);
         AudioHUB.SetActive(true);
         username.SetActive(false);
-        Debug.Log("DestroyAllCubes is called");
-        dialogueManager.DestroyAllCubes();
-        Debug.Log("DestroyAllCubes was called !!!!");
+
+        if (mat != null)
+        {
+            mat.SetFloat("_Transition", 0f);
+        }
 
         yield return new WaitForSeconds(1f);
         

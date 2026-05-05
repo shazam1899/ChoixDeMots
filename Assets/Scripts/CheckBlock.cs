@@ -25,11 +25,21 @@ public class CheckBlock : MonoBehaviour
     [SerializeField] private GameObject AudiDistordu1;
     [SerializeField] private GameObject AudiDistordu2;
 
+    [SerializeField] private Renderer sphereRenderer;
+    private Material mat;
+
     private float startTime;
     private bool wasBlockActive;
 
     // Step control
     private bool step1Done, step2Done, step3Done, step4Done, step5Done;
+
+    void Start()
+    {
+        // Sécurité
+        if (sphereRenderer != null)
+            mat = sphereRenderer.material;
+    }
 
     void Update()
     {
@@ -59,6 +69,12 @@ public class CheckBlock : MonoBehaviour
 
     void HandleSequence()
     {
+        if (mat != null)
+        {
+            float transitionValue = Mathf.Clamp01(Mathf.InverseLerp(40f, 65f, t)); //Fait augmenter progressivement la _transition
+            mat.SetFloat("_Transition", transitionValue);
+        }
+
         if (t > 40f && !step1Done)
         {
             SetActiveArray(BadPropsHere1, false);
@@ -110,9 +126,9 @@ public class CheckBlock : MonoBehaviour
 
     void ResetProps()
     {
-        AudioNorm.SetActive(false);
-        AudiDistordu1.SetActive(false);
-        AudiDistordu2.SetActive(false);
+        if (AudioNorm != null) AudioNorm.SetActive(false);
+        if (AudiDistordu1 != null) AudiDistordu1.SetActive(false);
+        if (AudiDistordu2 != null) AudiDistordu2.SetActive(false);
 
         SetActiveArray(BadPropsHere1, true);
         SetActiveArray(BadPropsHere6, false);
@@ -128,6 +144,11 @@ public class CheckBlock : MonoBehaviour
 
         SetActiveArray(BadPropsHere5, true);
         SetActiveArray(BadPropsHere10, false);
+
+        if (mat != null)
+        {
+            mat.SetFloat("_Transition", 0f);
+        }
 
         //Reset steps
         step1Done = false;

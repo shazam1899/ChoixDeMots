@@ -63,7 +63,7 @@ public class DialogueManager : MonoBehaviour
         if (defaultBodyAnimation != null)
             PlayBodyAnimation(defaultBodyAnimation);
 
-        récompense.SetActive(false);
+        if (récompense != null) récompense.SetActive(false);
     }
 
     #endregion

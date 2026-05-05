@@ -64,6 +64,8 @@ public class DialogueManager : MonoBehaviour
             PlayBodyAnimation(defaultBodyAnimation);
 
         if (récompense != null) récompense.SetActive(false);
+
+
     }
 
     #endregion
@@ -518,7 +520,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (animationObject == null)
         {
-            Debug.LogWarning("AnimationVisage component not assigned on DialogueManager!");
+            Debug.Log("AnimationVisage component not assigned on DialogueManager!");
             return;
         }
 
@@ -531,7 +533,7 @@ public class DialogueManager : MonoBehaviour
         if (anim != null)
             anim.Play();
         else 
-            Debug.LogWarning("No animation component found on animation object bro");
+            Debug.Log("No animation component found on animation object bro");
 
         //store as current
         currentBodyAnimation = animationObject;

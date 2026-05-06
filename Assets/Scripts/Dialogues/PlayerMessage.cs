@@ -120,6 +120,7 @@ public class PlayerMessage : MonoBehaviour
     //called on validation - hides placeholder, shows correct variant
     public void ShowValidatedSentence(int validatedIndex)
     {
+        Debug.Log($"Looking for variant at index {validatedIndex}, available indices: {string.Join(", ", sentenceVariants.Keys)}");
         //hide placeholder
             if (messageText != null)
         {

@@ -32,7 +32,7 @@ public class CheckBlock : MonoBehaviour
     private bool wasBlockActive;
 
     // Step control
-    private bool step1Done, step2Done, step3Done, step4Done, step5Done;
+    private bool step1Done, step2Done, step3Done, step4Done, step5Done, step6Done;
 
     void Start()
     {
@@ -113,14 +113,20 @@ public class CheckBlock : MonoBehaviour
 
         if (t > 65f && !step5Done)
         {
-            if (AudiDistordu1 != null) AudiDistordu1.SetActive(false);
-            if (AudiDistordu2 != null) AudiDistordu2.SetActive(true);
-
             SetActiveArray(BadPropsHere5, false);
             SetActiveArray(BadPropsHere10, true);
 
             step5Done = true;
             Debug.Log("Distorsion4");
+        }
+
+        if (t > 120f && !step6Done)
+        {
+            if (AudiDistordu1 != null) AudiDistordu1.SetActive(false);
+            if (AudiDistordu2 != null) AudiDistordu2.SetActive(true);
+
+            step6Done = true;
+            Debug.Log("Distorsion5");
         }
     }
 
@@ -156,6 +162,7 @@ public class CheckBlock : MonoBehaviour
         step3Done = false;
         step4Done = false;
         step5Done = false;
+        step6Done = false;
     }
 
     void SetActiveArray(GameObject[] array, bool state)
